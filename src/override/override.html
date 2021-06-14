@@ -11,16 +11,8 @@
   </head>
   <body>
     <div id="main" class="container">
-      <div id="bookmarks" class="fl w-10">
-        <h3 class="f3 tc light-blue">Bookmarks</h3>
-        <div id="bookmarkList" class="f5 light-blue monospace"></div>
-      </div>
-      <div id="dev-to" class="fl w-20">
-        <h3 class="f3 tc light-blue">Dev.to</h3>
-        <div id="devStart"></div>
-      </div>
-      <div class="fl w-50">
-        <h3 class="f3 tc light-blue">GitHub Calendar</h3>
+      <div class="fl w-30">
+        <h3 class="f3 tc light-blue"><!-- @todo: 5 (or more) switches, like in planes with sound --></h3>
         <div id="calendar-start" class="calendar"></div>
         <div id="clock-place" class="clock-container pt5 tc">
           <div id="date" class="tc pa3"></div>
@@ -38,38 +30,10 @@
               Wind Speed: <span id="wind" class="orange i"></span>Clouds:
               <span id="sky" class="orange i"></span>
             </p>
-            <div class="singleInput">
-              <div class="add-bookmark-button">
-                <button id="addIcon">+</button><br />
-                <p class="singleDesc">Add Bookmark</p>
-              </div>
-              <label for="urlName" id="siteLabel" style="display: none"
-                >Site Name:
-                <input
-                  class="addBookmark"
-                  style="display: none"
-                  type="text"
-                  id="urlName"
-                  placeholder="Enter Site Name"
-                />
-              </label>
-              <label for="siteUrl" id="urlLabel" style="display: none"
-                >URL:
-                <input
-                  class="addBookmark"
-                  style="display: none"
-                  type="url"
-                  id="siteUrl"
-                  placeholder="Enter URL"
-                />
-              </label>
-              <br />
-              <button id="addItem" style="display: none">Save</button>
-            </div>
           </div>
         </div>
       </div>
-      <div id="gitFeed" class="fl w-20">
+      <div id="gitFeed" class="fr w-20">
         <h3 class="f3 tc pb2 light-blue">Github Repo's</h3>
         <div id="github-feeds" class="tc f6 white"></div>
       </div>

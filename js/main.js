@@ -139,7 +139,7 @@ chrome.storage.local.get(['userLat', 'userLong', 'unitOfMeasure'], function (
   // Pull from chrome local storage
   let lat = result.userLat
   let lon = result.userLong
-  let unit = result.unitOfMeasure
+  let unit = 'metric'; // result.unitOfMeasure
 
   /**
    *
@@ -192,14 +192,6 @@ chrome.storage.local.get(['userLat', 'userLong', 'unitOfMeasure'], function (
   findWeather() //Initiate the function
 })
 
-// Dev.to Feed
-
-const app = document.getElementById('devStart')
-
-const container = document.createElement('div')
-container.setAttribute('class', 'container')
-
-app.appendChild(container)
 
 /**
  *
@@ -271,7 +263,8 @@ request.onerror = function () {
   console.log('request failed')
 }
 
-document.getElementById('addIcon').addEventListener('click', showInput)
+var iconEl = document.getElementById('addIcon')
+iconEl && iconEl.addEventListener('click', showInput)
 function showInput() {
   let input1 = document.getElementById('urlName')
   let input2 = document.getElementById('siteUrl')

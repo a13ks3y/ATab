@@ -158,14 +158,23 @@ html {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  justify-content: space-between;
   overflow: hidden;
   height: 100vh;
+  justify-content: space-between;
   position: relative;
   width: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   will-change: overflow;
+  background-image: url('../img/192050.jpg');
+  background-position: center;
+  background-size: 100vw;
+  padding-left: 0.666rem;
 }
+
+
+
 
 .float-left {
   float: left;
@@ -307,7 +316,6 @@ li a:hover {
 }
 
 #gitFeed {
-  float: left;
   overflow: auto;
   height: auto;
   -webkit-overflow-scrolling: touch;
