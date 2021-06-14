@@ -1,7 +1,8 @@
 
-# Dev Tabs
+# Awesome Tab
 
-## Chrome Extension for Developers - Replaces your NewTab and Homepage in Chrome - [Download From Chrome Store](https://chrome.google.com/webstore/detail/dev-tabs/ghkccmckjecalghejidolggalehgbcnj)
+## Chrome Extension for Awesome people - Replaces your NewTab and Homepage in Chrome Browser.
+
 
 ![Screenshot](/img/screenshot.png)
 
