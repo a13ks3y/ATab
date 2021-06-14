@@ -6,11 +6,16 @@
 
 ![Screenshot](/img/screenshot.png)
 
+## Installation
+
+Go to Releases. Do something. Do something else. Don't complain. Be strong. Give up.
+
+
 ### Github Repo's
 
 The [Github](https://www.github.com) repo's, on the right hand side of the page, lists the first 10 repo's in your profile. This makes it easy to quickly access a good portion of your repos.
 
-I used a library called [GithubFeed](https://github.com/samwx/GithubFeed), from 'samwx' to implement this. The library is very well documented however, I did have to alter the code slightly to conform with Chrome's security policies, as well as the CSS so it matched the Dev Tabs page.
+I used a library called [GithubFeed](https://github.com/samwx/GithubFeed), from 'samwx' to implement this. The library is very well documented however, I did have to alter the code slightly to conform with Chrome's security policies, as well as the CSS so it matched the ATab page.
 
 Once you open the extension for the first time, click the settings cog in the middle of the page. The first setting is the 'Github Feed'. If you just put your Github Username in the input and save it, when you go back to the main page it will automatically load your 'Feed' on the right side of the screen.
 
@@ -18,7 +23,7 @@ Once you save your username, it gets put into Chrome Local Storage and accessed 
 
 ### Github Calendar
 
-The [Github](https://www.github.com) calendar is integrated with a library from IonicaBizau. The library is [github-calendar.js](https://github.com/IonicaBizau/github-calendar), and can display your github contribution calendar. Very well explained lib, and is responsive. I changed the original styles that came with it to match the basic styles of the Dev Tabs page.
+The [Github](https://www.github.com) calendar is integrated with a library from IonicaBizau. The library is [github-calendar.js](https://github.com/IonicaBizau/github-calendar), and can display your github contribution calendar. Very well explained lib, and is responsive. I changed the original styles that came with it to match the basic styles of the ATab page.
 
 When you initially start the extension, look under the weather info at the center of the page and click on the settings cog. On the settings page just click on the 'Github Calendar' selection on the left and fill in your github username. No quotes or anything and click save.
 
@@ -27,16 +32,6 @@ Again, this username is stored in chrome.storage.local. So if you clear your bro
 ### Time and Date
 
 The time and date is pretty self explanatory. Just a clock with the date. I made it stand out with the color and I was going for a slight glow to it, so when I glance at it, it's easy to see.
-
-### Dev.to
-
-This is hooked up to the [dev.to](https://dev.to) API. It gets the articles from their website and creates a card for each individual article. Once the card is created, it gets appended to the div and the content gets appended to that. I had a bit of trouble getting chrome to not show the broken link image when there was not a url included for the articles image, but I beleve I have it figured out now. In the future, I may add a setting to display your individual feed. But for now, it is just the general article feed.
-
-### Dev.to Twitter
-
-[dev.to](https://dev.to) also has a Chrome extension for Twitter.. [thepracticaldev](https://github.com/thepracticaldev/DevTwitter) is the github repo. It has an MIT license attached to it so I borrowed some of the code. I went ahead and added their content script into the extension. Now, when you log into your [Twitter](https://twitter.com) account, a box on the left hand side of your feed will show up with the days dev.to headlines. It will look something like this:
-
-![Twitter Picture](/img/twitter.png)
 
 ### Weather
 

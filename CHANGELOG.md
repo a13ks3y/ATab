@@ -2,10 +2,15 @@
 
 ### Any notable changes and version notes will be kept in this file.
 
-[![Matthew's github stats](https://github-readme-stats.vercel.app/api?username=Cipher-Coder)](https://github.com/Cipher-Coder/)
+## v1.0.1
+### BREAKING CHANGES
+- Twitter, dev.to, bookmarks - removed
+- Renamed to ATab (it's one tab, so it could not be 'Dev tabs'!)
+- Updated some CSS and other UI-related issues 
 
 &nbsp;
-
+## Original Repo ChangeLog:
+___
 ## v0.3.5
 
 &nbsp;

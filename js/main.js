@@ -1,30 +1,3 @@
-window.onload = function makeBookmark() {
-  //Get user input bookmarks from local storage
-  chrome.storage.local.get(['userBookmark'], function (result) {
-    let myBookmarks = result.userBookmark
-
-    if (myBookmarks === undefined) {
-      // Error Message
-      let bookmarkStart = document.getElementById('bookmarkList')
-      bookmarkStart.setAttribute('style', 'color: red;')
-      bookmarkStart.textContent = 'Please configure Bookmarks in Settings'
-    } else {
-      let ul = "<ul id='bmList'>"
-
-      myBookmarks.forEach(makeBookmark)
-      ul += '</ul>'
-
-      let bkmk = document.getElementById('bookmarkList')
-
-      bkmk.innerHTML = ul
-
-      function makeBookmark(value) {
-        ul += "<li class='userMark'>" + value + '</li>'
-      }
-    }
-  })
-}
-
 // Get username for calendar
 
 chrome.storage.local.get(['gitCalName'], function (result) {
@@ -205,63 +178,6 @@ chrome.storage.local.get(['userLat', 'userLong', 'unitOfMeasure'], function (
  * @property {string} article.user.username
  */
 
-let request = new XMLHttpRequest()
-let d = new Date()
-request.open('GET', 'https://dev.to/api/articles/latest?per_page=20', true)
-request.send()
-request.onload = function () {
-  let data = JSON.parse(this.response)
-  if (request.status !== 200) {
-    console.log('Error', request.statusText)
-  } else {
-    data.forEach((article) => {
-      const card = document.createElement('div')
-      card.setAttribute('class', 'card')
-      const a = document.createElement('a')
-      a.href = article.url
-      a.textContent = article.title
-      const p = document.createElement('p')
-      p.setAttribute(
-        'style',
-        'font-style: italic; letter-spacing: 0.07em; font-size: 0.75em;'
-      )
-      article.description = article.description.substring(0, 300)
-      p.textContent = `${article.description}...`
-      const img = document.createElement('img')
-      if (article.cover_image !== null) {
-        img.src = article.cover_image
-        img.alt = 'Article Cover Image'
-      } else {
-        img.onerror = function () {
-          this.style.display = 'none'
-        }
-      }
-
-      const aTwitter = document.createElement('a')
-      let byLine
-      if (article.user.twitter_username == null) {
-        byLine = article.user.name
-        aTwitter.className = 'card-byline'
-        aTwitter.href = 'https://dev.to/' + article.user.username
-        aTwitter.textContent = 'By: ' + byLine
-      } else {
-        byLine = article.user.twitter_username
-        aTwitter.className = 'card-byline'
-        aTwitter.href = 'https://twitter.com/' + byLine
-        aTwitter.textContent = 'By: @' + byLine
-      }
-
-      container.appendChild(card) //Create card
-      card.appendChild(img) // Add Image to card
-      card.appendChild(a) // Add link
-      card.appendChild(p) // Add description
-      card.appendChild(aTwitter) // Add By line
-    })
-  }
-}
-request.onerror = function () {
-  console.log('request failed')
-}
 
 var iconEl = document.getElementById('addIcon')
 iconEl && iconEl.addEventListener('click', showInput)
@@ -286,28 +202,4 @@ function showInput() {
     label2.style.display = 'none'
     document.getElementById('addIcon').innerText = '+'
   }
-}
-
-document.getElementById('addItem').addEventListener('click', addEntry)
-function addEntry() {
-  chrome.storage.local.get('userBookmark', function (result) {
-    let existingEntries = result.userBookmark
-    if (existingEntries == null) existingEntries = []
-    let urlName = document.getElementById('urlName').value
-    let url = document.getElementById('siteUrl').value
-    let entry = "<a href='" + url + "'>" + urlName + '</a>'
-    let cleanEntry = DOMPurify.sanitize(entry).toString()
-    existingEntries.push(cleanEntry)
-    chrome.storage.local.set({ userBookmark: existingEntries }, function () {
-      console.log('New Entry Saved')
-
-      clearInput()
-    })
-  })
-}
-
-function clearInput() {
-  document.getElementById('urlName').value = ''
-  document.getElementById('siteUrl').value = ''
-  document.location.forceReload(true)
 }
