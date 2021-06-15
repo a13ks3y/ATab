@@ -1,0 +1,119 @@
+html, body {
+    color: limegreen;
+    background-color: #0A0A0A;
+    font-family: monospace;
+    width: 100vw;
+    height: 100vh;
+}
+body {
+    /* background-image: url(https://upload.wikimedia.org/wikipedia/commons/c/cc/Digital_rain_animation_medium_letters_shine.gif);     */
+    /* background-image: url(https://media3.giphy.com/media/l0O9zHWdXhGCryNKU/giphy.gif?cid=ecf05e472i69mzrj94wmil6p95s8ypwl9h1lxmynll6ya6xf&rid=giphy.gif&ct=g); */
+    background-image: url(https://media0.giphy.com/media/l0HlVrqPItQH8D4iI/giphy.gif?cid=ecf05e47jvzcepz0wg8e2e27ort2rvnymwmychqysyu1wnmk&rid=giphy.gif&ct=g);
+    animation: epilepsy 66.6s ease-in-out 333ms infinite normal both;
+}
+header {
+    padding: 2.71828rem;
+    text-align: center;
+}
+input[name=q] {
+    font-family: monospace;
+    width: 66.6vw;
+    background-color: black;
+    color: limegreen;
+    box-shadow: 0 0 0.666rem greenyellow;
+    border-radius: 0.666rem;
+    padding: 0.666rem;
+    border: none;
+    font-size: 1.666rem;
+}
+
+main {
+    padding: 1.666rem;
+    background-color: transparent;
+}
+
+main nav ul {
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(12, [col-start] 6.66rem [col-end]);
+    width: 66.6vw;
+    min-height: 50vh;
+    max-height: 100vh;
+    overflow: hidden;
+    background-color: transparent;
+    padding-top: 1.666rem;
+}
+
+main nav ul li {
+    list-style: none;
+    display: block;    
+    width: 6.66rem;
+    height: 6.66rem;
+    text-align: center;
+    margin-top: 0.666rem;
+}
+main nav ul li a, main nav ul li a:hover, main nav ul li a:visited, main nav ul li a:active {
+    display: inline-block;
+    border: 1px solid greenyellow;
+    width: 3rem;
+    height: 3em;
+    line-height: 3rem;
+    background-color:maroon;
+}
+main nav ul li:nth-child(odd) a {
+    border-radius: 6.66rem;
+    background-color: green;
+}
+main nav ul li:hover {
+    animation: zoom-in 6.66s ease-out 333ms infinite reverse both;    
+}
+main nav ul li a:visited {}
+main nav ul li a:active {}
+main nav ul li a img {
+    vertical-align: middle;
+    width: 2rem;
+    height: 2rem;
+    margin: 0;
+}
+
+.retrun-to-the-promised-land {
+    transform: translate3d(0, 0, 0)!important;
+    transition-property: transform;
+    transition-timing-function: ease-in-out;
+    transition-delay: 66.6ms;
+    transition-duration: 1.666s;
+    transform-origin: unset;
+}
+
+@keyframes zoom-in {
+    0% {
+        transform: scale3d(1,1,1);
+    }
+    25% {
+        transform: scale3d(0.999,0.999,1);
+    }
+    50% {
+        transform: scale3d(1,1,1);
+    }
+    75% {
+        transform: scale3d(1.333,1.333,1);
+    }
+    100% {
+        transform: scale3d(1,1,1);
+    }
+    /* from {
+        transform: scale3d(1,1,1);
+    }
+    to {
+        transform: scale3d(1.2,1.2,1);
+    }     */
+}
+
+@keyframes epilepsy {
+    from {
+        background-position: -10vw -10vh;
+    }
+    to {
+        background-position: 10vw 10vh;
+    }
+}
