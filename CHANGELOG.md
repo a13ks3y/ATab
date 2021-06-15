@@ -2,6 +2,9 @@
 
 ### Any notable changes and version notes will be kept in this file.
 
+## v1.1.0
+- Permanent bookmarks with awesome 😎 animation 💥 effects!!!
+
 ## v1.0.1
 ### BREAKING CHANGES
 - Twitter, dev.to, bookmarks - removed

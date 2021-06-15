@@ -533,3 +533,89 @@ label {
     margin-top: -15px;
   }
 }
+
+.permanent-bookmark, .permanent-bookmark:hover, .permanent-bookmark:visited, .permanent-bookmark:active {
+  font-size: 3rem;
+  text-decoration: none;
+  text-align: center;
+  padding: 0;
+  vertical-align: middle;
+  width: 6rem;
+  height: 6rem;
+  line-height: 6rem;
+  display: inline-block;
+}
+.permanent-bookmark img {
+  width: 3rem;
+}
+
+.permanent-bookmark:nth-child(1) {
+  animation: awesome-effect-1 1.666s ease-in-out 0ms 1;
+}
+@keyframes awesome-effect-1 {
+  from {
+    transform: translate(140vw, -130vh);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+.permanent-bookmark:nth-child(2) {
+  animation: awesome-effect-2 1.666s ease-in-out 0ms 1;
+  
+}
+@keyframes awesome-effect-2 {
+  from {
+    transform: translate(-140vw, 130vh);
+
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+
+
+.permanent-bookmark:nth-child(3) {
+  animation: awesome-effect-3 1.666s ease-in-out 0ms 1;
+}
+@keyframes awesome-effect-3 {
+  from {
+    transform: translate(-140vw, -130vh);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+.permanent-bookmark:nth-child(4) {
+  animation: awesome-effect-4 1.666s ease-in-out 0ms 1;  
+}
+@keyframes awesome-effect-4 {
+  from {
+    transform: translate(140vw, 130vh);
+
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+.permanent-bookmark:nth-child(5) {
+  animation: awesome-effect-5 1.666s ease-in-out 0ms 1;  
+}
+@keyframes awesome-effect-5 {
+  from {
+    transform: translate(160vw, -60vh);
+
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+input[name=q] {
+  font-size: 1.666rem;
+  height: 3rem;
+  margin-top: 0.666rem;
+}

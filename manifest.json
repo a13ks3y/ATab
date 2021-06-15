@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "ATab",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "New Tab extension for Awesome people.",
   "homepage_url": "https://github.com/a13ks3y/ATab",
   "icons": {
