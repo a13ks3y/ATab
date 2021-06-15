@@ -2,9 +2,10 @@
 
 ### Any notable changes and version notes will be kept in this file.
 
-## v1.1.1
+## v1.1.2
 - Permanent bookmarks with awesome 😎 animation 💥 effects!!!
 - Add /docs directory for github-pages (could be home page for mobile browser).
+- UI/UX improvements, anoying animation for right sidebar. Very creepy.
 
 ## v1.0.1
 ### BREAKING CHANGES

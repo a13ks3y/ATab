@@ -4,6 +4,8 @@ html, body {
     font-family: monospace;
     width: 100vw;
     height: 100vh;
+    font-size: 16px;
+    margin: 0;
 }
 body {
     /* background-image: url(https://upload.wikimedia.org/wikipedia/commons/c/cc/Digital_rain_animation_medium_letters_shine.gif);     */
@@ -31,14 +33,15 @@ main {
     padding: 1.666rem;
     background-color: transparent;
 }
+main nav {
+
+}
 
 main nav ul {
-    position: absolute;
     display: grid;
+    margin: auto;
     grid-template-columns: repeat(12, [col-start] 6.66rem [col-end]);
     width: 66.6vw;
-    min-height: 50vh;
-    max-height: 100vh;
     overflow: hidden;
     background-color: transparent;
     padding-top: 1.666rem;
@@ -58,11 +61,11 @@ main nav ul li a, main nav ul li a:hover, main nav ul li a:visited, main nav ul 
     width: 3rem;
     height: 3em;
     line-height: 3rem;
-    background-color:maroon;
+    background-color: rgba(66, 666, 6, 0.666);
 }
 main nav ul li:nth-child(odd) a {
     border-radius: 6.66rem;
-    background-color: green;
+    background-color: rgba(666, 66, 6, 0.666);
 }
 main nav ul li:hover {
     animation: zoom-in 6.66s ease-out 333ms infinite reverse both;    
@@ -101,19 +104,31 @@ main nav ul li a img {
     100% {
         transform: scale3d(1,1,1);
     }
-    /* from {
-        transform: scale3d(1,1,1);
-    }
-    to {
-        transform: scale3d(1.2,1.2,1);
-    }     */
 }
 
 @keyframes epilepsy {
-    from {
+    0% {
         background-position: -10vw -10vh;
     }
-    to {
+    10% {
+        background-position: -10vw 10vh;
+    }
+    20% {
+        background-position: -10vw -10vh;
+    }
+    30% {
         background-position: 10vw 10vh;
+    }
+    40% {
+        background-position: 10vw -10vh;
+    }
+    50% {
+        background-position: -10vw 10vh;
+    }
+    60% {
+        background-position: -10vw -10vh;
+    }
+    100% {
+        background-position: 0 0;
     }
 }
