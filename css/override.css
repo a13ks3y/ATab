@@ -708,6 +708,7 @@ input[name=q] {
   font-size: 1.666rem;
   height: 3rem;
   margin-top: 0.666rem;
+  outline: none;
   /* animation: glow 6.66s ease-in-out infinite alternate; */
 }
 

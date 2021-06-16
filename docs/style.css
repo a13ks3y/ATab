@@ -27,6 +27,7 @@ input[name=q] {
     padding: 0.666rem;
     border: none;
     font-size: 1.666rem;
+    outline: none;
 }
 
 main {
@@ -39,12 +40,13 @@ main nav {
 
 main nav ul {
     display: grid;
-    margin: auto;
     grid-template-columns: repeat(12, [col-start] 6.66rem [col-end]);
-    width: 66.6vw;
-    overflow: hidden;
+    width: auto;
+    left: 50%;
+    transform: translateX(-50%);
     background-color: transparent;
     padding-top: 1.666rem;
+    position: fixed;
 }
 
 main nav ul li {
@@ -67,8 +69,23 @@ main nav ul li:nth-child(odd) a {
     border-radius: 6.66rem;
     background-color: rgba(666, 66, 6, 0.666);
 }
-main nav ul li:hover {
-    animation: zoom-in 6.66s ease-out 333ms infinite reverse both;    
+main nav ul li a {
+    border: 1px solid gold;
+    transform: scale(1, 1);
+    transition-property: transform;
+    transition-duration: 1.666s;
+    transition-timing-function: ease-out;
+    transition-delay: 0ms;
+
+}
+main nav ul li a:hover {
+    transform: scale(3,3);
+    transition-property: transform;
+    transition-duration: 1.666s;
+    transition-timing-function: ease-in;
+    transition-delay: 0ms;
+
+    /* animation: zoom-in 6.66s ease-out 333ms infinite reverse both;     */
 }
 main nav ul li a:visited {}
 main nav ul li a:active {}
@@ -132,3 +149,14 @@ main nav ul li a img {
         background-position: 0 0;
     }
 }
+
+/*
+    let result = ``;
+    for(let i=0; i<12*3; i++) {
+        result += `@keyframes ${i}, ${i % 8}`;
+    }
+
+*/
+
+/*<GENERATED>*/
+/*</GENERATED>*/
