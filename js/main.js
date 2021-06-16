@@ -32,6 +32,17 @@ chrome.storage.local.get(['userGit'], function (result) {
     })
   }
 })
+const qEl = document.getElementsByName('q')[0];
+qEl.addEventListener('keyup', e => {
+  if (e.key === 'Enter') {
+    const googleQuery = `https://www.google.com/search?q=${qEl.value}`;
+    const rawQuery = qEl.value.toString();
+    const quater = rawQuery.substr(0, 4);
+    const isUrl = (quater === 'http' || quater === 'file');
+    const url = isUrl ? rawQuery : googleQuery;
+    chrome.tabs.create({ url });  
+  }
+});
 
 // Start of Clock and Calendar
 

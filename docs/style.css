@@ -155,7 +155,7 @@ main nav ul li a img {
     for(let i=0; i<12*3; i++) {
         result += `@keyframes ${i}, ${i % 8}`;
     }
-
+    console.log(result);
 */
 
 /*<GENERATED>*/
