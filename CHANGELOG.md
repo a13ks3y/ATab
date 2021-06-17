@@ -2,10 +2,13 @@
 
 ### Any notable changes and version notes will be kept in this file.
 
+## v1.2.0 (Big Feature)
+- Big Feature - farting cat emojis as placeholder for google search/location. Very **important** improvement
+- Rearrange links on GitHub pages
 ## v1.1.2
 - Permanent bookmarks with awesome 😎 animation 💥 effects!!!
 - Add /docs directory for github-pages (could be home page for mobile browser).
-- UI/UX improvements, anoying animation for right sidebar. Very creepy.
+- UI/UX improvements, annoying animation for right sidebar. Very creepy.
 
 ## v1.0.1
 ### BREAKING CHANGES
