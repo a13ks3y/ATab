@@ -1,6 +1,14 @@
+function okGoogleTellMeWhatIs(key, callback) {
+  if (window['chrome'] && window['chrome']['storage']) {
+    return window['chrome']['storage']['local'].get(key, callback);
+  } else {
+    const result = {};
+    result[key] = localStorage.getItem(key);
+    return callback(result);
+  } 
+}
 // Get username for calendar
-
-chrome.storage.local.get(['gitCalName'], function (result) {
+okGoogleTellMeWhatIs(['gitCalName'], function (result) {
   if (result.gitCalName === undefined) {
     //Error Message Block
     let calStart = document.getElementById('calendar-start')
@@ -13,25 +21,37 @@ chrome.storage.local.get(['gitCalName'], function (result) {
   }
 })
 
-// Get and set username for github feeds
-chrome.storage.local.get(['userGit'], function (result) {
-  if (result.userGit === undefined) {
-    let feedUnknown = document.getElementById('github-feeds')
-    feedUnknown.setAttribute('style', 'color: red; font-size: 1.15rem;')
-    feedUnknown.textContent = 'Please configure Github Username!' //Error Message
-  } else {
-    // Initiate the Feed - This is pulled  into the githubFeed.js file
-    GithubFeed.init({
-      username: result.userGit,
-      container: '#github-feeds',
-      count: 10,
-      order: 'desc',
-      onComplete: function () {
-        console.log('Feed Loaded')
-      },
-    })
-  }
-})
+// @todo: try to get username from cookies/localstorage etc.
+GithubFeed.init({
+  username: 'a13ks3y',
+  container: '#github-feeds',
+  count: 10,
+  order: 'desc',
+  onComplete: function () {
+    console.log('Feed Loaded')
+  },
+});
+
+
+// okGoogleTellMeWhatIs(['userGit'], function (result) {
+//   if (result.userGit === undefined) {
+//     let feedUnknown = document.getElementById('github-feeds')
+//     feedUnknown.setAttribute('style', 'color: red; font-size: 1.15rem;')
+//     feedUnknown.textContent = 'Please configure Github Username!' //Error Message
+//   } else {
+//     // Initiate the Feed - This is pulled  into the githubFeed.js file
+//     GithubFeed.init({
+//       username: result.userGit,
+//       container: '#github-feeds',
+//       count: 10,
+//       order: 'desc',
+//       onComplete: function () {
+//         console.log('Feed Loaded')
+//       },
+//     })
+//   }
+// })
+
 const qEl = document.getElementsByName('q')[0];
 qEl.addEventListener('keyup', e => {
   if (e.key === 'Enter') {
@@ -40,7 +60,11 @@ qEl.addEventListener('keyup', e => {
     const quater = rawQuery.substr(0, 4);
     const isUrl = (quater === 'http' || quater === 'file');
     const url = isUrl ? rawQuery : googleQuery;
-    chrome.tabs.create({ url });  
+    if (window['chrome'] && window['chrome']['tabs']) {
+      window['chrome']['tabs'].create({ url });  
+    } else {
+      location.href = url;
+    }
   }
 });
 
@@ -116,65 +140,60 @@ let currTempEl = document.getElementById('temp')
 let humidityEl = document.getElementById('humidity')
 let windEl = document.getElementById('wind')
 let skyEl = document.getElementById('sky')
+// 50.4501° N, 30.5234°
+let lat = '50.420';
+let lon = '30.5234';
+let unit = 'metric';
 
-chrome.storage.local.get(['userLat', 'userLong', 'unitOfMeasure'], function (
-  result
-) {
-  // Pull from chrome local storage
-  let lat = result.userLat
-  let lon = result.userLong
-  let unit = 'metric'; // result.unitOfMeasure
+/**
+ *
+ * @type {object} response
+ * @property {object} main
+ * @property {number} temp
+ * @property {number} humidity
+ * @property {number} wind
+ * @property {number} clouds
+ * @property {string} name
+ *
+ */
 
-  /**
-   *
-   * @type {object} response
-   * @property {object} main
-   * @property {number} temp
-   * @property {number} humidity
-   * @property {number} wind
-   * @property {number} clouds
-   * @property {string} name
-   *
-   */
+function findWeather() {
+  let searchLink =
+    'https://api.openweathermap.org/data/2.5/weather?lat=' +
+    lat +
+    '&lon=' +
+    lon +
+    '&appid=' +
+    apiKey +
+    '&units=' +
+    unit
+  httpRequestAsync(searchLink, theResponse)
+}
 
-  function findWeather() {
-    let searchLink =
-      'https://api.openweathermap.org/data/2.5/weather?lat=' +
-      lat +
-      '&lon=' +
-      lon +
-      '&appid=' +
-      apiKey +
-      '&units=' +
-      unit
-    httpRequestAsync(searchLink, theResponse)
+function theResponse(response) {
+  let jsonObject = JSON.parse(response)
+  cityEl.textContent = jsonObject.name // Location
+  currTempEl.textContent = parseInt(jsonObject.main.temp) + '° ' //Temperature
+  humidityEl.textContent = jsonObject.main.humidity + '%' // Humidity
+  let windSpeed = 'mph'
+
+  if (unit === 'metric') {
+    windSpeed = 'kph'
   }
+  windEl.textContent = jsonObject.wind.speed + windSpeed + ' ' // Wind Speed
+  skyEl.textContent = jsonObject.clouds.all + '%' // Cloud Cover %
+}
 
-  function theResponse(response) {
-    let jsonObject = JSON.parse(response)
-    cityEl.textContent = jsonObject.name // Location
-    currTempEl.textContent = parseInt(jsonObject.main.temp) + '° ' //Temperature
-    humidityEl.textContent = jsonObject.main.humidity + '%' // Humidity
-    let windSpeed = 'mph'
-
-    if (unit === 'metric') {
-      windSpeed = 'kph'
-    }
-    windEl.textContent = jsonObject.wind.speed + windSpeed + ' ' // Wind Speed
-    skyEl.textContent = jsonObject.clouds.all + '%' // Cloud Cover %
+function httpRequestAsync(url, callback) {
+  let httpRequest = new XMLHttpRequest()
+  httpRequest.onreadystatechange = () => {
+    if (httpRequest.readyState === 4 && httpRequest.status === 200)
+      callback(httpRequest.responseText)
   }
-
-  function httpRequestAsync(url, callback) {
-    let httpRequest = new XMLHttpRequest()
-    httpRequest.onreadystatechange = () => {
-      if (httpRequest.readyState === 4 && httpRequest.status === 200)
-        callback(httpRequest.responseText)
-    }
-    httpRequest.open('GET', url, true)
-    httpRequest.send()
-  }
-  findWeather() //Initiate the function
-})
+  httpRequest.open('GET', url, true)
+  httpRequest.send()
+}
+findWeather() //Initiate the function
 
 
 /**

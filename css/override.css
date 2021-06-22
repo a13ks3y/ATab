@@ -743,8 +743,12 @@ input[name=q] {
   }
   #main {
     flex-direction: column;
+    background-image: none;
   }
   .w-10, .w-30, .w-40, .w-50, .w-60, .w-70, .w-80, .w-90 {
     min-width: 90vw;
+  }
+  .calendar {
+    display: none;
   }
 }
