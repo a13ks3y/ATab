@@ -172,6 +172,22 @@ html {
   background-size: 100vw;
   padding-left: 0.666rem;
 }
+#main.wrapped:after {
+  content: '';
+  display: block;
+  position: fixed;
+  min-width: 800px;
+  min-height: 600px;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;;
+  background-color: rgb(2,14,44);
+  background-image: url('../img/61c36e236bdcc77ab100077492bcea1b.gif');
+  background-repeat: no-repeat;
+  background-position: 24vw 12vh;
+  opacity: 0.666;
+}
 
 
 
@@ -718,5 +734,17 @@ input[name=q] {
   }
   to {
     text-shadow:  0 0 20px #fff, 0 0 30px #5bd75b, 0 0 40px #f1fa8c, 0 0 50px #f1fa8c, 0 0 60px #f1fa8c 70px #5bd75b, 0 0 80px #f1fa8c;
+  }
+}
+
+@media (orientation:portrait) {
+  input[name=q] {
+    width: 100%;
+  }
+  #main {
+    flex-direction: column;
+  }
+  .w-10, .w-30, .w-40, .w-50, .w-60, .w-70, .w-80, .w-90 {
+    min-width: 90vw;
   }
 }
