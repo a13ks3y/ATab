@@ -12,6 +12,14 @@
 Go to Releases. Do something. Do something else. Don't complain. Be strong. Give up.
 
 
+## 🛣 Road-Map
+
+- Refactor html markup of override page
+- Get rid of settings, or re-develop it.
+
+
+
+
 ### Github Repo's
 
 The [Github](https://www.github.com) repo's, on the right hand side of the page, lists the first 10 repo's in your profile. This makes it easy to quickly access a good portion of your repos.
