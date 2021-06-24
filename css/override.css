@@ -752,3 +752,18 @@ input[name=q] {
     display: none;
   }
 }
+@media screen and (min-height: 700px) {
+  .clock-container {
+    position: fixed;
+    left: calc((100vw - 33.333vw) / 2);
+    top: calc((100vh - 33.333vh) / 4);
+    width: 33.333vw;
+    height: 33.333vh;
+  }
+  #clock, #date {
+    text-shadow: 1px 1px 2px #f90, 0 0 1rem lightgreen, 0 0 0.2rem lightgreen;
+  }
+  .weather-container {
+    padding: 3.666rem;    
+  }
+}
