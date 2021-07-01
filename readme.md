@@ -11,6 +11,10 @@
 
 Go to Releases. Do something. Do something else. Don't complain. Be strong. Give up.
 
+## Road-map
+- download icons for permanent bookmarks (manual or pre-build task?)
+- refactor all 💩
+
 
 ### Github Repo's
 

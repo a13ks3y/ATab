@@ -2,6 +2,10 @@
 
 ### Any notable changes and version notes will be kept in this file.
 
+## v1.2.1
+- Replace wolfarmalpha with jarvis link
+- Road-Map section in readme.md
+
 ## v1.2.0 (Big Feature)
 - Big Feature - farting cat emojis as placeholder for google search/location. Very **important** improvement
 - Rearrange links on GitHub pages

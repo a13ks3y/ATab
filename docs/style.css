@@ -40,13 +40,30 @@ main nav {
 
 main nav ul {
     display: grid;
-    grid-template-columns: repeat(12, [col-start] 6.66rem [col-end]);
-    width: auto;
+    grid-template-columns: repeat(12, [col-start] 3.666rem [col-end]);
     left: 50%;
     transform: translateX(-50%);
     background-color: transparent;
     padding-top: 1.666rem;
-    position: fixed;
+    position: fixed;    
+}
+
+@keyframes pipka {
+    0% {
+        margin: 0.666rem 0.333em;
+    }
+    25% {
+        margin: 0rem 0rem;
+    }    
+    50% {
+        margin: 1.666rem 0rem;
+    }
+    75% {
+        margin: 0rem 1.666rem;
+    }
+    96% {
+        margin: 0.333rem 0.666rem;
+    }
 }
 
 main nav ul li {
@@ -160,3 +177,13 @@ main nav ul li a img {
 
 /*<GENERATED>*/
 /*</GENERATED>*/
+@media (orientation:portrait) {
+    main nav ul {
+        grid-template-columns: auto auto auto;
+    }    
+    main nav ul li {
+        animation: pipka 6.66s ease-in-out 1.666s infinite;
+        animation-fill-mode: both;
+    }
+    
+}
