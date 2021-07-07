@@ -4,26 +4,22 @@ function okGoogleTellMeWhatIs(key, callback) {
   } else {
     const result = {};
     result[key] = localStorage.getItem(key);
-    return callback(result);
+    if (result[key]) {
+      return callback(result);
+    } else {
+      switch(key) {
+        case 'gitCalName': return callback('a13ks3y'); break;
+        default: return callback(result);
+      }
+    }
   } 
 }
-// Get username for calendar
-okGoogleTellMeWhatIs(['gitCalName'], function (result) {
-  if (result.gitCalName === undefined) {
-    //Error Message Block
-    let calStart = document.getElementById('calendar-start')
-    calStart.setAttribute('style', 'color: red; font-size: 1.25rem;')
-    calStart.textContent = 'Please go to settings and configure your username!'
-  } else {
-    // Info to initiate the github calendar - pulled into the github-calendar.js
-    let calendarName = result.gitCalName
-    new GitHubCalendar('.calendar', calendarName, { responsive: true })
-  }
-})
-
+const gitUserName = 'a13ks3y';
 // @todo: try to get username from cookies/localstorage etc.
+new GitHubCalendar('.calendar', gitUserName, { responsive: true })
+
 GithubFeed.init({
-  username: 'a13ks3y',
+  username: gitUserName,
   container: '#github-feeds',
   count: 10,
   order: 'desc',

@@ -6,7 +6,7 @@
     "private": true,
     "license": "MIT",
     "scripts": {
-        "build": "shx rm -rf ./docs/css ./docs/js ./docs/img && shx cp ./src/override/override.html ./docs/index.html && shx cp -r ./css/ ./docs/css/ && shx cp -r ./img/ ./docs/img/ && shx cp -r ./js/ ./docs/js/",
+        "build": "shx rm -rf ./docs/css ./docs/js ./docs/img && shx cp ./src/override/override.html ./docs/index.html && cp ./src/override/override.html ./docs/override.html && shx cp -r ./css/ ./docs/css/ && shx cp -r ./img/ ./docs/img/ && shx cp -r ./js/ ./docs/js/",
         "start": "npm run build && live-server --host=0.0.0.0 ./docs",
         "test": "echo Tbd"
     },

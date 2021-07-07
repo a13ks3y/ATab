@@ -122,57 +122,7 @@ function clearForm() {
   document.getElementById('gitCalUser').value = '';
 }
 
-// Get user defined bookmarks
-
-document
-  .getElementById('submitbookmark')
-  .addEventListener('click', saveBookmarks);
-function saveBookmarks() {
-  let userBookmarks = [];
-  userBookmarks = document.getElementById('bookmarkForm').value;
-
-  let mytempBook = DOMPurify.sanitize(userBookmarks);
-
-  let tempBook = marked.inlineLexer(mytempBook, []).split(',');
-
-  chrome.storage.local.set({ userBookmark: tempBook }, function () {
-    console.log('Bookmarks Logged');
-  });
-  clearInput();
-}
-
-function clearInput() {
-  document.getElementById('bookmarkForm').value = '';
-}
-// Set Github calendar username
-
-document.getElementById('submitCalUser').addEventListener('click', function () {
-  let calendarName = document.getElementById('gitCalUser').value;
-  if (!calendarName) {
-    console.log('Please input username');
-    return;
-  }
-  chrome.storage.local.set({ gitCalName: calendarName }, function () {
-    console.log('Setting Saved');
-  });
-  clearForm();
-});
-
-document
-  .getElementById('deleteBookmark')
-  .addEventListener('click', function () {
-    let confirmationCheck = confirm(
-      'Are you sure you want to delete your Dev Tab Bookmarks. (This will not effect your browser bookmarks)'
-    );
-    if (confirmationCheck === true) {
-      chrome.storage.local.remove('userBookmark', function () {
-        alert('Bookmarks Deleted!');
-      });
-    } else {
-      alert('Action Cancelled');
-    }
-  });
-
 document.getElementById('backHome').addEventListener('click', function () {
   window.history.back();
 });
+

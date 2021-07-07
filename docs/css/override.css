@@ -737,18 +737,66 @@ input[name=q] {
   }
 }
 
+@media screen and (min-height: 700px) {
+  .clock-container {
+    position: fixed;
+    left: calc((100vw - 33.333vw) / 2);
+    top: calc((100vh - 33.333vh) / 4);
+    width: 33.333vw;
+    height: 33.333vh;
+  }
+  #clock, #date {
+    text-shadow: 1px 1px 2px #f90, 0 0 1rem lightgreen, 0 0 0.2rem lightgreen;
+  }
+  .weather-container {
+    padding: 3.666rem;    
+  }
+}
+
+
 @media (orientation:portrait) {
+  html {
+    font-size: 14px;
+  }
   input[name=q] {
     width: 100%;
   }
+  #gitFeed {
+    display: none;
+  }
   #main {
     flex-direction: column;
-    background-image: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../img/dribbb.gif');
+    background-color: black;
+    animation: awesomeness 6.66s ease-in-out 666ms 1 both alternate;
+  }
+  @keyframes awesomeness {
+    0% {
+      background-image: url('../img/61c36e236bdcc77ab100077492bcea1b.gif');
+      background-color: #020e2c;
+    }
+    33% {
+      background-image: url('../img/61c36e236bdcc77ab100077492bcea1b.gif');
+      background-color: #020e2c;
+    }
+    66% {
+      background-image: url('../img/dribbb.gif');
+      background-color: black;
+    }
   }
   .w-10, .w-30, .w-40, .w-50, .w-60, .w-70, .w-80, .w-90 {
     min-width: 90vw;
   }
   .calendar {
     display: none;
+  }
+  .permanent-bookmark {
+    box-shadow: 1rem 1rem black;
+  }
+  .clock-container {
+    top: auto;
+    bottom: 0;
   }
 }
