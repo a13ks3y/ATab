@@ -13,7 +13,8 @@ Go to Releases. Do something. Do something else. Don't complain. Be strong. Give
 
 
 ## 🛣 Road-Map
-
+- Consider using angular or at least jset/karma.
+- Get rid of useless css/js libs and legacy code.
 - Refactor html markup of override page
 - Get rid of settings, or re-develop it.
 
