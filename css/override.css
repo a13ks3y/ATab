@@ -1,3 +1,94 @@
+.fadeIn {
+  animation: fadeIn 1.666s ease-in normal forwards;
+
+}
+.fadeOut {
+  animation: fadeOut 666ms ease-out normal forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+body {
+  cursor: crosshair;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0 0.666rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: black;
+  background-image: url('/img/192050.jpg');
+  z-index: 999;
+}
+header {
+  min-height: 1.666rem;
+  text-align: center;
+  background-color: transparent;
+}
+input.q {
+  min-width: 66.6%;
+  margin: 1.666rem 0.666rem;
+}
+
+main {
+  display: flex;
+}
+
+
+aside {
+  margin: 0.666rem 0.333rem 0.333rem 0;
+  width: 33.3vw;
+  /* background-color: green; */
+}
+aside.right {
+  /* background-color: red; */
+}
+
+footer {
+  min-height: 6.66rem;
+  text-align: left;
+  background-color: transparent;
+}
+
+.line {
+  position: fixed;
+  /* background-color: lawngreen; */
+  opacity: 0;
+}
+#vertical-line {
+  top: 0;
+  height: 100vh;
+  width: 0.666rem;
+  border-left: 1px solid lawngreen;
+  border-right: 1px solid rgba(27, 255, 42, 0.27);
+}
+#horizontal-line {
+  left: 0;
+  width: 100vh;
+  height: 1.666rem;
+  border-top: 1px solid lawngreen;
+  border-bottom: 1px solid rgba(27, 255, 42, 0.27);
+}
+/* Next lines - an old 💩 */
+
 :root {
   --color-calendar-graph-day-bg: #dddbdb;
   --color-calendar-graph-day-L1-bg: #39dd34;
@@ -258,7 +349,6 @@ span.text-muted {
 #date {
   font-family: 'Share Tech Mono', monospace;
   max-width: 700px;
-  display: inline-block;
   text-align: center;
   color: #daf6ff;
   text-shadow: 0 0 10px #1b8db3, 0 0 10px rgba(10, 175, 230, 0);
@@ -378,7 +468,6 @@ li a:hover {
   height: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none;
-  width: 20%;
 }
 
 #gitFeed::-webkit-scrollbar {
@@ -752,11 +841,7 @@ input[name=q] {
 
 @media screen and (min-height: 700px) {
   .clock-container {
-    position: fixed;
-    left: calc((100vw - 33.333vw) / 2);
-    top: calc((100vh - 33.333vh) / 4);
-    width: 33.333vw;
-    height: 33.333vh;
+
   }
   #clock, #date {
     text-shadow: 1px 1px 2px #f90, 0 0 1rem lightgreen, 0 0 0.2rem lightgreen;
@@ -781,47 +866,47 @@ input[name=q] {
     font-size: 14px;
   }
   body {
-    background-color: #020e2c;
-    animation: awesomeness-color 6.66s ease-in-out 666ms 1 both alternate;
-
+    padding: 0;
+    background-image: none;
   }
-  input[name=q] {
+  input.q {
     width: 100%;
-    text-align: center;
+    margin: 1.666rem auto;
+    padding-left: 0.666rem;
   }
   #gitFeed {
     display: none;
   }
-  #main {
-    flex-direction: column;
+  body {
+    background-color: #020e2c;
     background-position: center;
     background-repeat: no-repeat;
     background-image: url('../img/dribbb.gif');
-    background-color: transparent;
-    animation: awesomeness 6.66s ease-in-out 666ms 1 both normal;
+    animation-name: awesomeness;
+    animation-duration: 6.66s;
+    animation-delay: 666ms;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-direction: normal;
     padding-left: 0;
   }
-  @keyframes awesomeness-color {
-    from {
-      background-color: #020e2c;
-      opacity: 0.666;
-    }
-    to {
-      background-color: black;
-      opacity: 1;
-    }    
+  footer {
+    max-height: 6vw;
+    background-color: transparent;
   }
+
   @keyframes awesomeness {
     from {
       background-image: url('../img/61c36e236bdcc77ab100077492bcea1b.gif');
+      background-color: #020e2c;
     }
     to {
       background-image: url('../img/dribbb.gif');
+      background-color: black;
     }
   }
-  .w-10, .w-30, .w-40, .w-50, .w-60, .w-70, .w-80, .w-90 {
-    min-width: 90vw;
-  }
+
   .calendar {
     display: none;
   }
