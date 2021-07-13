@@ -54,6 +54,10 @@ html {
   }
 }
 
+.widget {
+  background-color: gold;;
+}
+
 .calendar-graph text.wday,
 .calendar-graph text.month {
   font-size: 10px;
@@ -719,12 +723,21 @@ label {
   }
 }
 
+#gitFeed {
+  width: 100vw;
+}
+
 
 input[name=q] {
+  background-color: #020e2c;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   font-size: 1.666rem;
   height: 3rem;
   margin-top: 0.666rem;
   outline: none;
+  border: none;
   /* animation: glow 6.66s ease-in-out infinite alternate; */
 }
 
@@ -752,14 +765,29 @@ input[name=q] {
     padding: 3.666rem;    
   }
 }
-
+.bookmarks {
+  display: block;
+  width: 100%;
+}
 
 @media (orientation:portrait) {
+  .bookmarks {
+    margin-top: -66.6vh;
+  }
+  .hide-on-portrait {
+    display: none;
+  }
   html {
     font-size: 14px;
   }
+  body {
+    background-color: #020e2c;
+    animation: awesomeness-color 6.66s ease-in-out 666ms 1 both alternate;
+
+  }
   input[name=q] {
     width: 100%;
+    text-align: center;
   }
   #gitFeed {
     display: none;
@@ -769,21 +797,26 @@ input[name=q] {
     background-position: center;
     background-repeat: no-repeat;
     background-image: url('../img/dribbb.gif');
-    background-color: black;
-    animation: awesomeness 6.66s ease-in-out 666ms 1 both alternate;
+    background-color: transparent;
+    animation: awesomeness 6.66s ease-in-out 666ms 1 both normal;
+    padding-left: 0;
+  }
+  @keyframes awesomeness-color {
+    from {
+      background-color: #020e2c;
+      opacity: 0.666;
+    }
+    to {
+      background-color: black;
+      opacity: 1;
+    }    
   }
   @keyframes awesomeness {
-    0% {
+    from {
       background-image: url('../img/61c36e236bdcc77ab100077492bcea1b.gif');
-      background-color: #020e2c;
     }
-    33% {
-      background-image: url('../img/61c36e236bdcc77ab100077492bcea1b.gif');
-      background-color: #020e2c;
-    }
-    66% {
+    to {
       background-image: url('../img/dribbb.gif');
-      background-color: black;
     }
   }
   .w-10, .w-30, .w-40, .w-50, .w-60, .w-70, .w-80, .w-90 {
@@ -793,10 +826,10 @@ input[name=q] {
     display: none;
   }
   .permanent-bookmark {
-    box-shadow: 1rem 1rem black;
+    /* box-shadow: 1rem 1rem black; */
   }
   .clock-container {
     top: auto;
-    bottom: 0;
+    bottom: 6.66rem;
   }
 }

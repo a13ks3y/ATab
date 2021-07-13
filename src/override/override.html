@@ -13,12 +13,9 @@
   </head>
   <body>
     <div id="main" class="container">
-        <div class="fl w-30">
-          <div class="fl w-100">
-              <input type="text" name="q" class="w-100" placeholder="🐈💨" />
-          </div>
 
-          <div class="fl w-100">
+      <div class="fl w-30">
+          <div class="hide-on-portrait fl w-100">
             <h3 class="f3 tc light-blue"><!-- @todo: 5 (or more) switches, like in planes with sound --></h3>
             <div id="calendar-start" class="calendar"></div>
             <div id="clock-place" class="clock-container pt5 tc">
@@ -41,7 +38,7 @@
             </div>
   
           </div>
-          <div class="fl w-90">
+          <div class="bookmarks fl w-90">
             <a class="permanent-bookmark" href="https://www.youtube.com/">
               <img src="https://www.youtube.com/s/desktop/37d1da14/img/favicon.ico" alt="📽" />
             </a>            
@@ -72,7 +69,9 @@
 
           </div>
         </div>
-
+      <div class="fl w-100">
+        <input type="text" name="q" class="w-100" placeholder="🐈💨" />
+      </div>
         <div id="gitFeed" class="fr w-20">
           <h3 class="f3 tc pb2 light-blue">
             <a href="https://github.com/a13ks3y?tab=repositories">Github Repo's</a>
