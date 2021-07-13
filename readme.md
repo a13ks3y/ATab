@@ -13,6 +13,7 @@ Go to Releases. Do something. Do something else. Don't complain. Be strong. Give
 
 
 ## 🛣 Road-Map
+- Re-think the hole conception, research on chrome bookmarks access.
 - Consider using angular or at least jset/karma.
 - Get rid of useless css/js libs and legacy code.
 - Refactor html markup of override page
