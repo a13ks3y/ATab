@@ -1,9 +1,9 @@
 .fadeIn {
-  animation: fadeIn 1.666s ease-in normal forwards;
+  animation: fadeIn 666ms ease-in normal forwards;
 
 }
 .fadeOut {
-  animation: fadeOut 666ms ease-out normal forwards;
+  animation: fadeOut 420ms ease-out normal forwards;
 }
 @keyframes fadeIn {
   from {
@@ -31,6 +31,7 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   padding: 0 0.666rem;
   background-position: center;
   background-repeat: no-repeat;
@@ -69,23 +70,32 @@ footer {
 }
 
 .line {
-  position: fixed;
-  /* background-color: lawngreen; */
+  position: absolute;
+  /* background-color: red; */
   opacity: 0;
+  margin: -32px;
 }
 #vertical-line {
   top: 0;
-  height: 100vh;
+  height: 666vh;
   width: 0.666rem;
-  border-left: 1px solid lawngreen;
-  border-right: 1px solid rgba(27, 255, 42, 0.27);
+  border-right: 1px solid lawngreen;
+  border-left: 1px solid rgba(27, 255, 42, 0.27);
 }
 #horizontal-line {
   left: 0;
-  width: 100vh;
+  width: 666vh;
   height: 1.666rem;
-  border-top: 1px solid lawngreen;
-  border-bottom: 1px solid rgba(27, 255, 42, 0.27);
+  border-bottom: 1px solid lawngreen;
+  border-top: 1px solid rgba(27, 255, 42, 0.27);
+}
+
+.clock-container {
+  /* background-color:slateblue; */
+}
+.weather-container {
+  background-color: slateblue;
+  display: inline-block;
 }
 /* Next lines - an old 💩 */
 
@@ -360,20 +370,7 @@ span.text-muted {
   padding: 5px 0;
 }
 
-@media (max-width: 1300px) {
-  #clock {
-    font-size: 2rem;
-  }
-  .weather-text {
-    font-size: 1rem;
-  }
-  .clock-container {
-    padding-top: 25px;
-  }
-  .weather-container {
-    padding-top: 5px;
-  }
-}
+
 
 #date {
   letter-spacing: 0.1em;
@@ -681,7 +678,7 @@ label {
   }
 }
 
-.permanent-bookmark, .permanent-bookmark:hover, .permanent-bookmark:visited, .permanent-bookmark:active {
+.pb, .pb:hover, .pb:visited, .pb:active {
   font-size: 3rem;
   text-decoration: none;
   text-align: center;
@@ -692,11 +689,11 @@ label {
   line-height: 6rem;
   display: inline-block;
 }
-.permanent-bookmark img {
+.pb img {
   width: 3rem;
 }
 
-.permanent-bookmark:nth-child(1) {
+.pb:nth-child(1) {
   animation: awesome-effect-1 1.666s ease-in-out 0ms 1;
 }
 @keyframes awesome-effect-1 {
@@ -708,7 +705,7 @@ label {
   }
 }
 
-.permanent-bookmark:nth-child(2) {
+.pb:nth-child(2) {
   animation: awesome-effect-2 1.666s ease-in-out 0ms 1;
   
 }
@@ -724,7 +721,7 @@ label {
 
 
 
-.permanent-bookmark:nth-child(3) {
+.pb:nth-child(3) {
   animation: awesome-effect-3 1.666s ease-in-out 0ms 1;
 }
 @keyframes awesome-effect-3 {
@@ -736,7 +733,7 @@ label {
   }
 }
 
-.permanent-bookmark:nth-child(4) {
+.pb:nth-child(4) {
   animation: awesome-effect-4 1.666s ease-in-out 0ms 1;  
 }
 @keyframes awesome-effect-4 {
@@ -748,7 +745,7 @@ label {
     transform: translate(0, 0);
   }
 }
-.permanent-bookmark:nth-child(5) {
+.pb:nth-child(5) {
   animation: awesome-effect-5 1.666s ease-in-out 0ms 1;  
 }
 @keyframes awesome-effect-5 {
@@ -763,7 +760,7 @@ label {
 
 
 
-.permanent-bookmark:nth-child(6) {
+.pb:nth-child(6) {
   animation: awesome-effect-6 1.666s ease-in-out 0ms 1;  
 }
 @keyframes awesome-effect-6 {
@@ -775,7 +772,7 @@ label {
     transform: translate(0, 0);
   }
 }
-.permanent-bookmark:nth-child(7) {
+.pb:nth-child(7) {
   animation: awesome-effect-7 1.666s ease-in-out 0ms 1;  
 }
 @keyframes awesome-effect-7 {
@@ -787,7 +784,7 @@ label {
     transform: translate(0, 0);
   }
 }
-.permanent-bookmark:nth-child(8) {
+.pb:nth-child(8) {
   animation: awesome-effect-8 1.666s ease-in-out 0ms 1;  
 }
 @keyframes awesome-effect-8 {
@@ -799,7 +796,7 @@ label {
     transform: translate(0, 0);
   }
 }
-.permanent-bookmark:nth-child(9) {
+.pb:nth-child(9) {
   animation: awesome-effect-9 1.666s ease-in-out 0ms 1;  
 }
 @keyframes awesome-effect-9 {
@@ -840,9 +837,7 @@ input[name=q] {
 }
 
 @media screen and (min-height: 700px) {
-  .clock-container {
 
-  }
   #clock, #date {
     text-shadow: 1px 1px 2px #f90, 0 0 1rem lightgreen, 0 0 0.2rem lightgreen;
   }
@@ -910,11 +905,7 @@ input[name=q] {
   .calendar {
     display: none;
   }
-  .permanent-bookmark {
+  .pb {
     /* box-shadow: 1rem 1rem black; */
-  }
-  .clock-container {
-    top: auto;
-    bottom: 6.66rem;
   }
 }
