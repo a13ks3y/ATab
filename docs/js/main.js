@@ -1,3 +1,5 @@
+// @todo: rename this file to override.js for the glory of consistence
+// @todo: WTF?
 function okGoogleTellMeWhatIs(key, callback) {
   if (window['chrome'] && window['chrome']['storage']) {
     return window['chrome']['storage']['local'].get(key, callback);
@@ -229,3 +231,15 @@ function showInput() {
     document.getElementById('addIcon').innerText = '+'
   }
 }
+
+
+const vlEl = document.getElementById('vertical-line');
+const hlEl = document.getElementById('horizontal-line');
+const render = (cx, cy) => {
+  vlEl.style.left = cx + 'px';
+  hlEl.style.top = cy + 'px';
+  vlEl.classList.remove('fadeOut');
+  hlEl.classList.remove('fadeOut');
+  vlEl.classList.add('fadeIn');
+  hlEl.classList.add('fadeIn');  
+};

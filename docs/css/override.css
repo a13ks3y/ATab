@@ -1,3 +1,106 @@
+.fadeIn {
+  animation: fadeIn 666ms ease-in normal forwards;
+
+}
+.fadeOut {
+  animation: fadeOut 420ms ease-out normal forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+body {
+  cursor: crosshair;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0 0.666rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: black;
+  background-image: url('/img/192050.jpg');
+  z-index: 999;
+}
+header {
+  min-height: 1.666rem;
+  text-align: center;
+  background-color: transparent;
+}
+input.q {
+  min-width: 66.6%;
+  margin: 1.666rem 0.666rem;
+}
+
+main {
+  display: flex;
+}
+
+
+aside {
+  margin: 0.666rem 0.333rem 0.333rem 0;
+  width: 33.3vw;
+  /* background-color: green; */
+}
+aside.right {
+  /* background-color: red; */
+}
+
+footer {
+  min-height: 6.66rem;
+  text-align: left;
+  background-color: transparent;
+}
+
+.line {
+  position: absolute;
+  /* background-color: red; */
+  opacity: 0;
+  margin: -32px;
+}
+#vertical-line {
+  top: 0;
+  height: 666vh;
+  width: 0.666rem;
+  border-right: 1px solid lawngreen;
+  border-left: 1px solid rgba(27, 255, 42, 0.27);
+}
+#horizontal-line {
+  left: 0;
+  width: 666vh;
+  height: 1.666rem;
+  border-bottom: 1px solid lawngreen;
+  border-top: 1px solid rgba(27, 255, 42, 0.27);
+}
+
+.clock-container {
+  /* background-color:slateblue; */
+}
+.weather-container {
+  display: inline-block;
+}
+
+
+
+/* Next lines - an old 💩 */
+
 :root {
   --color-calendar-graph-day-bg: #dddbdb;
   --color-calendar-graph-day-L1-bg: #39dd34;
@@ -52,6 +155,10 @@ html {
   .calendar {
     max-width: 600px;
   }
+}
+
+.widget {
+  background-color: gold;;
 }
 
 .calendar-graph text.wday,
@@ -254,7 +361,6 @@ span.text-muted {
 #date {
   font-family: 'Share Tech Mono', monospace;
   max-width: 700px;
-  display: inline-block;
   text-align: center;
   color: #daf6ff;
   text-shadow: 0 0 10px #1b8db3, 0 0 10px rgba(10, 175, 230, 0);
@@ -266,20 +372,7 @@ span.text-muted {
   padding: 5px 0;
 }
 
-@media (max-width: 1300px) {
-  #clock {
-    font-size: 2rem;
-  }
-  .weather-text {
-    font-size: 1rem;
-  }
-  .clock-container {
-    padding-top: 25px;
-  }
-  .weather-container {
-    padding-top: 5px;
-  }
-}
+
 
 #date {
   letter-spacing: 0.1em;
@@ -374,7 +467,6 @@ li a:hover {
   height: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none;
-  width: 20%;
 }
 
 #gitFeed::-webkit-scrollbar {
@@ -516,45 +608,6 @@ li a:hover {
   margin-right: 2px;
 }
 
-#addItem {
-  cursor: pointer;
-  margin-top: 9px;
-  border: 1px solid #455259;
-  background: #46535c;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#a1a1a1),
-    to(#46535c)
-  );
-  background: -webkit-linear-gradient(top, #a1a1a1, #46535c);
-  background: -moz-linear-gradient(top, #a1a1a1, #46535c);
-  background: -ms-linear-gradient(top, #a1a1a1, #46535c);
-  background: -o-linear-gradient(top, #a1a1a1, #46535c);
-  padding: 5px 10px;
-  -webkit-border-radius: 11px;
-  -moz-border-radius: 11px;
-  border-radius: 11px;
-  -webkit-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-  -moz-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-  box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-  text-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-  color: #f6fffe;
-  font-size: 12px;
-  font-family: 'Courier New', Courier, monospace;
-  text-decoration: none;
-  vertical-align: middle;
-}
-#addItem:hover {
-  border-top-color: #4a5359;
-  background: #4a5359;
-  color: #a6a6a6;
-}
-#addItem:active {
-  border-top-color: #39434a;
-  background: #39434a;
-}
 
 #urlName {
   height: 1.5rem;
@@ -588,7 +641,7 @@ label {
   }
 }
 
-.permanent-bookmark, .permanent-bookmark:hover, .permanent-bookmark:visited, .permanent-bookmark:active {
+.pb, .pb:hover, .pb:visited, .pb:active {
   font-size: 3rem;
   text-decoration: none;
   text-align: center;
@@ -599,11 +652,11 @@ label {
   line-height: 6rem;
   display: inline-block;
 }
-.permanent-bookmark img {
+.pb img {
   width: 3rem;
 }
 
-.permanent-bookmark:nth-child(1) {
+.pb:nth-child(1) {
   animation: awesome-effect-1 1.666s ease-in-out 0ms 1;
 }
 @keyframes awesome-effect-1 {
@@ -615,7 +668,7 @@ label {
   }
 }
 
-.permanent-bookmark:nth-child(2) {
+.pb:nth-child(2) {
   animation: awesome-effect-2 1.666s ease-in-out 0ms 1;
   
 }
@@ -631,7 +684,7 @@ label {
 
 
 
-.permanent-bookmark:nth-child(3) {
+.pb:nth-child(3) {
   animation: awesome-effect-3 1.666s ease-in-out 0ms 1;
 }
 @keyframes awesome-effect-3 {
@@ -643,7 +696,7 @@ label {
   }
 }
 
-.permanent-bookmark:nth-child(4) {
+.pb:nth-child(4) {
   animation: awesome-effect-4 1.666s ease-in-out 0ms 1;  
 }
 @keyframes awesome-effect-4 {
@@ -655,7 +708,7 @@ label {
     transform: translate(0, 0);
   }
 }
-.permanent-bookmark:nth-child(5) {
+.pb:nth-child(5) {
   animation: awesome-effect-5 1.666s ease-in-out 0ms 1;  
 }
 @keyframes awesome-effect-5 {
@@ -670,7 +723,7 @@ label {
 
 
 
-.permanent-bookmark:nth-child(6) {
+.pb:nth-child(6) {
   animation: awesome-effect-6 1.666s ease-in-out 0ms 1;  
 }
 @keyframes awesome-effect-6 {
@@ -682,7 +735,7 @@ label {
     transform: translate(0, 0);
   }
 }
-.permanent-bookmark:nth-child(7) {
+.pb:nth-child(7) {
   animation: awesome-effect-7 1.666s ease-in-out 0ms 1;  
 }
 @keyframes awesome-effect-7 {
@@ -694,7 +747,7 @@ label {
     transform: translate(0, 0);
   }
 }
-.permanent-bookmark:nth-child(8) {
+.pb:nth-child(8) {
   animation: awesome-effect-8 1.666s ease-in-out 0ms 1;  
 }
 @keyframes awesome-effect-8 {
@@ -706,7 +759,7 @@ label {
     transform: translate(0, 0);
   }
 }
-.permanent-bookmark:nth-child(9) {
+.pb:nth-child(9) {
   animation: awesome-effect-9 1.666s ease-in-out 0ms 1;  
 }
 @keyframes awesome-effect-9 {
@@ -719,12 +772,21 @@ label {
   }
 }
 
+#gitFeed {
+  width: 100vw;
+}
+
 
 input[name=q] {
+  background-color: #020e2c;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   font-size: 1.666rem;
   height: 3rem;
   margin-top: 0.666rem;
   outline: none;
+  border: none;
   /* animation: glow 6.66s ease-in-out infinite alternate; */
 }
 
@@ -738,13 +800,7 @@ input[name=q] {
 }
 
 @media screen and (min-height: 700px) {
-  .clock-container {
-    position: fixed;
-    left: calc((100vw - 33.333vw) / 2);
-    top: calc((100vh - 33.333vh) / 4);
-    width: 33.333vw;
-    height: 33.333vh;
-  }
+
   #clock, #date {
     text-shadow: 1px 1px 2px #f90, 0 0 1rem lightgreen, 0 0 0.2rem lightgreen;
   }
@@ -752,51 +808,67 @@ input[name=q] {
     padding: 3.666rem;    
   }
 }
-
+.bookmarks {
+  display: block;
+  width: 100%;
+}
 
 @media (orientation:portrait) {
+  .bookmarks {
+    margin-top: -66.6vh;
+  }
+  .hide-on-portrait {
+    display: none;
+  }
   html {
     font-size: 14px;
   }
-  input[name=q] {
+  body {
+    padding: 0;
+    background-image: none;
+  }
+  input.q {
     width: 100%;
+    margin: 1.666rem auto;
+    padding-left: 0.666rem;
   }
   #gitFeed {
     display: none;
   }
-  #main {
-    flex-direction: column;
+  body {
+    background-color: #020e2c;
     background-position: center;
     background-repeat: no-repeat;
     background-image: url('../img/dribbb.gif');
-    background-color: black;
-    animation: awesomeness 6.66s ease-in-out 666ms 1 both alternate;
+    animation-name: awesomeness;
+    animation-duration: 6.66s;
+    animation-delay: 666ms;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-direction: normal;
+    padding-left: 0;
   }
+  footer {
+    max-height: 6vw;
+    background-color: transparent;
+  }
+
   @keyframes awesomeness {
-    0% {
+    from {
       background-image: url('../img/61c36e236bdcc77ab100077492bcea1b.gif');
       background-color: #020e2c;
     }
-    33% {
-      background-image: url('../img/61c36e236bdcc77ab100077492bcea1b.gif');
-      background-color: #020e2c;
-    }
-    66% {
+    to {
       background-image: url('../img/dribbb.gif');
       background-color: black;
     }
   }
-  .w-10, .w-30, .w-40, .w-50, .w-60, .w-70, .w-80, .w-90 {
-    min-width: 90vw;
-  }
+
   .calendar {
     display: none;
   }
-  .permanent-bookmark {
-    box-shadow: 1rem 1rem black;
-  }
-  .clock-container {
-    top: auto;
-    bottom: 0;
+  .pb {
+    /* box-shadow: 1rem 1rem black; */
   }
 }

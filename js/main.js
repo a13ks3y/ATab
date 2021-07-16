@@ -243,33 +243,3 @@ const render = (cx, cy) => {
   vlEl.classList.add('fadeIn');
   hlEl.classList.add('fadeIn');  
 };
-
-let mousemoveTimeOut, snapTimeout;
-let snap = false;
-document.body.addEventListener('mousemove', e => {
-  let cx = e.clientX;
-  let cy = e.clientY;
-  if (mousemoveTimeOut) clearTimeout(mousemoveTimeOut);
-  if (e.target.classList.contains('snap')) {
-    const box = e.target.getBoundingClientRect();
-    cx = ~~(box.left) + 16;
-    cy = ~~(box.top) + 128;
-    snap = true;
-    render(cx, cy);
-    if (!snapTimeout) {
-      snapTimeout = setTimeout(() => {
-        snap = false;
-        snapTimeout = undefined;
-      }, 420);
-    } 
-  } else if (!snap) {
-    render(cx, cy);
-  }
-  
-  mousemoveTimeOut = setTimeout(() => {
-    vlEl.classList.remove('fadeIn');
-    hlEl.classList.remove('fadeIn');
-    vlEl.classList.add('fadeOut');
-    hlEl.classList.add('fadeOut');  
-  }, 1666);
-});

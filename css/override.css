@@ -94,9 +94,11 @@ footer {
   /* background-color:slateblue; */
 }
 .weather-container {
-  background-color: slateblue;
   display: inline-block;
 }
+
+
+
 /* Next lines - an old 💩 */
 
 :root {
@@ -606,45 +608,6 @@ li a:hover {
   margin-right: 2px;
 }
 
-#addItem {
-  cursor: pointer;
-  margin-top: 9px;
-  border: 1px solid #455259;
-  background: #46535c;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#a1a1a1),
-    to(#46535c)
-  );
-  background: -webkit-linear-gradient(top, #a1a1a1, #46535c);
-  background: -moz-linear-gradient(top, #a1a1a1, #46535c);
-  background: -ms-linear-gradient(top, #a1a1a1, #46535c);
-  background: -o-linear-gradient(top, #a1a1a1, #46535c);
-  padding: 5px 10px;
-  -webkit-border-radius: 11px;
-  -moz-border-radius: 11px;
-  border-radius: 11px;
-  -webkit-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-  -moz-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-  box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-  text-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-  color: #f6fffe;
-  font-size: 12px;
-  font-family: 'Courier New', Courier, monospace;
-  text-decoration: none;
-  vertical-align: middle;
-}
-#addItem:hover {
-  border-top-color: #4a5359;
-  background: #4a5359;
-  color: #a6a6a6;
-}
-#addItem:active {
-  border-top-color: #39434a;
-  background: #39434a;
-}
 
 #urlName {
   height: 1.5rem;

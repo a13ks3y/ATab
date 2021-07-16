@@ -1,13 +1,13 @@
 {
     "name": "atab",
-    "version": "0.0.1",
+    "version": "1.2.2",
     "description": "A new tab for awesome people",
     "author": "<a13ks3y.ass@gmail.com>",
     "private": true,
     "license": "MIT",
     "scripts": {
         "build": "shx rm -rf ./docs/css ./docs/js ./docs/img && shx cp ./src/override/override.html ./docs/index.html && cp ./src/override/override.html ./docs/override.html && shx cp -r ./css/ ./docs/css/ && shx cp -r ./img/ ./docs/img/ && shx cp -r ./js/ ./docs/js/",
-        "start": "npm run build && live-server --host=0.0.0.0 ./docs",
+        "start": "npm run build && live-server --host=0.0.0.0 ./docs --mount=/ATab:./docs --open=/ATab",
         "test": "echo Tbd"
     },
     "dependencies": {},

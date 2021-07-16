@@ -2,6 +2,9 @@
 
 ### Any notable changes and version notes will be kept in this file.
 
+## v1.2.2
+- Responsive branch merged in master - awesome look for mobile!
+
 ## v1.2.1
 - Replace wolfarmalpha with jarvis link
 - Road-Map section in readme.md
