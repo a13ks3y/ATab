@@ -828,9 +828,10 @@ input[name=q] {
     background-image: none;
   }
   input.q {
-    width: 100%;
     margin: 1.666rem auto;
     padding-left: 0.666rem;
+    border: 1px solid green;
+    background: transparent;
   }
   #gitFeed {
     display: none;
@@ -839,7 +840,7 @@ input[name=q] {
     background-color: #020e2c;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url('../img/dribbb.gif');
+    /* background-image: url('../img/dribbb.gif'); */
     animation-name: awesomeness;
     animation-duration: 6.66s;
     animation-delay: 666ms;
@@ -851,7 +852,7 @@ input[name=q] {
   }
   footer {
     max-height: 6vw;
-    background-color: transparent;
+    background-color: black;
   }
 
   @keyframes awesomeness {
