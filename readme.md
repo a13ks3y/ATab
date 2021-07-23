@@ -12,8 +12,9 @@
 Go to Releases. Do something. Do something else. Don't complain. Be strong. Give up.
 
 ## Road-map
-- fix deploy process!
+- ⚠ fix deploy process!
 - download icons for permanent bookmarks (manual or pre-build task?)
+- consider using [animate](https://animate.style/) css-library
 - refactor all 💩
 
 
