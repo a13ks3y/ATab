@@ -36,7 +36,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-color: black;
-  background-image: url('../img/192050.jpg');
+  background-image: url('/img/192050.jpg');
   z-index: 999;
 }
 header {
@@ -47,6 +47,7 @@ header {
 input.q {
   min-width: 66.6%;
   margin: 1.666rem 0.666rem;
+  text-align: center;
 }
 
 main {
@@ -651,10 +652,32 @@ label {
   height: 6rem;
   line-height: 6rem;
   display: inline-block;
+
 }
 .pb img {
-  width: 3rem;
+  display: block;
+  width: 3.33rem;
+  padding: 0.666rem;
+  background-color: rgba(0, 255, 0, 0.21);
+  border: 0.333rem rgba(0, 255, 0, 0.13) solid;
+  border-radius: 6.66rem;
+  transition-property: all;
+  transition-timing-function: ease-in-out;
+  transition-duration: 666ms;  
+  transition-delay: 333ms;
 }
+.pb:hover img {
+  background-color: rgba(0, 255, 0, 0.27);
+  border: 0.333rem rgba(0, 255, 0,  0.21) solid;  
+  transition-property: all;
+  transition-timing-function: ease-in-out;
+  transition-duration: 333ms;  
+  transition-delay: 0ms;
+  padding: 0.999rem;
+  margin: -0.333rem -0.333rem;
+  border-radius: 0.666rem;
+}
+
 
 .pb:nth-child(1) {
   animation: awesome-effect-1 1.666s ease-in-out 0ms 1;
@@ -828,9 +851,10 @@ input[name=q] {
     background-image: none;
   }
   input.q {
-    width: 100%;
     margin: 1.666rem auto;
     padding-left: 0.666rem;
+    border: 1px solid green;
+    background: transparent;
   }
   #gitFeed {
     display: none;
@@ -839,7 +863,7 @@ input[name=q] {
     background-color: #020e2c;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url('./dribbb.gif');
+    /* background-image: url('../img/dribbb.gif'); */
     animation-name: awesomeness;
     animation-duration: 6.66s;
     animation-delay: 666ms;
@@ -848,10 +872,15 @@ input[name=q] {
     animation-fill-mode: forwards;
     animation-direction: normal;
     padding-left: 0;
+    background-size: 96%;
+    justify-content: space-between;
   }
   footer {
-    max-height: 6vw;
     background-color: transparent;
+  }
+  .weather-container {
+    padding: 0.666rem;
+    min-height: calc(100vh / 6.66);
   }
 
   @keyframes awesomeness {
