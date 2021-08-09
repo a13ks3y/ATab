@@ -365,19 +365,24 @@ span.text-muted {
   text-align: center;
   color: #daf6ff;
   text-shadow: 0 0 10px #1b8db3, 0 0 10px rgba(10, 175, 230, 0);
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
 }
 
 #clock {
-  letter-spacing: 0.05em;
-  font-size: 3rem;
-  padding: 5px 0;
+  letter-spacing: 0.666rem;
+  font-size: 3.33rem;
+  padding: 6.66rem 0;
 }
 
 
 
 #date {
-  letter-spacing: 0.1em;
-  font-size: 24px;
+  letter-spacing: 0.111rem;
+  font-size: 1.11rem;
+  top: 60%;
 }
 
 li a:link {
@@ -821,12 +826,12 @@ input[name=q] {
     text-shadow:  0 0 20px #fff, 0 0 30px #5bd75b, 0 0 40px #f1fa8c, 0 0 50px #f1fa8c, 0 0 60px #f1fa8c 70px #5bd75b, 0 0 80px #f1fa8c;
   }
 }
-
-@media screen and (min-height: 700px) {
-
   #clock, #date {
     text-shadow: 1px 1px 2px #f90, 0 0 1rem lightgreen, 0 0 0.2rem lightgreen;
+    padding: 0 0 3.33rem 0;
   }
+@media screen and (min-height: 700px) {
+
   .weather-container {
     padding: 3.666rem;    
   }
@@ -837,6 +842,12 @@ input[name=q] {
 }
 
 @media (orientation:portrait) {
+  #clock, #date {
+   position: relative;
+   left: auto;
+   top: auto;
+   transform: translate(0,0);
+  }
   .bookmarks {
     margin-top: -66.6vh;
   }
