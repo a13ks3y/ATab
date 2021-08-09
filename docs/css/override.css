@@ -36,7 +36,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-color: black;
-  background-image: url('../img/192050.jpg');
+  background-image: url('/img/192050.jpg');
   z-index: 999;
 }
 header {
@@ -47,6 +47,7 @@ header {
 input.q {
   min-width: 66.6%;
   margin: 1.666rem 0.666rem;
+  text-align: center;
 }
 
 main {
@@ -364,19 +365,24 @@ span.text-muted {
   text-align: center;
   color: #daf6ff;
   text-shadow: 0 0 10px #1b8db3, 0 0 10px rgba(10, 175, 230, 0);
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
 }
 
 #clock {
-  letter-spacing: 0.05em;
-  font-size: 3rem;
-  padding: 5px 0;
+  letter-spacing: 0.666rem;
+  font-size: 3.33rem;
+  padding: 6.66rem 0;
 }
 
 
 
 #date {
-  letter-spacing: 0.1em;
-  font-size: 24px;
+  letter-spacing: 0.111rem;
+  font-size: 1.11rem;
+  top: 60%;
 }
 
 li a:link {
@@ -651,10 +657,32 @@ label {
   height: 6rem;
   line-height: 6rem;
   display: inline-block;
+
 }
 .pb img {
-  width: 3rem;
+  display: block;
+  width: 3.33rem;
+  padding: 0.666rem;
+  background-color: rgba(0, 255, 0, 0.21);
+  border: 0.333rem rgba(0, 255, 0, 0.13) solid;
+  border-radius: 6.66rem;
+  transition-property: all;
+  transition-timing-function: ease-in-out;
+  transition-duration: 666ms;  
+  transition-delay: 333ms;
 }
+.pb:hover img {
+  background-color: rgba(0, 255, 0, 0.27);
+  border: 0.333rem rgba(0, 255, 0,  0.21) solid;  
+  transition-property: all;
+  transition-timing-function: ease-in-out;
+  transition-duration: 333ms;  
+  transition-delay: 0ms;
+  padding: 0.999rem;
+  margin: -0.333rem -0.333rem;
+  border-radius: 0.666rem;
+}
+
 
 .pb:nth-child(1) {
   animation: awesome-effect-1 1.666s ease-in-out 0ms 1;
@@ -798,12 +826,12 @@ input[name=q] {
     text-shadow:  0 0 20px #fff, 0 0 30px #5bd75b, 0 0 40px #f1fa8c, 0 0 50px #f1fa8c, 0 0 60px #f1fa8c 70px #5bd75b, 0 0 80px #f1fa8c;
   }
 }
-
-@media screen and (min-height: 700px) {
-
   #clock, #date {
     text-shadow: 1px 1px 2px #f90, 0 0 1rem lightgreen, 0 0 0.2rem lightgreen;
+    padding: 0 0 3.33rem 0;
   }
+@media screen and (min-height: 700px) {
+
   .weather-container {
     padding: 3.666rem;    
   }
@@ -814,6 +842,12 @@ input[name=q] {
 }
 
 @media (orientation:portrait) {
+  #clock, #date {
+   position: relative;
+   left: auto;
+   top: auto;
+   transform: translate(0,0);
+  }
   .bookmarks {
     margin-top: -66.6vh;
   }
@@ -828,9 +862,10 @@ input[name=q] {
     background-image: none;
   }
   input.q {
-    width: 100%;
     margin: 1.666rem auto;
     padding-left: 0.666rem;
+    border: 1px solid green;
+    background: transparent;
   }
   #gitFeed {
     display: none;
@@ -839,7 +874,7 @@ input[name=q] {
     background-color: #020e2c;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url('./dribbb.gif');
+    /* background-image: url('../img/dribbb.gif'); */
     animation-name: awesomeness;
     animation-duration: 6.66s;
     animation-delay: 666ms;
@@ -848,10 +883,15 @@ input[name=q] {
     animation-fill-mode: forwards;
     animation-direction: normal;
     padding-left: 0;
+    background-size: 96%;
+    justify-content: space-between;
   }
   footer {
-    max-height: 6vw;
     background-color: transparent;
+  }
+  .weather-container {
+    padding: 0.666rem;
+    min-height: calc(100vh / 6.66);
   }
 
   @keyframes awesomeness {
