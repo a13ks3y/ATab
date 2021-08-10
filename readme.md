@@ -1,4 +1,3 @@
-
 # Awesome Tab
 
 ## Chrome Extension for Awesome people - Replaces your NewTab and Homepage in Chrome Browser.
@@ -13,6 +12,7 @@ Go to Releases. Do something. Do something else. Don't complain. Be strong. Give
 
 ## Road-map
 - ⚠ fix deploy process!
+- consider using typescript and any test-suite (probbably just angular? is it normal to use angular for building browser extention?)
 - download icons for permanent bookmarks (manual or pre-build task?)
 - consider using [animate](https://animate.style/) css-library
 - refactor all 💩
