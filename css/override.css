@@ -99,6 +99,12 @@ footer {
 .weather-container {
   display: inline-block;
 }
+.weather-text {
+  color: lightgoldenrodyellow;
+}
+.weather-text span {
+  color: darkgreen;
+}
 
 
 

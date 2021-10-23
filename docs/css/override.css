@@ -52,6 +52,7 @@ input.q {
 
 main {
   display: flex;
+  justify-content: space-between;
 }
 
 
@@ -62,6 +63,7 @@ aside {
 }
 aside.right {
   /* background-color: red; */
+  max-width: 13rem;
 }
 
 footer {
@@ -96,6 +98,12 @@ footer {
 }
 .weather-container {
   display: inline-block;
+}
+.weather-text {
+  color: lightgoldenrodyellow;
+}
+.weather-text span {
+  color: darkgreen;
 }
 
 
@@ -252,16 +260,6 @@ html {
   text-decoration: none;
 }
 
-.contrib-footer {
-  font-size: 11px;
-  padding: 0 10px 12px;
-  text-align: left;
-  width: 100%;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  height: 26px;
-}
-
 #main {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -297,6 +295,11 @@ html {
   opacity: 0.666;
 }
 
+section.center {
+  display: grid;
+  grid-template-columns: 6.66rem 6.66rem 6.66rem;  
+}
+
 
 
 
@@ -308,51 +311,6 @@ html {
   padding: 2px;
 }
 
-.float-left a {
-  color: #1ca0dd;
-}
-
-.left.text-muted {
-  float: left;
-  margin-left: 9px;
-  color: #1ca0dd;
-}
-
-.left.text-muted a {
-  color: #3987ec;
-  text-decoration: none;
-}
-
-.left.text-muted a:hover,
-.monospace a:hover {
-  text-decoration: underline;
-}
-
-h2.f4.text-normal.mb-3 {
-  display: none;
-}
-
-.float-left.text-gray {
-  float: left;
-  color: #5bd75b;
-}
-
-#user-activity-overview {
-  display: none;
-}
-
-span.text-muted {
-  color: rgb(240, 61, 61);
-}
-
-.text-gray {
-  color: #5bd75b;
-  font-size: 12px;
-}
-
-.float-left.text-gray a {
-  color: #3987ec;
-}
 
 .weather-text {
   font-size: 1.25rem;
@@ -368,13 +326,23 @@ span.text-muted {
   position: fixed;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-66%,-66%);
+  z-index: 0;
+  transition-property: transform;
+  transition-timing-function: ease-in-out;
+  transition-duration: 1.666s;
+}
+#clock:hover, #date:hover {
+  transform: translate(-42%, -42%);
+  transition-property: transform;
+  transition-timing-function: ease-in-out;
+  transition-duration: 3.666s;
 }
 
 #clock {
   letter-spacing: 0.666rem;
   font-size: 3.33rem;
-  padding: 6.66rem 0;
+  padding: 0;
 }
 
 
@@ -825,7 +793,6 @@ input[name=q] {
 }
   #clock, #date {
     text-shadow: 1px 1px 2px #f90, 0 0 1rem lightgreen, 0 0 0.2rem lightgreen;
-    padding: 0 0 3.33rem 0;
   }
 @media screen and (min-height: 700px) {
 
