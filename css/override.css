@@ -105,7 +105,7 @@ footer {
   color: lightgoldenrodyellow;
 }
 .weather-text span {
-  color: darkgreen;
+  color: #39dd36;
 }
 
 
@@ -324,7 +324,7 @@ section.center {
   max-width: 700px;
   text-align: center;
   color: #daf6ff;
-  text-shadow: 0 0 10px #1b8db3, 0 0 10px rgba(10, 175, 230, 0);
+  text-shadow: 0 0 1rem #1b8db3, 0 0 1rem rgba(10, 175, 230, 0);
   position: fixed;
   left: 33.3vw;
   top: 66.6vh;
@@ -375,6 +375,7 @@ li a:hover {
 .repo-name a {
   color: #f1fa8c;
   text-decoration: none;
+  text-transform: uppercase;
   font-size: 1.15rem;
   padding-left: 1.666rem;
 }
@@ -386,20 +387,19 @@ li a:hover {
 }
 
 .repo-container {
-  border-left: solid #39D639 3px;
-  padding-top: 1rem;
-  animation: left-border 66.6s ease-in-out 6.66s infinite normal forwards;
+  border-bottom: 1px solid #666;
 }
 
 .repo-container:hover {
-  -webkit-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
-  border-left: solid greenyellow 3px;
+  cursor: pointer;
 }
 
 .repo-description {
   font-style: italic;
   font-size: 0.8em;
+  color: ivory;
+  padding: 0.333rem;
+  animation: glow 6.66s ease-in-out infinite alternate;
 }
 
 #gitFeed {
@@ -409,8 +409,26 @@ li a:hover {
   -ms-overflow-style: none;
 }
 /* @todo: REFACTOR THIS SHIT!!! */
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #39dd36;
+  -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+#gitFeed h3 {
+  margin-bottom: 1rem;
+}
 #gitFeed h3 > a, #gitFeed h3 > a:visited {
-  color: green;
+  color: #39dd36;  
 }
 
 #gitFeed::-webkit-scrollbar {
@@ -760,10 +778,10 @@ input[name=q] {
 
 @keyframes glow {
   from {
-    text-shadow:  0 0 10px #fff, 0 0 20px #fff, 0 0 30px #5bd75b, 0 0    40px #5bd75b, 0 0 50px #5bd75b, 0 0 60px #5bd75b, 0 0 70px #5bd75b;
+    text-shadow:  0 0 0.1rem #fff, 0 0 0.2rem #fff, 0 0 0.3rem #5bd75b, 0 0 0.4rem #5bd75b, 0 0 0.5rem #5bd75b, 0 0 0.6rem #5bd75b, 0 0 0.7rem #5bd75b;
   }
   to {
-    text-shadow:  0 0 20px #fff, 0 0 30px #5bd75b, 0 0 40px #f1fa8c, 0 0 50px #f1fa8c, 0 0 60px #f1fa8c 70px #5bd75b, 0 0 80px #f1fa8c;
+    text-shadow:  0 0 0.2rem #fff, 0 0 0.3rem #5bd75b, 0 0 0.4rem #f1fa8c, 0 0 0.5rem #f1fa8c, 0 0 0.6rem #f1fa8c 0.7rem #5bd75b, 0 0 0.8rem #f1fa8c;
   }
 }
   #clock, #date {
