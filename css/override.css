@@ -1,5 +1,6 @@
 .fadeIn {
   animation: fadeIn 666ms ease-in normal forwards;
+  animation: fadeIn 666ms ease-in normal forwards;
 
 }
 .fadeOut {
@@ -47,7 +48,8 @@ header {
 input.q {
   min-width: 66.6%;
   margin: 1.666rem 0.666rem;
-  text-align: center;
+  text-align: left;
+  color: #39dd36;
 }
 
 main {
@@ -105,7 +107,6 @@ footer {
 .weather-text span {
   color: darkgreen;
 }
-
 
 
 /* Next lines - an old 💩 */
@@ -297,7 +298,8 @@ html {
 
 section.center {
   display: grid;
-  grid-template-columns: 6.66rem 6.66rem 6.66rem;  
+  grid-template-columns: 6.66rem 6.66rem 6.66rem;
+  grid-template-rows: 6.66rem 6.66rem 6.66rem;
 }
 
 
@@ -324,8 +326,8 @@ section.center {
   color: #daf6ff;
   text-shadow: 0 0 10px #1b8db3, 0 0 10px rgba(10, 175, 230, 0);
   position: fixed;
-  left: 50%;
-  top: 50%;
+  left: 33.3vw;
+  top: 66.6vh;
   transform: translate(-66%,-66%);
   z-index: 0;
   transition-property: transform;
@@ -374,6 +376,7 @@ li a:hover {
   color: #f1fa8c;
   text-decoration: none;
   font-size: 1.15rem;
+  padding-left: 1.666rem;
 }
 
 .repo-name a:hover {
@@ -383,47 +386,10 @@ li a:hover {
 }
 
 .repo-container {
-  border-left: solid #6272a4 3px;
-  padding-bottom: 15px;
+  border-left: solid #39D639 3px;
+  padding-top: 1rem;
   animation: left-border 66.6s ease-in-out 6.66s infinite normal forwards;
 }
-.repo-container:nth-child(odd) {
-  animation: left-border 6.66s ease-in-out 66.6s infinite normal forwards;
-}
-
-.repo-container:nth-child(1) {
-  animation: left-border 66.6s ease-in-out 6.66s infinite normal forwards;
-}
-.repo-container:nth-child(7) {
-  animation: left-border 6.66s ease-in-out 66.6s infinite normal forwards;
-}
-.repo-container:nth-child(7) {
-  animation: left-border 6.66s ease-in-out 6.66s infinite normal forwards;
-}
-
-
-@keyframes left-border {
-  0% {
-    border-left: solid #6272a4 3px;
-  }
-  33% {
-    border-left: solid #1ca0dd 3px;
-  }
-  66% {
-    border-left: solid #808fbb 3px;
-  }
-  98% {
-    border-left: solid #808fbb86 3px;
-  }
-  99% {
-    border-left: solid #6272a4 3px;
-  }
-  100% {
-    border-left: solid #6272a4 3px;
-  }
-}
-
-
 
 .repo-container:hover {
   -webkit-transition: all 0.2s ease-in;
@@ -441,6 +407,10 @@ li a:hover {
   height: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none;
+}
+/* @todo: REFACTOR THIS SHIT!!! */
+#gitFeed h3 > a, #gitFeed h3 > a:visited {
+  color: green;
 }
 
 #gitFeed::-webkit-scrollbar {
@@ -835,6 +805,8 @@ input[name=q] {
     padding-left: 0.666rem;
     border: 1px solid green;
     background: transparent;
+    width: 90vw;
+    text-align: center;
   }
   #gitFeed {
     display: none;
