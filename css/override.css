@@ -76,7 +76,7 @@ main {
 }
 aside {
   margin: 0.666rem 0.333rem 0.333rem 0;
-  width: 33.3vw;
+  width: 17.3vw;
   /* background-color: green; */
 }
 aside.right {
@@ -106,6 +106,7 @@ footer {
 /* Next lines - an old 💩 */
 
 section.center {
+  padding-top: 4.5rem;
   display: grid;
   grid-template-columns: 6.66rem 6.66rem 6.66rem;
   grid-template-rows: 6.66rem 6.66rem 6.66rem;
@@ -189,11 +190,11 @@ li a:hover {
 }
 
 .repo-description {
-  font-style: italic;
+  /* font-style: italic; */
   font-size: 0.8em;
   color: ivory;
   padding: 0.333rem;
-  animation: glow 6.66s ease-in-out infinite alternate;
+  /* animation: glow 6.66s ease-in-out infinite alternate; */
 }
 
 #gitFeed {
