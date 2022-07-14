@@ -1,24 +1,5 @@
 // @todo: rename this file to override.js for the glory of consistence
-// @todo: WTF?
-function okGoogleTellMeWhatIs(key, callback) {
-  if (window['chrome'] && window['chrome']['storage']) {
-    return window['chrome']['storage']['local'].get(key, callback);
-  } else {
-    const result = {};
-    result[key] = localStorage.getItem(key);
-    if (result[key]) {
-      return callback(result);
-    } else {
-      switch(key) {
-        case 'gitCalName': return callback('a13ks3y'); break;
-        default: return callback(result);
-      }
-    }
-  } 
-}
 const gitUserName = 'a13ks3y';
-// @todo: try to get username from cookies/localstorage etc.
-new GitHubCalendar('.calendar', gitUserName, { responsive: true })
 
 GithubFeed.init({
   username: gitUserName,
@@ -29,26 +10,6 @@ GithubFeed.init({
     console.log('Feed Loaded')
   },
 });
-
-
-// okGoogleTellMeWhatIs(['userGit'], function (result) {
-//   if (result.userGit === undefined) {
-//     let feedUnknown = document.getElementById('github-feeds')
-//     feedUnknown.setAttribute('style', 'color: red; font-size: 1.15rem;')
-//     feedUnknown.textContent = 'Please configure Github Username!' //Error Message
-//   } else {
-//     // Initiate the Feed - This is pulled  into the githubFeed.js file
-//     GithubFeed.init({
-//       username: result.userGit,
-//       container: '#github-feeds',
-//       count: 10,
-//       order: 'desc',
-//       onComplete: function () {
-//         console.log('Feed Loaded')
-//       },
-//     })
-//   }
-// })
 
 const qEl = document.getElementsByName('q')[0];
 qEl.addEventListener('keyup', e => {
@@ -65,8 +26,6 @@ qEl.addEventListener('keyup', e => {
     }
   }
 });
-
-// Start of Clock and Calendar
 
 function GetClock() {
   let tday = [
@@ -143,18 +102,6 @@ let lat = '50.420';
 let lon = '30.5234';
 let unit = 'metric';
 
-/**
- *
- * @type {object} response
- * @property {object} main
- * @property {number} temp
- * @property {number} humidity
- * @property {number} wind
- * @property {number} clouds
- * @property {string} name
- *
- */
-
 function findWeather() {
   let searchLink =
     'https://api.openweathermap.org/data/2.5/weather?lat=' +
@@ -192,54 +139,3 @@ function httpRequestAsync(url, callback) {
   httpRequest.send()
 }
 findWeather() //Initiate the function
-
-
-/**
- *
- * @type {XMLHttpRequest}
- * @type {object} article
- * @property {object} article.user
- * @property {string} article.cover_image
- * @property {string} article.user.twitter_username
- * @property {string} article.description
- * @property {string} article.user.name
- * @property {string} article.user.username
- */
-
-
-var iconEl = document.getElementById('addIcon')
-iconEl && iconEl.addEventListener('click', showInput)
-function showInput() {
-  let input1 = document.getElementById('urlName')
-  let input2 = document.getElementById('siteUrl')
-  let addButton = document.getElementById('addItem')
-  let label1 = document.getElementById('siteLabel')
-  let label2 = document.getElementById('urlLabel')
-  if (input1.style.display === 'none') {
-    input1.style.display = 'inline-block'
-    input2.style.display = 'inline-block'
-    addButton.style.display = 'inline-block'
-    label1.style.display = 'inline-block'
-    label2.style.display = 'inline-block'
-    document.getElementById('addIcon').innerText = '-'
-  } else {
-    input1.style.display = 'none'
-    input2.style.display = 'none'
-    addButton.style.display = 'none'
-    label1.style.display = 'none'
-    label2.style.display = 'none'
-    document.getElementById('addIcon').innerText = '+'
-  }
-}
-
-
-const vlEl = document.getElementById('vertical-line');
-const hlEl = document.getElementById('horizontal-line');
-const render = (cx, cy) => {
-  vlEl.style.left = cx + 'px';
-  hlEl.style.top = cy + 'px';
-  vlEl.classList.remove('fadeOut');
-  hlEl.classList.remove('fadeOut');
-  vlEl.classList.add('fadeIn');
-  hlEl.classList.add('fadeIn');  
-};

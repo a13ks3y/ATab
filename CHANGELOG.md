@@ -2,6 +2,9 @@
 
 ### Any notable changes and version notes will be kept in this file.
 
+## v1.3.0
+- Remove git Calendar (it's useless).
+- Refactor CSS
 ## v1.2.2
 - Responsive branch merged in master - awesome look for mobile!
 
