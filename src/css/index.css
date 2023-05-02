@@ -1,0 +1,91 @@
+html, body {
+    font-size: 16px;
+    font-family: monospace;
+    position: absolute;
+    left: 0; top: 0;
+    right: 0; bottom: 0;
+    color: #eee;
+    background-image: url(../assets/192050.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    overflow: hidden;
+    background-color: rgba(0, 0, 66, 0.666);
+    background-image: url(../assets/dribbb.gif);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+
+}
+#clock {
+    font-size: 9rem;
+    color: #f0f0e0a0;
+    text-align: center;
+    cursor: default;
+    user-select: none;
+    text-shadow: 0 0 1rem #a0e0f0f0;
+    background-color: #6669;
+}
+
+#tabs img, #tabs a {
+    display: block;
+    width: 6.66rem;
+    height: 6.66rem;
+    border-radius: 0.333rem;
+    box-shadow: 0 0 0.666rem #aaa;
+}
+#tabs a.from-left-top { transform: translate(-666px, -666px); }
+#tabs a.from-right-top { transform: translate( 666px, -666px); }
+#tabs a.from-left-bottom { transform: translate(-666px, 666px); }
+#tabs a.from-right-bottom { transform: translate( 666px, 666px); }
+#tabs a {
+    display: inline-block;
+    margin: 0.666rem;
+    cursor: pointer;
+    background: #eee;
+    border-radius: 0.666rem;
+    box-shadow: 0 0 1rem #ddd;
+    transform: translate(0, 0);
+    transition-property: transform;
+    transition-duration: 0.666s;
+    padding: 0.666rem;
+
+    text-align: center;
+    vertical-align: middle;
+    line-height: 3.333rem;
+    position: relative;
+}
+#tabs a:hover {
+    transform: scale(1.666);
+    z-index: 666;
+}
+
+#tabs a button {
+    position: absolute;
+    right: 0.333rem;
+    top: 0.111rem;
+    color: bisque;
+    background: darkred;
+    font-size: 1rem;
+    line-height: 1.333rem;
+    width: 1.666rem;
+    height: 1.666rem;
+    vertical-align: middle;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+    /*border: 1px solid bisque;*/
+    border-radius: 666rem;
+}
+
+#tabs {
+    display: block;
+    margin: auto;
+    color: #333;
+}

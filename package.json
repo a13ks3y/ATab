@@ -6,13 +6,21 @@
     "private": true,
     "license": "MIT",
     "scripts": {
-        "build": "shx rm -rf ./docs/css ./docs/js ./docs/img && shx cp ./src/override/override.html ./docs/index.html && shx cp ./src/override/override.html ./docs/override.html && shx cp -r ./css/ ./docs/css/ && shx cp -r ./img/ ./docs/img/ && shx cp -r ./js/ ./docs/js/",
-        "start": "live-server --host=0.0.0.0 ./docs --mount=/ATab:./docs --open=/ATab",
-        "test": "echo Tbd"
+        "start": "webpack serve --mode production",
+        "build": "webpack --mode production"
     },
-    "dependencies": {},
     "devDependencies": {
+        "copy-webpack-plugin": "^11.0.0",
+        "css-loader": "^6.7.3",
+        "file-loader": "^6.2.0",
+        "html-loader": "^4.2.0",
+        "html-webpack-plugin": "^5.5.1",
+        "image-webpack-loader": "^8.1.0",
         "live-server": "^1.2.1",
-        "shx": "^0.3.3"
+        "mini-css-extract-plugin": "^2.7.5",
+        "url-loader": "^4.1.1",
+        "webpack": "^5.81.0",
+        "webpack-cli": "^5.0.2",
+        "webpack-dev-server": "^4.13.3"
     }
 }
