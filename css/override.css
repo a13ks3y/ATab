@@ -73,6 +73,7 @@ input[name=q] {
 main {
   display: flex;
   justify-content: space-between;
+  /* height: 33%; */
 }
 aside {
   margin: 0.666rem 0.333rem 0.333rem 0;
@@ -84,13 +85,15 @@ aside.right {
   max-width: 13rem;
 }
 footer {
-  min-height: 6.66rem;
+  /* min-height: 16.66rem; */
   text-align: left;
   background-color: transparent;
 }
 
 .clock-container {
   /* background-color:slateblue; */
+  display: block;
+  padding: 0.666rem 1.666rem;
 }
 .weather-container {
   display: inline-block;
