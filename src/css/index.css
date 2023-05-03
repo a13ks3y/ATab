@@ -36,6 +36,7 @@ body {
     display: block;
     border-radius: 0.333rem;
     box-shadow: 0 0 0.666rem #aaa;
+    min-height: 6.66rem;
 }
 #tabs a img {
     display: block;
@@ -83,7 +84,7 @@ body {
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 0;
+    padding: 0.111rem;
     /*border: 1px solid bisque;*/
     border-radius: 666rem;
 }
@@ -96,8 +97,12 @@ body {
 input[type=search] {
     margin: 1.666rem;
     outline: none;
-    border: none;
     box-shadow: 0 0 0.666rem #6669;
+    background: transparent;
+    border: 1px solid darkgreen;
+    font-size: 3.33rem;
+    color: #eee;
+    font-family: Consolas, "Lucida Console", serif;
 }
 input[type=search]:focus {
     outline: none;

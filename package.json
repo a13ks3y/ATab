@@ -6,7 +6,8 @@
     "private": true,
     "license": "MIT",
     "scripts": {
-        "start": "webpack serve --mode production",
+        "start": "webpack-dev-server --mode development",
+        "watch": "nodemon --watch src -e js,html,css,png,gif,jpg,jpeg --exec npm run build",
         "build": "webpack --mode production"
     },
     "devDependencies": {
@@ -18,9 +19,15 @@
         "image-webpack-loader": "^8.1.0",
         "live-server": "^1.2.1",
         "mini-css-extract-plugin": "^2.7.5",
+        "nodemon": "^2.0.22",
         "url-loader": "^4.1.1",
         "webpack": "^5.81.0",
         "webpack-cli": "^5.0.2",
         "webpack-dev-server": "^4.13.3"
+    },
+    "browser": {
+        "fs": false,
+        "os": false,
+        "path": false
     }
 }
