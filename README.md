@@ -27,3 +27,12 @@ Go to Releases. Do something. Do something else. Don't complain. Be strong. Give
 - Get rid of useless css/js libs and legacy code.
 - Refactor html markup of override page
 - Get rid of settings, or re-develop it.
+
+
+### Some Useful Notes:
+
+````shell
+npm i && npm run build
+````
+
+Then in browser "add unpucked extention", choose the "dist" folder.
