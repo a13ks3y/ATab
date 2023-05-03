@@ -32,12 +32,16 @@ body {
     background-color: #6669;
 }
 
-#tabs img, #tabs a {
+#tabs a {
     display: block;
-    width: 6.66rem;
-    height: 6.66rem;
     border-radius: 0.333rem;
     box-shadow: 0 0 0.666rem #aaa;
+}
+#tabs a img {
+    display: block;
+    margin: auto;
+    width: 6.66rem;
+    height: 6.66rem;
 }
 #tabs a.from-left-top { transform: translate(-666px, -666px); }
 #tabs a.from-right-top { transform: translate( 666px, -666px); }
