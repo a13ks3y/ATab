@@ -89,3 +89,14 @@ body {
     margin: auto;
     color: #333;
 }
+input[type=search] {
+    margin: 1.666rem;
+    outline: none;
+    border: none;
+    box-shadow: 0 0 0.666rem #6669;
+}
+input[type=search]:focus {
+    outline: none;
+    border: none;
+    box-shadow: 0 0 0.666rem #7779;
+}

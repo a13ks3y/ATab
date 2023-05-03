@@ -2,11 +2,14 @@
 
 ### Any notable changes and version notes will be kept in this file.
 
+## v2.0.1
+- Google Search input field 😎
+
 ## v2.0.0
-- Global refactor
-- Update manifest to v3
-- Bookmarks, opened tabs
-- Clean-up
+- Global refactor 🌪️
+- Update manifest to v3 🚀
+- List of opened tabs 📃
+- Clean-up 🧹
 
 ## v1.3.0
 - Remove git Calendar (it's useless).

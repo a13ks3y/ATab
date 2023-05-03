@@ -75,4 +75,13 @@ document.addEventListener('readystatechange', () => {
         const now = new Date();
         clockEl.textContent = now.toLocaleTimeString();
     }
-})
+});
+
+setTimeout(() => {
+    const searchInputEl = document.getElementById('q');
+    searchInputEl.focus({
+        focusVisible: true
+    });
+    console.log('wtf?');
+}, 666);
+
