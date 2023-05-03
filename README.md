@@ -12,8 +12,8 @@ Go to Releases. Do something. Do something else. Don't complain. Be strong. Give
 
 ## ToDo:
 - add close-tab animation (when close tab button clicked)
-
-
+- Tab/Shit+Tab and arrows navigation between opened tabs
+- List of bookmarks (create specific folder for this purpose?)
 ## Road-map
 - ⚠ fix deploy process!
 - consider using typescript and any test-suite (probbably just angular? is it normal to use angular for building browser extention?)
