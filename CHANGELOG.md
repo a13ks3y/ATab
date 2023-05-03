@@ -1,6 +1,8 @@
 # Changelog
 
 ### Any notable changes and version notes will be kept in this file.
+## v2.0.2
+- Various visual and logic fixes.
 
 ## v2.0.1
 - Google Search input field 😎

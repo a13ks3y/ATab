@@ -14,19 +14,13 @@ Go to Releases. Do something. Do something else. Don't complain. Be strong. Give
 - add close-tab animation (when close tab button clicked)
 - Tab/Shit+Tab and arrows navigation between opened tabs
 - List of bookmarks (create specific folder for this purpose?)
-## Road-map
-- ⚠ fix deploy process!
-- consider using typescript and any test-suite (probbably just angular? is it normal to use angular for building browser extention?)
-- download icons for permanent bookmarks (manual or pre-build task?)
-- consider using [animate](https://animate.style/) css-library
-- refactor all 💩
+- "Close others" button, to close all tabs, except current/selected
 
 ## 🛣 Road-Map
-- Re-think the hole conception, research on chrome bookmarks access.
-- Consider using angular or at least jset/karma.
-- Get rid of useless css/js libs and legacy code.
-- Refactor html markup of override page
-- Get rid of settings, or re-develop it.
+- Implement the bookmarks panel!
+- ~~Get rid of useless css/js libs and legacy code.~~
+- ~~Refactor html markup of override page~~
+- ~~Get rid of settings, or re-develop it.~~
 
 
 ### Some Useful Notes:

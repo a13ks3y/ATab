@@ -36,7 +36,10 @@ body {
     display: block;
     border-radius: 0.333rem;
     box-shadow: 0 0 0.666rem #aaa;
-    min-height: 6.66rem;
+    height: 6.66rem;
+    width: 6.666rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 #tabs a img {
     display: block;
