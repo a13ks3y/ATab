@@ -29,7 +29,7 @@ body {
     cursor: default;
     user-select: none;
     text-shadow: 0 0 1rem #a0e0f0f0;
-    background-color: #6669;
+    /* background-color: #6669; */
 }
 
 #tabs a {
@@ -104,7 +104,7 @@ input[type=search] {
     min-width: 66.6%;
     margin: 1.666rem;
     outline: none;
-    box-shadow: 0 0 0.666rem #6669;
+    /* box-shadow: 0 0 0.666rem #6669; */
     background: transparent;
     border: 1px solid darkgreen;
     font-size: 3.33rem;
@@ -115,6 +115,6 @@ input[type=search] {
 }
 input[type=search]:focus {
     outline: none;
-    border: none;
-    box-shadow: 0 0 0.666rem #7779;
+    /* border: none; */
+    /* box-shadow: 0 0 0.666rem #7779; */
 }
