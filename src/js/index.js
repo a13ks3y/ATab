@@ -1,81 +1,52 @@
 import '../css/reset.css';
 import '../css/index.css';
+import {getTabs} from "./getTabs";
+import {createTabEl} from "./createTabEl";
 
-if (window['chrome'] && window['chrome']['tabs']) {
-    function renderTabs() {
-        chrome.windows.getCurrent(wnd => {
-            const tabsEl = document.getElementById('tabs');
-            window.chrome.tabs.query({}, (tabs) => {
-                tabsEl.innerHTML = '';
-                let currentSideIndex = 0;
-                tabs.filter(tab => !tab.active && tab.windowId === wnd.id).forEach(tab => {
-                    const tabEl = document.createElement('a');
-                    if (tab.url === "chrome://newtab/") {
-                        tab["favIconUrl"] = "icons/ATab-128x128.png"
-                    }
-                    const favIconUrl = tab["favIconUrl"] || (tab.url === "chrome://newtab/" ? "icons/ATab-128x128.png" : null);
-                    if (favIconUrl) {
-                        const tabImgEl = document.createElement('img');
-                        tabImgEl.src = favIconUrl;
-                        tabImgEl.alt = tab["title"];
-                        tabEl.appendChild(tabImgEl);
-                    } else {
-                        tabEl.textContent = tab["title"];
-                    }
-
-                    const closeBtnEl = document.createElement('button');
-                    closeBtnEl.textContent = 'X';
-                    closeBtnEl.addEventListener('click', e => {
-                        e.preventDefault();
-                        e.cancelBubble = true;
-                        closeTab(tab);
-                        return false;
-                    });
-                    tabEl.appendChild(closeBtnEl);
-
-                    tabEl.title = tab["title"];
-                    const sides = [
-                        'from-left-top',
-                        'from-right-top',
-                        'from-left-bottom',
-                        'from-right-bottom'
-                    ];
-                    tabEl.classList.add(sides[currentSideIndex]);
-                    tabEl.id = 'tab-' + tab.id;
-                    currentSideIndex = currentSideIndex >= sides.length - 1 ? 0 : currentSideIndex + 1;
-                    setTimeout(() => tabEl.classList.remove(...sides), 333);
-                    tabEl.addEventListener('click', e => openTab(tab));
-                    tabsEl.appendChild(tabEl);
-                });
-            });
+if (!(window['chrome'] && window['chrome']['tabs'])) {
+    throw new Error("THIS CODE SHOULD RUN ONLY AS CHROME EXTENSION!!!");
+}
+function renderTabs() {
+    chrome.windows.getCurrent(async wnd => {
+        const tabsEl = document.getElementById('tabs');
+        const tabs = await getTabs({
+            currentWindow: true,
+            active: false
         });
-    }
 
-    renderTabs();
-
-    window.chrome.tabs.onUpdated.addListener(e => setTimeout(renderTabs));
-    window.chrome.tabs.onActivated.addListener(e => setTimeout(renderTabs));
-    window.chrome.tabs.onRemoved.addListener(e => {
-        const tabEl = document.getElementById('tab-' + e);
-        if (tabEl) {
-            tabEl.parentNode.removeChild(tabEl);
-        }
-    });
-
-    function openTab(tab) {
-        console.log('open tab', tab);
-        window.chrome.tabs.update(tab.id, {active: true});
-    }
-
-    function closeTab(tab) {
-        console.log('close tab', tab);
-        window.chrome.tabs.remove(tab.id);
-    }
-
-    window.chrome.bookmarks.getTree((bookmarks) => {
-        console.log(bookmarks);
+        tabsEl.innerHTML = '';
+        let currentSideIndex = 0;
+        tabs.forEach(tab => {
+            const tabEl = createTabEl(tab, openTab, closeTab, currentSideIndex);
+            currentSideIndex = currentSideIndex >= 4 ? 0 : currentSideIndex + 1;
+            tabsEl.appendChild(tabEl);
+        });
     });
 }
+
+renderTabs();
+
+window.chrome.tabs.onUpdated.addListener(e => setTimeout(renderTabs));
+window.chrome.tabs.onActivated.addListener(e => setTimeout(renderTabs));
+window.chrome.tabs.onRemoved.addListener(e => {
+    const tabEl = document.getElementById('tab-' + e);
+    if (tabEl) {
+        tabEl.parentNode.removeChild(tabEl);
+    }
+});
+
+function openTab(tab) {
+    window.chrome.tabs.update(tab.id, {active: true});
+}
+
+function closeTab(tab) {
+    window.chrome.tabs.remove(tab.id);
+}
+
+window.chrome.bookmarks.getTree((bookmarks) => {
+    console.log(bookmarks);
+});
+
 
 document.addEventListener('readystatechange', () => {
     const clockEl = document.getElementById('clock');
