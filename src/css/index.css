@@ -97,13 +97,19 @@ body {
     margin: auto;
     color: #333;
 }
+#search-form {
+    width: 100%;
+}
 input[type=search] {
+    min-width: 66.6%;
     margin: 1.666rem;
     outline: none;
     box-shadow: 0 0 0.666rem #6669;
     background: transparent;
     border: 1px solid darkgreen;
     font-size: 3.33rem;
+    line-height: 6.666rem;
+    padding: 0.666rem;
     color: #eee;
     font-family: Consolas, "Lucida Console", serif;
 }

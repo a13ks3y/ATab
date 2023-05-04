@@ -1,6 +1,10 @@
 # Changelog
 
 ### Any notable changes and version notes will be kept in this file.
+
+## v2.0.3
+- Restored the Biggest Feature - farting cat emojis as placeholder for google search input. Very important improvement.
+
 ## v2.0.2
 - Various visual and logic fixes.
 
