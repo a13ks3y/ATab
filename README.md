@@ -26,7 +26,7 @@ Go to Releases. Do something. Do something else. Don't complain. Be strong. Give
 ### Some Useful Notes:
 
 ````shell
-npm i && npm run build
+npm i --legacy-peer-deps && npm run build
 ````
 
 Then in browser "add unpucked extention", choose the "dist" folder.
