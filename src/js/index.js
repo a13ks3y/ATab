@@ -2,6 +2,8 @@ import '../css/reset.css';
 import '../css/index.css';
 import {getTabs} from "./getTabs";
 import {createTabEl} from "./createTabEl";
+import { getBookmarks } from './getBookmarks.js';
+import { createBookmarkEl } from './createBookmarkEl.js';
 
 if (!(window['chrome'] && window['chrome']['tabs'])) {
     throw new Error("THIS CODE SHOULD RUN ONLY AS CHROME EXTENSION!!!");
@@ -43,12 +45,7 @@ function closeTab(tab) {
     window.chrome.tabs.remove(tab.id);
 }
 
-window.chrome.bookmarks.getTree((bookmarks) => {
-    console.log(bookmarks);
-});
-
-
-document.addEventListener('readystatechange', () => {
+document.addEventListener('readystatechange', async () => {
     const clockEl = document.getElementById('clock');
     clockEl && setInterval(updateClock, 1000) && updateClock();
 
@@ -69,6 +66,13 @@ document.addEventListener('readystatechange', () => {
             location.replace(googleSearchUrl);
         }
         return false;
+    });
+
+    const bookmarks = (await getBookmarks()).filter(b => b.title.length > 2);
+    const bookmarksEl = document.getElementById('bookmarks');
+    bookmarks.forEach(bookmark => {
+        const el = createBookmarkEl(bookmark);
+        bookmarksEl.appendChild(el);
     });
 
 });

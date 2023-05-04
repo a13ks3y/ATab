@@ -118,3 +118,31 @@ input[type=search]:focus {
     /* border: none; */
     /* box-shadow: 0 0 0.666rem #7779; */
 }
+#bookmarks {
+    right: 0;
+    position: absolute;
+    height: 19.666rem;
+    top: 6.66rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: right;
+    justify-content: space-evenly;
+    border-right: 0.333rem solid #6f6;
+    /* max-width: 16rem; */
+}
+#bookmarks a {
+    font-size: 1.999rem;
+    color: #6f6;
+    text-shadow: 0 0 0.666rem #696;
+    margin: 1.111rem 1.333rem;
+    padding: 0.333rem 0.666rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 3.666rem;
+    max-height: 3rem;
+    border-bottom: 0.111rem solid #696f;
+}
+#bookmarks a:hover, #bookmarks a.selected {
+    border-bottom: 0.111rem solid #6969;
+}
