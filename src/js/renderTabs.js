@@ -1,15 +1,9 @@
-// @todo: recive tabs as argument (good for unit-testing)
-async function renderTabs(tabsEl) {
-    const tabs = await getTabs({
-        currentWindow: true,
-        active: false
-    });
+import {createTabEl} from "./createTabEl";
 
+export function renderTabs(tabsEl, tabs, openTab, closeTab) {
     tabsEl.innerHTML = '';
-    let currentSideIndex = 0;
-    const tabEls = tabs.map(tab => {
-        currentSideIndex = currentSideIndex >= 3 ? 0 : currentSideIndex + 1;
-        const tabEl = createTabEl(tab, openTab, closeTab, currentSideIndex);
+    const tabEls = tabs.map((tab, i) => {
+        const tabEl = createTabEl(tab, openTab, closeTab, i % 4);
         tabsEl.appendChild(tabEl);
         return tabEl;
     });
@@ -44,5 +38,5 @@ async function renderTabs(tabsEl) {
         });
     }
 }
-
-exports.renderTabs = renderTabs;
+//window.exports = window.exports || {};
+//exports.renderTabs = renderTabs;

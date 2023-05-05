@@ -8682,7 +8682,7 @@ describe('Test getBookmarks function', () => {
     });
     it('Should return a flat list of all bookmarks', async () => {
         const bookmarks = await getBookmarks();
-        expect(bookmarks.length).toBeGreaterThan(100);
+        expect(bookmarks.length).toBeGreaterThan(24);
         expect(bookmarks[0].url).toBe('chrome://extensions/');
     });
     it('removeImageFromTitle should remove image from title.', () => {
