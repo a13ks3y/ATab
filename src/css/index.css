@@ -75,23 +75,29 @@ body {
 
 #tabs a button {
     position: absolute;
-    right: 0.333rem;
-    top: 0.111rem;
+    right: -0.666rem;
+    top: -0.333rem;
     color: bisque;
     background: darkred;
-    font-size: 1rem;
+    font-size: 1.666rem;
+    font-family: monospace;
     line-height: 1.333rem;
-    width: 1.666rem;
-    height: 1.666rem;
+    width: 3.666rem;
+    height: 2.666rem;
     vertical-align: middle;
     border: none;
     outline: none;
     cursor: pointer;
     padding: 0.111rem;
     /*border: 1px solid bisque;*/
-    border-radius: 666rem;
+    border-radius: 0.666rem;
 }
-
+#tabs a button svg {
+    stroke: rosybrown;
+    fill: palegoldenrod;
+    margin-top: 6px;
+    margin-left: -6px;
+}
 #tabs {
     display: block;
     margin: auto;
