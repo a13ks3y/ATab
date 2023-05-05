@@ -3,6 +3,7 @@ function createTabEl(tab, openTabHandler = () => {
 }, currentSideIndex = 0) {
     const tabEl = document.createElement('a');
     tabEl.id = 'tab-' + tab.id;
+    tabEl.setAttribute('data-tab-id', tab.id);
     if (tab.url === "chrome://newtab/") {
         tab["favIconUrl"] = "icons/ATab-128x128.png"
     }
@@ -36,7 +37,7 @@ function createTabEl(tab, openTabHandler = () => {
     ];
     
     const sideClass = sides[currentSideIndex] || sides[0];
-    tabEl.classList.add(sideClass);
+    if (currentSideIndex !== -1) tabEl.classList.add(sideClass);
     // setTimeout(() => tabEl.classList.remove(...sides), 333 * (currentSideIndex + 1));
     
     tabEl.addEventListener('click', e => openTabHandler(tab));

@@ -2,13 +2,14 @@ const {createTabEl} = require('./createTabEl.js');
 describe('Create Tab Element Function', () => {
     it('should render a tab', () => {
         const tabMock = {
-            id: Math.random(),
+            id: "123",
             title: 'Tab Title',
             favIconUrl: 'https://placehold.it/32x32'
         };
         const tabEl = createTabEl(tabMock);
         expect(tabEl).toBeInstanceOf(HTMLElement);
         expect(tabEl.id).toEqual('tab-' + tabMock.id);
+        expect(tabEl.getAttribute('data-tab-id')).toBe(tabMock.id);
         const tabImgEl = tabEl.querySelector('img');
         expect(tabImgEl.src).toEqual(tabMock.favIconUrl);
 

@@ -68,7 +68,7 @@ body {
     line-height: 3.333rem;
     position: relative;
 }
-#tabs a:hover {
+#tabs a:hover, #tabs a.selected {
     transform: scale(1.666);
     z-index: 666;
 }
