@@ -11,10 +11,14 @@ Replaces your NewTab and Homepage in Chrome Browser.
 Go to Releases. Do something. Do something else. Don't complain. Be strong. Give up.
 
 ## ToDo:
+
+### Extention:
 - add close-tab animation (when close tab button clicked)
 - Tab/Shit+Tab and arrows navigation between opened tabs
 - List of bookmarks (create specific folder for this purpose?)
 - "Close others" button, to close all tabs, except current/selected
+#### Landing page (gh-pages branch):
+- use ````javascript location.hash.substr(1).split('-').map(str => String.fromCodePoint(parseInt(str, 16))); ```` if present for sharing feature.
 
 ## 🛣 Road-Map
 - Implement the bookmarks panel!
