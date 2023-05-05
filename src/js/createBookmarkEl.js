@@ -11,7 +11,6 @@ function createBookmarkEl(bookmark) {
     ) {
         el.classList.add('bookmark-emoji');
     }
-    console.log('title length:', bookmark.title.length);
     return el;
 }
 exports.createBookmarkEl = createBookmarkEl;

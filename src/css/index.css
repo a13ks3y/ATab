@@ -134,21 +134,48 @@ input[type=search]:focus {
     align-items: stretch;
     text-align: right;
     justify-content: space-evenly;
-    border-right: 0.333rem solid #6f6;
-    /* max-width: 16rem; */
+    border-left: 0.333rem solid #6f6;
+    max-width: 21rem;
+    height: 16rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 #bookmarks a {
+    text-decoration: none;
     font-size: 1.999rem;
     color: #6f6;
     text-shadow: 0 0 0.666rem #696;
     margin: 1.111rem 1.333rem;
     padding: 0.333rem 0.666rem;
-    text-overflow: ellipsis;
-    overflow: hidden;
     height: 3.666rem;
     max-height: 3rem;
     border-bottom: 0.111rem solid #696f;
+
+    width: 16rem;
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: ellipsis;
 }
 #bookmarks a:hover, #bookmarks a.selected {
     border-bottom: 0.111rem solid #6969;
+}
+
+::-webkit-scrollbar {
+    width: 1.666rem;
+    border-radius: 0.25rem;
+}
+  
+::-webkit-scrollbar-track {
+    width: 1.666rem;
+    background: #666;
+    border-radius: 0.25rem;
+}
+  
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 0.25rem;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: #111;
 }

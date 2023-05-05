@@ -1,4 +1,4 @@
-const { getBookmarks } = require("./getBookmarks.js");
+const { getBookmarks, removeImageFromTitle } = require("./getBookmarks.js");
 
 describe('Test getBookmarks function', () => {
     // @todo: Move it to separate file?
@@ -8682,7 +8682,15 @@ describe('Test getBookmarks function', () => {
     });
     it('Should return a flat list of all bookmarks', async () => {
         const bookmarks = await getBookmarks();
-        expect(bookmarks.length).toBeGreaterThan(10);
+        expect(bookmarks.length).toBeGreaterThan(100);
         expect(bookmarks[0].url).toBe('chrome://extensions/');
+    });
+    it('removeImageFromTitle should remove image from title.', () => {
+        const textNoImgIitle = 'Just text';
+        const textWithImgTitle = 'Image 123213:Title text';
+        const resultForNoImgTitle = removeImageFromTitle(textNoImgIitle);
+        const resultForImgTitle = removeImageFromTitle(textWithImgTitle);
+        expect(resultForNoImgTitle).toBe(textNoImgIitle);
+        expect(resultForImgTitle).toBe('Title text');
     });
 });

@@ -8,9 +8,9 @@ import { createBookmarkEl } from './createBookmarkEl.js';
 if (!(window['chrome'] && window['chrome']['tabs'])) {
     throw new Error("THIS CODE SHOULD RUN ONLY AS CHROME EXTENSION!!!");
 }
-function renderTabs(withEffect = false) {
+
+function renderTabs(tabsEl) {
     chrome.windows.getCurrent(async wnd => {
-        const tabsEl = document.getElementById('tabs');
         const tabs = await getTabs({
             currentWindow: true,
             active: false
@@ -81,6 +81,8 @@ function selectTab(selectedTabIndex = 0) {
 }
 
 document.addEventListener('readystatechange', async () => {
+    const tabsEl = document.getElementById('tabs');
+
     const clockEl = document.getElementById('clock');
     clockEl && setInterval(updateClock, 1000) && updateClock();
 
@@ -109,14 +111,13 @@ document.addEventListener('readystatechange', async () => {
         const el = createBookmarkEl(bookmark);
         bookmarksEl.appendChild(el);
     });
-    renderTabs(true);
+    renderTabs(tabsEl);
     
     window.chrome.tabs.onUpdated.addListener(async tabId => {
-        console.log(tabId);
         const currentTab = await chrome.tabs.query({active:true})[0];
-        if (currentTab && tabId !== currentTab.id) setTimeout(renderTabs, 0);
+        if (currentTab && tabId !== currentTab.id) setTimeout(() => renderTabs(tabsEl), 0);
     });
-    window.chrome.tabs.onActivated.addListener(e => setTimeout(renderTabs));
+    window.chrome.tabs.onActivated.addListener(e => setTimeout(() => renderTabs(tabsEl), 0));
     window.chrome.tabs.onRemoved.addListener(e => {
     const tabEl = document.getElementById('tab-' + e);
         if (tabEl) {
@@ -126,7 +127,7 @@ document.addEventListener('readystatechange', async () => {
 
     // add event listeners to document to capture key presses
     let currentIndex = 0;
-    document.addEventListener('keyup', e => {
+    tabsEl.addEventListener('keyup', e => {
         const tabEls = Array.from(document.querySelectorAll('#tabs a'));
         currentIndex = handleTabKeyPress(
             e.key,
