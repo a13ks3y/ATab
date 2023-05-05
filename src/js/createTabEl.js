@@ -27,15 +27,18 @@ function createTabEl(tab, openTabHandler = () => {
     tabEl.appendChild(closeBtnEl);
 
     // todo: unit-test next lines
+    // todo: move it to global scope and export
     const sides = [
         'from-left-top',
         'from-right-top',
         'from-left-bottom',
         'from-right-bottom'
     ];
-    currentSideIndex = currentSideIndex >= sides.length - 1 ? 0 : currentSideIndex;
-    tabEl.classList.add(sides[currentSideIndex]);
-    setTimeout(() => tabEl.classList.remove(...sides), 333);
+    
+    const sideClass = sides[currentSideIndex] || sides[0];
+    tabEl.classList.add(sideClass);
+    // setTimeout(() => tabEl.classList.remove(...sides), 333 * (currentSideIndex + 1));
+    
     tabEl.addEventListener('click', e => openTabHandler(tab));
 
     tabEl.title = tab["title"];
