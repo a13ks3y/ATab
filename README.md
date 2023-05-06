@@ -13,6 +13,9 @@ Go to Releases. Do something. Do something else. Don't complain. Be strong. Give
 ## ToDo:
 
 ### Extention:
+- refactor and unit-test keyboard handling (now it's a mess)
+- mouse events handler for bookmars and folders
+- add folder icon, or something, to show it's a folder, not a bookmark
 - href should not be undefined for the folder (think about what it should be?)
 - add close-tab animation (when close tab button clicked)
 - Tab/Shit+Tab and arrows navigation between opened tabs

@@ -2,6 +2,9 @@
 
 ### Any notable changes and version notes will be kept in this file.
 
+## v2.1.4
+- Bookmarks finaly working as expected. Not perfect, but at least it possible to use.
+
 ## v2.1.3
 - KEYBOARD CONTROLING FEATURE!!!
 
