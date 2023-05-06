@@ -13,6 +13,7 @@ Go to Releases. Do something. Do something else. Don't complain. Be strong. Give
 ## ToDo:
 
 ### Extention:
+- href should not be undefined for the folder (think about what it should be?)
 - add close-tab animation (when close tab button clicked)
 - Tab/Shit+Tab and arrows navigation between opened tabs
 - List of bookmarks (create specific folder for this purpose?)

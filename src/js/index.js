@@ -4,9 +4,21 @@ import { getBookmarks } from './getBookmarks.js';
 import { createBookmarkEl } from './createBookmarkEl.js';
 import { renderTabs } from './renderTabs.js';
 import { getTabs } from './getTabs.js';
+import { isUrl } from './isUrl.js';
+
+
 if (!(window['chrome'] && window['chrome']['tabs'])) {
     throw new Error("THIS CODE SHOULD RUN ONLY AS CHROME EXTENSION!!!");
 }
+
+const state = {
+    context: 'tabs', // or 'bookmarks'
+    selectedTabIndex: -1,     // currently selected tab index. -1 for no selection.
+    selectedBmIndex: -1,  // currently selected bookmark folder index. -1 for no selection.
+    isFolderSelection: () => (state.selectedTabIndex === -1 && state.selectedBmIndex !== -1),
+    isTabSelction: () => (state.selectedBmIndex === -1 && state.selectedTabIndex !== -1)
+};
+  
 
 function openTab(tab) {
     if (!tab || !tab.id) return;
@@ -17,29 +29,37 @@ function closeTab(tab) {
     if (!tab || !tab.id) return;
     window.chrome.tabs.remove(Number(tab.id));
 }
-
+function deselectTabs() {
+    state.selectedTabIndex = -1; // Important!
+    const els = Array.from(document.querySelectorAll('#tabs a'));
+    els.forEach(tabEl => tabEl.classList.remove('selected'));
+}
 function selectTab(selectedTabIndex = 0) {
     const els = Array.from(document.querySelectorAll('#tabs a'));
     // remove selected class from all tab elements
-    els.forEach(tabEl => tabEl.classList.remove('selected'));
+    deselectTabs();
     // add selected class to the selected tab element
     const selectedTabEl = els[selectedTabIndex] ? els[selectedTabIndex] : els[0];
+
+    // @todo: path state as parameter (kind of DI), better for Unit-testing
+    state.selectedTabIndex = els[selectedTabIndex] ? selectedTabIndex : 0;
+
     if (selectedTabEl) {
         selectedTabEl.classList.add('selected');        
     }
 }
 
 document.addEventListener('readystatechange', async () => {
-    let currentBookmarkIndex = 0;
     const tabsEl = document.getElementById('tabs');
     const bmsEl = document.querySelector('#bookmarks div');    
     function selectBookmark(index) {
+        deselectTabs();
         const bmEls = document.querySelectorAll('#bookmarks div a');
-        console.log('selectBookmark:', index);
         for (let bmEl of bmEls) {
             bmEl.classList.remove('selected');
         }
         const bmEl = bmEls[index] || bmEls[0];
+        state.selectedBmIndex = bmEls[index] ? index : 0;
         bmEl && bmEl.classList.add('selected');
         //bmEl.focus();
         bmEl && bmEl.scrollIntoView({
@@ -72,10 +92,14 @@ document.addEventListener('readystatechange', async () => {
         return false;
     });
     const bookmarks = (await getBookmarks()).filter(b => b.title && b.title.length);
-    bookmarks.forEach(bookmark => {
-        const el = createBookmarkEl(bookmark);
-        bmsEl.appendChild(el);
-    });
+    function renderBookmarks(bms) {
+        bmsEl.innerHTML = '';
+        bms.forEach(bookmark => {
+            const el = createBookmarkEl(bookmark);
+            bmsEl.appendChild(el);
+        });
+    }
+    renderBookmarks(bookmarks);
     async function loadAndRenderTabs() {
         const tabs = await getTabs({
             currentWindow: true,
@@ -97,58 +121,90 @@ document.addEventListener('readystatechange', async () => {
         }
     });
 
-    // add event listeners to document to capture key presses
-    let currentIndex = 0;
-    tabsEl.addEventListener('keyup', e => {
-
-        if (e.key === 'ArrowUp') {
-            currentBookmarkIndex = (currentBookmarkIndex === 0) ? bookmarks.length - 1 : currentBookmarkIndex - 1;
-            if (e.altKey) {
-                selectBookmark(currentBookmarkIndex - 10);
+    tabsEl.addEventListener('keydown', e => {
+        if (e.key == 'Enter') {
+            if (state.isTabSelction()) {
+                const selectedTabEl = tabEls[newIndex];
+                const selectedTabId = selectedTabEl.getAttribute('data-tab-id');
+                openTabHandler({id: selectedTabId});
             } else {
-                selectBookmark(currentBookmarkIndex);
-            }
-        } else if (e.key === 'ArrowDown') {
-            currentBookmarkIndex = (currentBookmarkIndex === bookmarks.length - 1) ? 0 : currentBookmarkIndex + 1;
-            if (e.altKey) {
-                selectBookmark(currentBookmarkIndex + 10);
-            } else {
-                selectBookmark(currentBookmarkIndex);
+                const selectedBm = bookmarks[state.selectedBmIndex];
+                if (selectedBm && selectedBm.children) {
+                    const selectedBm = bookmarks[state.selectedBmIndex];
+                    if (selectedBm && selectedBm.children) {                    
+                        renderBookmarks(selectedBm.children);
+                    }            
+                } else {
+                    const selectedBmEl = document.querySelector('#bookmarks a.selected'); 
+                    if (!isUrl(selectedBmEl.href)) {                        
+                        chrome.tabs.update({url: 'https://google.com/search?q=' + selectedBmEl.href});
+                    } else {
+                        chrome.tabs.update({url: selectedBmEl.href});
+                    }
+                }            
+    
             }
         }
-
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+    });
+    tabsEl.addEventListener('keyup', e => {
         const tabEls = Array.from(document.querySelectorAll('#tabs a'));
-        currentIndex = handleTabKeyPress(
+        state.selectedTabIndex = handleTabKeyPress(
             e.key,
             e.keyCode,
             e.shiftKey,
+            e.altKey,
             tabEls,
-            currentIndex,
+            state.selectedTabIndex,
             selectTab,
             closeTab,
             openTab
         );
         e.preventDefault();
         e.stopPropagation();
+        return false;
     });
     // todo: move it to outer scope, unit test it.
-    function handleTabKeyPress(key, keyCode, shiftKey = false, tabEls, currentIndex, selectTabHandler, closeTabHandler, openTabHandler) {
+    function handleTabKeyPress(key, keyCode, shiftKey = false, altKey = false, tabEls, currentIndex, selectTabHandler, closeTabHandler, openTabHandler) {
         if (isNaN(currentIndex) || currentIndex >= tabEls.length) currentIndex = 0;
         if (currentIndex < 0) currentIndex = tabEls.length;
         let newIndex = currentIndex;
         if (key === 'ArrowLeft' || (key === 'Tab' && shiftKey)) { // left arrow or Alt+Tab keys
-            newIndex = (currentIndex - 1);
-            if (newIndex < 0) newIndex = tabEls.length - 1;
-            selectTabHandler(newIndex);
+            if (state.isTabSelction()) {
+                newIndex = (currentIndex - 1);
+                if (newIndex < 0) newIndex = tabEls.length - 1;
+                selectTabHandler(newIndex);
+            }
         } else if (key === 'ArrowRight' || key === 'Tab') { // right arrow or tab key
-            newIndex = (currentIndex + 1);
-            selectTabHandler(newIndex);
-        } else if (key === 'Enter') { // enter
-            const selectedTabEl = tabEls[newIndex];
-            if (!selectedTabEl) return;
-            const selectedTabId = selectedTabEl.getAttribute('data-tab-id');
+            if (state.isTabSelction()) {
+                newIndex = (currentIndex + 1);
+                selectTabHandler(newIndex);
+            } else {
+                // check if bookmark is a folder
+                const selectedBm = bookmarks[state.selectedBmIndex];
+                if (selectedBm && selectedBm.children) {                    
+                    renderBookmarks(selectedBm.children);
+                }            
+            }
+        } else if (key == 'ArrowUp') {
+            state.selectedBmIndex = (state.selectedBmIndex === 0) 
+                ? bookmarks.length - 1 
+                : state.selectedBmIndex - 1;
 
-            openTabHandler({id: selectedTabId});
+            if (altKey) {
+                selectBookmark(state.selectedBmIndex - 10);
+            } else {
+                selectBookmark(state.selectedBmIndex);
+            }
+        } else if (key == 'ArowDown') {
+            state.selectedBmIndex = (state.selectedBmIndex === bookmarks.length - 1) ? 0 : state.selectedBmIndex + 1;
+            if (altKey) {
+                selectBookmark(state.selectedBmIndex + 10);
+            } else {
+                selectBookmark(state.selectedBmIndex);
+            }
         } else if (keyCode === 88) { // x
             const selectedTabEl = tabEls[newIndex];
             if (!selectedTabEl) return;
@@ -160,21 +216,3 @@ document.addEventListener('readystatechange', async () => {
     }
     
 });
-
-// @todo: Deside: Do I need input or the document focused by default???
-// setTimeout(() => {
-//     const searchInputEl = document.getElementById('q');
-//     searchInputEl.focus({
-//         focusVisible: true
-//     });
-// }, 666);
-
-
-function isUrl(value) {
-    try {
-        new URL(value);
-        return true;
-    } catch (e) {
-        return false;
-    }
-}

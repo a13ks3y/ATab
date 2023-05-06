@@ -127,11 +127,9 @@ input[type=search]:focus {
 #bookmarks {
     right: 0;
     position: absolute;
-    height: 19.666rem;
     top: 6.66rem;  
-    border-left: 0.333rem solid #6f6;
     max-width: 21rem;
-    height: 16rem;
+    height: calc(100vh - 12.666rem);
     overflow-x: hidden;
     overflow-y: scroll;
     background-color: #00000096;
@@ -148,20 +146,19 @@ input[type=search]:focus {
     font-size: 1.999rem;
     color: #6f6;
     text-shadow: 0 0 0.666rem #696;
-    margin: 1.111rem 1.333rem;
+    margin: 0 1.333rem;
     padding: 0.333rem 0.666rem;
-    height: 3.666rem;
-    max-height: 3rem;
-    border-bottom: 0.111rem solid #696f;
-
+    /* border-bottom: 0.111rem solid #696f; */
+    height: 2rem;
     width: 16rem;
     white-space: nowrap;
     overflow: visible;
     text-overflow: ellipsis;
+    line-height: 1;
+    vertical-align: middle;
 }
 #bookmarks a:hover, #bookmarks a.selected {
-    background-color: 0.111rem solid #6969;
-    border: 1px solid red;
+    background-color: #6969;
     color: cyan;
 }
 
