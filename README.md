@@ -12,7 +12,6 @@ Go to Releases. Do something. Do something else. Don't complain. Be strong. Give
 
 ## ToDo:
 
-### Extention:
 - refactor and unit-test keyboard handling (now it's a mess)
 - mouse events handler for bookmars and folders
 - add folder icon, or something, to show it's a folder, not a bookmark
@@ -21,8 +20,7 @@ Go to Releases. Do something. Do something else. Don't complain. Be strong. Give
 - Tab/Shit+Tab and arrows navigation between opened tabs
 - List of bookmarks (create specific folder for this purpose?)
 - "Close others" button, to close all tabs, except current/selected
-#### Landing page (gh-pages branch):
-- use ````javascript location.hash.substr(1).split('-').map(str => String.fromCodePoint(parseInt(str, 16))); ```` if present for sharing feature.
+
 
 ## 🛣 Road-Map
 - Implement the bookmarks panel!
