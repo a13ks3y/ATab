@@ -2,13 +2,17 @@
 ### Chrome Extension for Awesome people 
 Replaces your NewTab and Homepage in Chrome Browser.
 
+[Home Page](https://a13ks3y.github.io/ATab/)
+
 [comment]: <> ([Alternative version]&#40;https://a13ks3y.github.io/ATab/index.html&#41; - for mobile, to set up it as home page.)
 
 ![Screenshot](./src/assets/screenshot_2023-05-03_023856.png)
 
 ## Installation
 
-Go to Releases. Do something. Do something else. Don't complain. Be strong. Give up.
+Download from [Google Web Store](https://chrome.google.com/webstore/detail/atab/hffgbimhegfljiohccdgeneejdcpdgid?gclid=CjwKCAjwx_eiBhBGEiwA15gLN9Yk4Oji8hJeRIV01iU1Z4o9TCMUVAbO2TG5z-XBJs3r607Y-ajn_RoCeoMQAvD_BwE)
+
+Or install the latest version manualy (see notes below).
 
 ## ToDo:
 
