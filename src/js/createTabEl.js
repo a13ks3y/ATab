@@ -44,6 +44,20 @@ function createTabEl(tab, openTabHandler = () => {
     // setTimeout(() => tabEl.classList.remove(...sides), 333 * (currentSideIndex + 1));
     
     tabEl.addEventListener('click', e => openTabHandler(tab));
+    tabEl.addEventListener('keydown', e => {
+        console.log(e.code);
+        if (e.code === 'KeyX') {
+            closeTabHandler(tab);
+        }
+        if (e.code === 'Enter') {
+            openTabHandler(tab);
+        }
+        if ((e.code === 'KeyX') || (e.code === 'Enter')) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+    });
 
     tabEl.title = tab["title"];
     return tabEl;
