@@ -36,4 +36,12 @@ describe('Create Tab Element Function', () => {
         const tabImgEl = tabEl.querySelector('img');
         expect(tabImgEl.src).toEqual('http://localhost/icons/ATab-128x128.png');
     });
+    it('should has a tab index, if given', () => {
+        const tabMock = {
+            url: "chrome://newtab/"
+        };
+        const tabIndex = 42;
+        const tabEl = createTabEl(tabMock, ()=>{}, ()=>{}, 0, tabIndex);
+        expect(tabEl.tabIndex).toEqual(tabIndex);
+    });
 });

@@ -3,7 +3,12 @@ import {createTabEl} from "./createTabEl";
 export function renderTabs(tabsEl, tabs, openTab, closeTab) {
     tabsEl.innerHTML = '';
     const tabEls = tabs.map((tab, i) => {
-        const tabEl = createTabEl(tab, openTab, closeTab, i % 4);
+        const tabEl = createTabEl(
+            tab,
+            openTab,
+            closeTab,
+            i % 4,
+            i + 2);
         tabsEl.appendChild(tabEl);
         return tabEl;
     });
