@@ -45,10 +45,10 @@ body {
     width: 6.66rem;
     height: 6.66rem;
 }
-#tabs a.from-left-top { transform: translate(-666px, -666px); }
-#tabs a.from-right-top { transform: translate( 666px, -666px); }
-#tabs a.from-left-bottom { transform: translate(-666px, 666px); }
-#tabs a.from-right-bottom { transform: translate( 666px, 666px); }
+#tabs a.from-left-top { transform: translate(-666vw, -666vh); }
+#tabs a.from-right-top { transform: translate( 666vw, -666vh); }
+#tabs a.from-left-bottom { transform: translate(-666vw, 666vh); }
+#tabs a.from-right-bottom { transform: translate( 666vw, 666vh); }
 #tabs a {
     display: inline-block;
     margin: 0.666rem;
@@ -58,7 +58,8 @@ body {
     box-shadow: 0 0 1rem #ddd;
     transform: translate(0, 0);
     transition-property: transform;
-    transition-duration: 0.666s;
+    transition-duration: 0.999s;
+    transition-delay: 0s;
     padding: 0.666rem;
 
     text-align: center;
@@ -98,8 +99,9 @@ body {
     margin: auto;
 }
 #tabs {
-    display: block;
-    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     color: #333;
 }
 #search-form {
