@@ -15,21 +15,23 @@ Download from [Google Web Store](https://chrome.google.com/webstore/detail/atab/
 Or install the latest version manualy (see notes below).
 
 ## ToDo:
-- Showing tab title feature (not only when hovered, when focused too!)
+- Preserve focus when rerender tabs
+- ~~Showing tab title feature (not only when hovered, when focused too!)~~
 - Update screenshot(s) and video
 - Actually it's not "select", more like "focus" for both tabs and bookmarks. rename?
-- Refactor and unit-test keyboard handling (now it's a mess)
+- (In progress...) Refactor and unit-test keyboard handling (now it's a mess)
 - Mouse events handler for bookmarks and folders
 - Add folder icon, or something, to show it's a folder, not a bookmark
 - Anchor href attribute should not be undefined for the folder (think about what it should be?)
 - Add close-tab animation (when close tab button clicked)
-- ~~Tab/Shift+Tab~~ and arrows navigation between opened tabs
+- ~~Tab/Shift+Tab and arrows navigation between opened tabs~~
 - List of bookmarks (create specific folder for this purpose?)
 - "Close others" button, to close all tabs, except current/selected
 
 
 ## 🛣 Road-Map
 - Implement the bookmarks panel!
+- Arrow Up and Arrow Down to navigate tabs if more than one row (how???)
 - ~~Get rid of useless css/js libs and legacy code.~~
 - ~~Refactor html markup of override page~~
 - ~~Get rid of settings, or re-develop it.~~

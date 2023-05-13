@@ -3,7 +3,7 @@ window['chrome'] = {tabs: {
     update: () => {},
     remove: () => {}
 }};
-const {deselectTabs, selectTab} = require("./tabs");
+const {unselectAllTabs, selectTab} = require("./tabs");
 describe('tabs feature', () => {
     let tabs, tabsContainer;
 
@@ -17,11 +17,12 @@ describe('tabs feature', () => {
         tabs[0].classList.add('selected');
         tabs[2].classList.add('selected');
 
-        deselectTabs(tabsContainer);
+        unselectAllTabs(tabsContainer);
         expect(tabs[0].classList.contains('selected')).toBeFalsy();
         expect(tabs[1].classList.contains('selected')).toBeFalsy();
         expect(tabs[2].classList.contains('selected')).toBeFalsy();
-
+        // @todo: expect(tabs[0].blur).hasBeenCalled();
+        // @todo: expect(tabs[1].blur).hasBeenCalled();
     });
 
     it('selectTab should deselect all tabs, then select one', () => {
@@ -32,14 +33,15 @@ describe('tabs feature', () => {
             tabsContainer.appendChild(document.createElement('a')),
         ];
         tabs[0].classList.add('selected');
+        tabs[1].tabIndex = 27;
         tabs[2].classList.add('selected');
 
-        selectTab(tabsContainer, 1);
+        selectTab(tabsContainer, 27);
         // todo: expect unselectTabs function was called with tabsContainer parameter
         expect(tabs[0].classList.contains('selected')).toBeFalsy();
         expect(tabs[1].classList.contains('selected')).toBeTruthy();
         expect(tabs[2].classList.contains('selected')).toBeFalsy();
-
+        // todo: expect(tabs[1].focus).hasBeenCalled();
     });
 
     // todo: it('closeTab should call tabs.remove function')

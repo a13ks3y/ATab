@@ -38,8 +38,6 @@ body {
     box-shadow: 0 0 0.666rem #aaa;
     height: 6.66rem;
     width: 6.666rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 #tabs a img {
     display: block;
@@ -77,13 +75,13 @@ body {
 #tabs a button {
     position: absolute;
     right: -0.666rem;
-    top: -0.333rem;
+    top: -0.666rem;
     color: bisque;
     background: darkred;
     font-size: 1.666rem;
     font-family: monospace;
     line-height: 1.333rem;
-    width: 3.666rem;
+    width: 2.666rem;
     height: 2.666rem;
     vertical-align: middle;
     border: none;
@@ -96,8 +94,8 @@ body {
 #tabs a button svg {
     stroke: rosybrown;
     fill: palegoldenrod;
-    margin-top: 6px;
-    margin-left: -6px;
+    display: block;
+    margin: auto;
 }
 #tabs {
     display: block;
@@ -183,4 +181,27 @@ input[type=search]:focus {
   
 ::-webkit-scrollbar-thumb:hover {
     background: #111;
+}
+#tabs a h6 {
+    display: none;
+}
+#tabs a:hover h6,
+#tabs a:focus h6
+{
+    position: absolute;
+    bottom: 0;
+    width: max-content;
+    display: block;
+    margin: auto;
+    padding: 0 0.666rem;
+    border-radius: 0.666rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background-color: #eee;
+    color: #666;
+    z-index: 999;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.666rem;
 }

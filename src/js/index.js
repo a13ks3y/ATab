@@ -5,10 +5,34 @@ import { createBookmarkEl } from './createBookmarkEl.js';
 import { renderTabs } from './renderTabs.js';
 import { getTabs } from './getTabs.js';
 import { isUrl } from './isUrl.js';
-import {closeTab, openTab} from "./tabs";
+import {closeTab, openTab, selectTab, unselectAllTabs} from "./tabs";
+function getSelectedTabIndex(tabsEl) {
+    try {
+        const tabEl = tabsEl.querySelector('a:focus, a:hover, a.selected');
+        return tabEl ? parseInt(tabEl.tabIndex) : -1;
+    } catch {
+        return -1;
+    }
+}
+
 document.addEventListener('readystatechange', async () => {
     const tabsEl = document.getElementById('tabs');
     const bmsEl = document.querySelector('#bookmarks div');
+
+    tabsEl.addEventListener('keydown', e => {
+        const selectedTabIndex = getSelectedTabIndex(tabsEl);
+        // console.log('tabsEl:keydown:', e.code, 'selectedTabIndex:', selectedTabIndex);
+        switch(e.code) {
+            case 'ArrowLeft': selectTab(tabsEl, selectedTabIndex - 1); break;
+            case 'ArrowRight': selectTab(tabsEl, selectedTabIndex + 1); break;
+        }
+    });
+
+    document.addEventListener('keydown', e => {
+        switch(e.code) {
+            case 'Tab': unselectAllTabs(tabsEl); break;
+        }
+    })
 
     const clockEl = document.getElementById('clock');
     clockEl && setInterval(updateClock, 1000) && updateClock();
@@ -46,7 +70,7 @@ document.addEventListener('readystatechange', async () => {
             active: false
         });
     
-        renderTabs(tabsEl, tabs, openTab, closeTab);        
+        renderTabs(tabsEl, tabs, openTab, closeTab);
     }
     loadAndRenderTabs();
     window.chrome.tabs.onUpdated.addListener(async tabId => {
@@ -57,7 +81,7 @@ document.addEventListener('readystatechange', async () => {
             }
         });
     });
-    window.chrome.tabs.onActivated.addListener(e => setTimeout(loadAndRenderTabs, 0));
+    window.chrome.tabs.onActivated.addListener(() => setTimeout(loadAndRenderTabs, 0));
     window.chrome.tabs.onRemoved.addListener(e => {
     const tabEl = document.getElementById('tab-' + e);
         if (tabEl) {

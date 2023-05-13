@@ -1,19 +1,25 @@
 function unselectAllTabs(tabsEl) {
     const els = Array.from(tabsEl.querySelectorAll('a'));
-    els.forEach(tabEl => tabEl.classList.remove('selected'));
+    els.forEach(tabEl => {
+        tabEl.classList.remove('selected');
+        tabEl.blur();
+    });
 }
 
 function selectTab(tabsEl, selectedTabIndex = 0) {
+    // console.log('selectTab has been called', selectedTabIndex);
     const els = Array.from(tabsEl.querySelectorAll('a'));
     // remove selected class from all tab elements
     unselectAllTabs(tabsEl);
     // add selected class to the selected tab element
-    const selectedTabEl = selectedTabIndex === -1
-        ? els[els.length - 1]
-        : (els[selectedTabIndex] ? els[selectedTabIndex] : els[0]);
-
+    let selectedTabEl = els.find(e => e.tabIndex == selectedTabIndex);
+    if (!selectedTabEl) {
+        selectedTabEl = selectedTabIndex >= els.length ? els[0] : els[els.length - 1];
+    }
     if (selectedTabEl) {
+        // @todo: consider using just focus, and do not bother with "selected" class
         selectedTabEl.classList.add('selected');
+        selectedTabEl.focus();
     }
 }
 
@@ -30,7 +36,7 @@ function closeTab(tab) {
     window.chrome.tabs.remove(Number(tab.id));
 }
 
-exports.deselectTabs = unselectAllTabs;
+exports.unselectAllTabs = unselectAllTabs;
 exports.selectTab = selectTab;
 exports.closeTab = closeTab;
 exports.openTab = openTab;
