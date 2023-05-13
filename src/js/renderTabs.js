@@ -12,8 +12,8 @@ export function renderTabs(tabsEl, tabs, openTab, closeTab) {
         tabsEl.appendChild(tabEl);
         return tabEl;
     });
-    // @todo: refactor this part, decide wich effect fits best (or make it optional?)
-    // JUST APEAR
+    // @todo: refactor this part, decide which effect fits best (or make it optional?)
+    // JUST APPEAR
     // setTimeout(()=> {
     //     for (let tabEl of tabEls) {
     //         const sides = [
@@ -26,7 +26,7 @@ export function renderTabs(tabsEl, tabs, openTab, closeTab) {
     //         tabEl.classList.remove(...sides);                
     //     }
     // }, 0);
-    // APEAR ONE BY ONE:
+    // APPEAR ONE BY ONE:
     tabEls.forEach((tabEl, i) => {
         setTimeout(() => removeSides(tabEl), 66 * (i + 1));
     });
