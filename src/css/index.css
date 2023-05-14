@@ -45,10 +45,10 @@ body {
     width: 6.66rem;
     height: 6.66rem;
 }
-#tabs a.from-left-top { transform: translate(-666vw, -666vh); }
-#tabs a.from-right-top { transform: translate( 666vw, -666vh); }
-#tabs a.from-left-bottom { transform: translate(-666vw, 666vh); }
-#tabs a.from-right-bottom { transform: translate( 666vw, 666vh); }
+#tabs a.from-left-top { transform: translate(-333vw, -666vh); }
+#tabs a.from-right-top { transform: translate(-333vw, -666vh); }
+#tabs a.from-left-bottom { transform: translate(-333vw, 666vh); }
+#tabs a.from-right-bottom { transform: translate(-333vw, 666vh); }
 #tabs a {
     display: inline-block;
     margin: 0.666rem;
@@ -71,6 +71,7 @@ body {
     transform: scale(1.666);
     z-index: 666;
     outline: none;
+    /* wtf???*/
 }
 
 #tabs a button {
@@ -89,7 +90,6 @@ body {
     outline: none;
     cursor: pointer;
     padding: 0.111rem;
-    /*border: 1px solid bisque;*/
     border-radius: 0.666rem;
 }
 #tabs a button svg {
@@ -107,23 +107,23 @@ body {
 #search-form {
     width: 100%;
 }
-input[type=search] {
+#q {
+    
     min-width: 66.6%;
     margin: 1.666rem;
     outline: none;
-    /* box-shadow: 0 0 0.666rem #6669; */
+    border: none;
     background: transparent;
-    border: 1px solid darkgreen;
     font-size: 3.33rem;
     line-height: 6.666rem;
     padding: 0.666rem;
     color: #eee;
+    box-shadow: none;
     font-family: Consolas, "Lucida Console", serif;
 }
-input[type=search]:focus {
+#q:focus {
     outline: none;
-    /* border: none; */
-    /* box-shadow: 0 0 0.666rem #7779; */
+    border: 1px solid darkgreen;
 }
 #bookmarks {
     /* todo: uncomment when  ready */

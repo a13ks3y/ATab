@@ -1,14 +1,12 @@
 function createTabEl(tab, openTabHandler = () => {
 }, closeTabHandler = () => {
-}, currentSideIndex = 0, tabIndex = null) {
+}, currentSideIndex = 0, tabIndex = 0) {
     const tabEl = document.createElement('a');
     tabEl.id = 'tab-' + tab.id;
     tabEl.setAttribute('data-tab-id', tab.id);
+    tabEl.setAttribute('tabIndex', tabIndex.toString(10));
     if (tab.url === "chrome://newtab/") {
         tab["favIconUrl"] = "icons/ATab-128x128.png"
-    }
-    if (tabIndex !== null) {
-        tabEl.tabIndex = tabIndex;
     }
     const favIconUrl = tab["favIconUrl"] || (tab.url === "chrome://newtab/" ? "icons/ATab-128x128.png" : null);
     const tabImgEl = document.createElement('img');
