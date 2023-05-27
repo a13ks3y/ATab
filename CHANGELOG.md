@@ -2,6 +2,10 @@
 
 ### Any notable changes and version notes will be kept in this file.
 
+## v2.2.1
+- Fix possible null pointer exeption when loading bookmarks 😎
+- 
+
 ## v2.2.0
 - Toggle bookmarks panel by pressing "b" key
 - Do not refresh tabs if it's count not changed

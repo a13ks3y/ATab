@@ -41,7 +41,7 @@ document.addEventListener('readystatechange', async () => {
     document.addEventListener('keydown', e => {
         switch(e.code) {
             case 'Tab': unselectAllTabs(tabsEl); break;
-            case 'KeyB': toggleBookmarksPanel(bmsEl); break;
+            case 'KeyB': if (e.target !== searchForm.q) toggleBookmarksPanel(bmsEl); break;
         }
     })
 
@@ -60,6 +60,9 @@ document.addEventListener('readystatechange', async () => {
 
         if (isUrl(searchQuery)) {
             location.replace(searchQuery);
+
+        } else if (/^[a-zA-Z]+\.com$/i.test(searchQuery)) {
+            location.replace('https://' + searchQuery);
         } else {
             const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchQuery)}`;
             location.replace(googleSearchUrl);

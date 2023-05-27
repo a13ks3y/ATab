@@ -1,8 +1,13 @@
 function getBookmarks() {
     return new Promise(resolve => {
         chrome.bookmarks.getTree(tree => {
-            let result = tree[0].children[0].children;
-            resolve(result);
+            try {
+                let result = tree[0].children[0].children;
+                resolve(result);    
+            } catch (e) {
+                console.error(e);
+                resolve(tree);
+            }
         });
     });
 }
