@@ -6,6 +6,16 @@ import { renderTabs } from './renderTabs.js';
 import { getTabs } from './getTabs.js';
 import { isUrl } from './isUrl.js';
 import {closeTab, openTab, selectTab, unselectAllTabs} from "./tabs";
+
+
+function toggleBookmarksPanel() {
+    const bmsContainerEl = document.querySelector('#bookmarks');
+    bmsContainerEl.classList.toggle('hidden');
+    if (!bmsContainerEl.classList.contains('hidden')) {
+        bmsContainerEl.focus();
+    }
+}
+
 function getSelectedTabIndex(tabsEl) {
     try {
         const tabEl = tabsEl.querySelector('a:focus, a:hover, a.selected');
@@ -31,6 +41,7 @@ document.addEventListener('readystatechange', async () => {
     document.addEventListener('keydown', e => {
         switch(e.code) {
             case 'Tab': unselectAllTabs(tabsEl); break;
+            case 'KeyB': toggleBookmarksPanel(bmsEl); break;
         }
     })
 
@@ -64,13 +75,16 @@ document.addEventListener('readystatechange', async () => {
         });
     }
     renderBookmarks(bookmarks);
+    let lastTabs = [];
     async function loadAndRenderTabs() {
         const tabs = await getTabs({
             currentWindow: true,
             active: false
         });
-    
-        renderTabs(tabsEl, tabs, openTab, closeTab);
+        if (tabs.length !== lastTabs.length) {
+            lastTabs = tabs;
+            renderTabs(tabsEl, tabs, openTab, closeTab);
+        }
     }
     loadAndRenderTabs();
     window.chrome.tabs.onUpdated.addListener(async tabId => {

@@ -2,6 +2,10 @@
 
 ### Any notable changes and version notes will be kept in this file.
 
+## v2.2.0
+- Toggle bookmarks panel by pressing "b" key
+- Do not refresh tabs if it's count not changed
+
 ## v2.1.4
 - Bookmarks finaly working as expected. Not perfect, but at least it possible to use.
 

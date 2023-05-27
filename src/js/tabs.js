@@ -24,7 +24,29 @@ function selectTab(tabsEl, selectedTabIndex = 0) {
 }
 
 if (!(window['chrome'] && window['chrome']['tabs'])) {
-    throw new Error("THIS CODE SHOULD RUN ONLY AS CHROME EXTENSION!!!");
+    // throw new Error("THIS CODE SHOULD RUN ONLY AS CHROME EXTENSION!!!");
+    window['chrome'] = window['chrome'] || {};
+    window['chrome']['tabs'] = window['chrome']['tabs'] || {
+        query:()=>[{title:'Test Tab'}],
+
+    };
+    window['chrome']['bookmarks'] = window['chrome']['bookmarks'] || {
+        getTree: () => [
+            {
+                title: 'wtf???',
+                children: [
+                    {children: [{
+                        title: 'WTF',
+                        children:[
+                        {
+                            title: "Test Bookmark #1",
+                            url: "https://youtube.com/"
+                        }
+                    ]}]}
+                ]
+            }
+        ]
+    }
 }
 
 function openTab(tab) {
