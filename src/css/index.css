@@ -71,10 +71,9 @@ body {
     position: relative;
 }
 #tabs a:hover, #tabs a:focus, #tabs a.selected {
-    transform: scale(1.666);
+    /* transform: scale(1.666); */
     z-index: 666;
     outline: none;
-    /* wtf???*/
 }
 
 #tabs a button {
@@ -209,5 +208,3 @@ body {
     font-size: 1rem;
     line-height: 1.666rem;
 }
-
-

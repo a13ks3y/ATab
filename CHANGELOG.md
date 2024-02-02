@@ -2,6 +2,9 @@
 
 ### Any notable changes and version notes will be kept in this file.
 
+## v2.2.2
+- Remove annoying transform effect to address issue when trying to close the tab, and the "x" button is moving, so you can accedently go to a tab, instead of close it.
+
 ## v2.2.1
 - Fix possible null pointer exeption when loading bookmarks 😎
 - 
