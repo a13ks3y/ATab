@@ -94,6 +94,53 @@ body {
     padding: 0.111rem;
     border-radius: 0.666rem;
 }
+#tabs a button.close-btn {
+    position: absolute;
+    right: -0.666rem;
+    top: -0.666rem;
+    color: bisque;
+    background: darkred;
+    font-size: 1.666rem;
+    font-family: monospace;
+    line-height: 1.333rem;
+    width: 2.666rem;
+    height: 2.666rem;
+    vertical-align: middle;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0.111rem;
+    border-radius: 0.666rem;
+}
+
+#tabs a button.close-others-btn {
+    /* todo: uncoment when design is ready */
+    display: none;
+    position: absolute;
+    left: -0.666rem;
+    top: -0.666rem;
+    color: #eee;
+    background: #555;
+    font-size: 1.666rem;
+    font-family: monospace;
+    line-height: 1.333rem;
+    width: 2.666rem;
+    height: 2.666rem;
+    vertical-align: middle;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0.111rem;
+    border-radius: 0.666rem;
+    opacity: 0.7;
+    transition: opacity 0.2s ease-in-out;
+}
+
+#tabs a button.close-others-btn:hover {
+    opacity: 1;
+    background: #777;
+}
+
 #tabs a button svg {
     stroke: rosybrown;
     fill: palegoldenrod;
@@ -164,6 +211,17 @@ body {
 #bookmarks a:hover, #bookmarks a:focus, #bookmarks a.selected {
     background-color: #6969;
     color: cyan;
+}
+#bookmarks a.bookmark-folder {
+    color: #ffd700;
+    text-shadow: 0 0 0.666rem #996;
+}
+
+#bookmarks a.bookmark-folder:hover, 
+#bookmarks a.bookmark-folder:focus, 
+#bookmarks a.bookmark-folder.selected {
+    background-color: #6969;
+    color: #ffc;
 }
 
 ::-webkit-scrollbar {

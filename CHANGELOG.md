@@ -2,6 +2,12 @@
 
 ### Any notable changes and version notes will be kept in this file.
 
+## v2.2.4
+- Added "Close others" button to close all tabs except the current one
+- Added folder icons for bookmark folders to distinguish them from regular bookmarks
+- Fixed focus preservation when tabs are rerendered, improving keyboard navigation
+- Improved visual styling for bookmark folders
+
 ## v2.2.3
 - Fixed Chrome Web Store compliance issue by using Chrome Search API instead of hardcoded searches
 - Now respects user's selected search provider settings

@@ -35,8 +35,19 @@ function closeTab(tab) {
     if (!tab || !tab.id) return;
     window.chrome.tabs.remove(Number(tab.id));
 }
+function closeOtherTabs(currentTabId) {
+    if (!currentTabId) return;
+    window.chrome.tabs.query({currentWindow: true}, tabs => {
+        tabs.forEach(tab => {
+            if (tab.id !== Number(currentTabId)) {
+                closeTab(tab);
+            }
+        });
+    });
+}
 
 exports.unselectAllTabs = unselectAllTabs;
 exports.selectTab = selectTab;
 exports.closeTab = closeTab;
 exports.openTab = openTab;
+exports.closeOtherTabs = closeOtherTabs;
