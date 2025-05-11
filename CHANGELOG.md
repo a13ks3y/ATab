@@ -2,6 +2,13 @@
 
 ### Any notable changes and version notes will be kept in this file.
 
+## v2.3.0
+- Added keyboard navigation and mouse click handling for bookmark folders
+- Implemented expand/collapse functionality for bookmark folders 
+- Enhanced keyboard navigation between bookmarks and folders
+- Added visual feedback when folder is expanded/collapsed
+- Improved folder accessibility with proper ARIA attributes
+
 ## v2.2.4
 - Added "Close others" button to close all tabs except the current one
 - Added folder icons for bookmark folders to distinguish them from regular bookmarks

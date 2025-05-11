@@ -215,6 +215,7 @@ body {
 #bookmarks a.bookmark-folder {
     color: #ffd700;
     text-shadow: 0 0 0.666rem #996;
+    cursor: pointer;
 }
 
 #bookmarks a.bookmark-folder:hover, 
@@ -222,6 +223,12 @@ body {
 #bookmarks a.bookmark-folder.selected {
     background-color: #6969;
     color: #ffc;
+}
+
+#bookmarks .folder-children {
+    margin-left: 1.5rem;
+    border-left: 2px solid rgba(255, 215, 0, 0.5);
+    padding-left: 0.5rem;
 }
 
 ::-webkit-scrollbar {

@@ -11,9 +11,14 @@ function createBookmarkEl(bookmark) {
     if (isFolder) {
         el.classList.add('bookmark-folder');
         el.innerHTML = '📁 ' + bookmark.title;
-        // For folders, we don't want to navigate when clicked
+        // Set ARIA attributes for better accessibility
+        el.setAttribute('role', 'button');
+        el.setAttribute('aria-expanded', 'false');
+        el.setAttribute('aria-controls', `folder-children-${bookmark.id}`);
+        // For folders, we set href to # to make them navigable but prevent default action
         el.href = '#';
-        // We could implement folder expansion here in the future
+        // Store bookmark ID for reference
+        el.dataset.bookmarkId = bookmark.id;
     } else {
         el.href = bookmark.url || '#';
         el.innerHTML = bookmark.title;

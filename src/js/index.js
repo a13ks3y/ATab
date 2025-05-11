@@ -5,7 +5,9 @@ import { createBookmarkEl } from './createBookmarkEl.js';
 import { renderTabs } from './renderTabs.js';
 import { getTabs } from './getTabs.js';
 import { isUrl } from './isUrl.js';
-import {closeTab, openTab, selectTab, unselectAllTabs} from "./tabs";
+import { closeTab, openTab, selectTab, unselectAllTabs } from "./tabs";
+import { initFolderHandlers } from './bookmarkFolders.js';
+import { getSelectedBookmarkIndex, selectNextBookmark, selectPrevBookmark } from './bookmarks.js';
 
 
 function toggleBookmarksPanel() {
@@ -28,6 +30,7 @@ function getSelectedTabIndex(tabsEl) {
 document.addEventListener('readystatechange', async () => {
     const tabsEl = document.getElementById('tabs');
     const bmsEl = document.querySelector('#bookmarks div');
+    const bmsContainerEl = document.getElementById('bookmarks');
 
     tabsEl.addEventListener('keydown', e => {
         const selectedTabIndex = getSelectedTabIndex(tabsEl);
@@ -41,7 +44,22 @@ document.addEventListener('readystatechange', async () => {
     document.addEventListener('keydown', e => {
         switch(e.code) {
             case 'Tab': unselectAllTabs(tabsEl); break;
-            case 'KeyB': if (e.target !== searchForm.q) toggleBookmarksPanel(bmsEl); break;
+            case 'KeyB': if (e.target !== searchForm.q) toggleBookmarksPanel(); break;
+        }
+        
+        // Handle bookmark navigation if bookmarks panel is visible
+        if (!bmsContainerEl.classList.contains('hidden')) {
+            const selectedIndex = getSelectedBookmarkIndex(bmsContainerEl);
+            switch(e.code) {
+                case 'ArrowUp':
+                    e.preventDefault();
+                    selectPrevBookmark(bmsContainerEl, selectedIndex);
+                    break;
+                case 'ArrowDown': 
+                    e.preventDefault();
+                    selectNextBookmark(bmsContainerEl, selectedIndex);
+                    break;
+            }
         }
     })
 
@@ -86,6 +104,9 @@ document.addEventListener('readystatechange', async () => {
             const el = createBookmarkEl(bookmark);
             bmsEl.appendChild(el);
         });
+        
+        // Initialize folder handlers after rendering bookmarks
+        initFolderHandlers(bmsContainerEl, bookmarks, createBookmarkEl);
     }
     renderBookmarks(bookmarks);
     let lastTabs = [];
