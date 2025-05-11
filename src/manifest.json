@@ -6,7 +6,7 @@
   "permissions": ["tabs", "bookmarks", "search"],
 
   "name": "ATab",
-  "version": "2.2.3",
+  "version": "2.3.1",
   "description": "New Tab extension for Awesome people.",
   "homepage_url": "https://github.com/a13ks3y/ATab",
   "icons": {
