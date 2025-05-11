@@ -60,12 +60,22 @@ document.addEventListener('readystatechange', async () => {
 
         if (isUrl(searchQuery)) {
             location.replace(searchQuery);
-
         } else if (/^[a-zA-Z]+\.com$/i.test(searchQuery)) {
             location.replace('https://' + searchQuery);
         } else {
-            const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchQuery)}`;
-            location.replace(googleSearchUrl);
+            // Use Chrome Search API instead of hardcoding Google search
+            chrome.search.query({
+                text: searchQuery,
+                disposition: 'CURRENT_TAB'
+            }, () => {
+                // Handle any errors or fallback if needed
+                if (chrome.runtime.lastError) {
+                    console.error(chrome.runtime.lastError);
+                    // Fallback to opening a new tab with the query
+                    // without specifying the search provider
+                    chrome.tabs.update({ url: `search:${searchQuery}` });
+                }
+            });
         }
         return false;
     });

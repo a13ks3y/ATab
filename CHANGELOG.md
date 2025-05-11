@@ -2,6 +2,10 @@
 
 ### Any notable changes and version notes will be kept in this file.
 
+## v2.2.3
+- Fixed Chrome Web Store compliance issue by using Chrome Search API instead of hardcoded searches
+- Now respects user's selected search provider settings
+
 ## v2.2.2
 - Remove annoying transform effect to address issue when trying to close the tab, and the "x" button is moving, so you can accedently go to a tab, instead of close it.
 
