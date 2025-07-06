@@ -25,6 +25,33 @@ function getSelectedTabIndex(tabsEl) {
     }
 }
 
+// Ensure only one ATab instance per window
+async function ensureOnlyOneATabInstance() {
+    try {
+        const tabs = await chrome.tabs.query({ currentWindow: true });
+        const currentTab = tabs.find(tab => tab.active);
+        
+        // Find all new tab instances (chrome://newtab/ or our extension)
+        const newTabInstances = tabs.filter(tab => {
+            const isNewTab = tab.url === 'chrome://newtab/';
+            const isATabExtension = tab.url.includes('chrome-extension://') && 
+                                   (tab.url.includes('index.html') || tab.url.endsWith('/'));
+            return (isNewTab || isATabExtension) && tab.id !== currentTab.id;
+        });
+        
+        // Close duplicate instances
+        for (const tabToClose of newTabInstances) {
+            try {
+                await chrome.tabs.remove(tabToClose.id);
+            } catch (error) {
+                // Tab might have been closed already, ignore
+            }
+        }
+    } catch (error) {
+        console.error('Error ensuring single ATab instance:', error);
+    }
+}
+
 document.addEventListener('readystatechange', async () => {
     const tabsEl = document.getElementById('tabs');
     const bmsEl = document.querySelector('#bookmarks div');
@@ -98,8 +125,11 @@ document.addEventListener('readystatechange', async () => {
             lastTabs = tabs;
             renderTabs(tabsEl, tabs, openTab, closeTab);
         }
-    }
-    loadAndRenderTabs();
+    }    loadAndRenderTabs();
+    
+    // Check for duplicate ATab instances when the page loads
+    ensureOnlyOneATabInstance();
+    
     window.chrome.tabs.onUpdated.addListener(async tabId => {
         window.chrome.tabs.query({active:true}, tabs => {
             const currentTab = tabs[0];
@@ -107,8 +137,14 @@ document.addEventListener('readystatechange', async () => {
                 setTimeout(loadAndRenderTabs, 0);
             }
         });
+        // Also check for duplicates when tabs are updated
+        setTimeout(ensureOnlyOneATabInstance, 100);
     });
-    window.chrome.tabs.onActivated.addListener(() => setTimeout(loadAndRenderTabs, 0));
+    window.chrome.tabs.onActivated.addListener(() => {
+        setTimeout(loadAndRenderTabs, 0);
+        // Check for duplicates when switching tabs
+        setTimeout(ensureOnlyOneATabInstance, 100);
+    });
     window.chrome.tabs.onRemoved.addListener(e => {
     const tabEl = document.getElementById('tab-' + e);
         if (tabEl) {

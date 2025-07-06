@@ -15,6 +15,7 @@ Download from [Google Web Store](https://chrome.google.com/webstore/detail/atab/
 Or install the latest version manualy (see notes below).
 
 ## ToDo:
+- ~~Ensure only one ATab instance per browser window~~ ✅ **DONE v2.2.4**
 - Preserve focus when rerender tabs
 - ~~Showing tab title feature (not only when hovered, when focused too!)~~
 - Update screenshot(s) and video

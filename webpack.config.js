@@ -3,11 +3,12 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 module.exports = {
-    mode: 'development',
-    entry: './src/js/index.js',
+    mode: 'development',    entry: {
+        bundle: './src/js/index.js'
+    },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
+        filename: '[name].js',
     },
     devtool: 'inline-source-map',
     devServer: {
@@ -21,6 +22,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: 'src/index.html',
+            chunks: ['bundle'] // Only include bundle.js in the HTML
         }),
         new MiniCssExtractPlugin(),
         new CopyWebpackPlugin({

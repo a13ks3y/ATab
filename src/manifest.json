@@ -6,8 +6,8 @@
   "permissions": ["tabs", "bookmarks", "search"],
 
   "name": "ATab",
-  "version": "2.2.3",
-  "description": "New Tab extension for Awesome people.",
+  "version": "2.2.4",
+  "description": "New Tab extension for Awesome people. Now ensures only one instance per window.",
   "homepage_url": "https://github.com/a13ks3y/ATab",
   "icons": {
     "16": "icons/ATab-16x16.png",

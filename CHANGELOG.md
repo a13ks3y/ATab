@@ -2,6 +2,12 @@
 
 ### Any notable changes and version notes will be kept in this file.
 
+## v2.2.4
+- **NEW FEATURE**: Ensures only one ATab instance per browser window
+- Automatically close duplicate new tab instances.
+- From user perspective, there will never be more than one new tab (ATab) opened per window
+- Improved user experience when using Ctrl+T or clicking the new tab button multiple times
+
 ## v2.2.3
 - Fixed Chrome Web Store compliance issue by using Chrome Search API instead of hardcoded searches
 - Now respects user's selected search provider settings
