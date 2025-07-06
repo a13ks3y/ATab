@@ -4,8 +4,6 @@ Replaces your NewTab and Homepage in Chrome Browser.
 
 [Home Page](https://a13ks3y.github.io/ATab/)
 
-[comment]: <> ([Alternative version]&#40;https://a13ks3y.github.io/ATab/index.html&#41; - for mobile, to set up it as home page.)
-
 ![Screenshot](./src/assets/screenshot_2023-05-03_023856.png)
 
 ## Installation
