@@ -1,25 +1,25 @@
-function unselectAllTabs(tabsEl) {
+function unfocusAllTabs(tabsEl) {
     const els = Array.from(tabsEl.querySelectorAll('a'));
     els.forEach(tabEl => {
-        tabEl.classList.remove('selected');
+        tabEl.classList.remove('focused');
         tabEl.blur();
     });
 }
 
-function selectTab(tabsEl, selectedTabIndex = 0) {
-    // console.log('selectTab has been called', selectedTabIndex);
+function focusTab(tabsEl, focusedTabIndex = 0) {
+    // console.log('focusTab has been called', focusedTabIndex);
     const els = Array.from(tabsEl.querySelectorAll('a'));
-    // remove selected class from all tab elements
-    unselectAllTabs(tabsEl);
-    // add selected class to the selected tab element
-    let selectedTabEl = els.find(e => e.tabIndex == selectedTabIndex);
-    if (!selectedTabEl) {
-        selectedTabEl = selectedTabIndex >= els.length ? els[0] : els[els.length - 1];
+    // remove focused class from all tab elements
+    unfocusAllTabs(tabsEl);
+    // add focused class to the focused tab element
+    let focusedTabEl = els.find(e => e.tabIndex == focusedTabIndex);
+    if (!focusedTabEl) {
+        focusedTabEl = focusedTabIndex >= els.length ? els[0] : els[els.length - 1];
     }
-    if (selectedTabEl) {
-        // @todo: consider using just focus, and do not bother with "selected" class
-        selectedTabEl.classList.add('selected');
-        selectedTabEl.focus();
+    if (focusedTabEl) {
+        // @todo: consider using just focus, and do not bother with "focused" class
+        focusedTabEl.classList.add('focused');
+        focusedTabEl.focus();
     }
 }
 
@@ -46,8 +46,29 @@ function closeOtherTabs(currentTabId) {
     });
 }
 
-exports.unselectAllTabs = unselectAllTabs;
-exports.selectTab = selectTab;
+function toggleMuteTab(tabId) {
+    if (!tabId) return;
+    const id = Number(tabId);
+    window.chrome.tabs.get(id, (tab) => {
+        if (window.chrome.runtime.lastError || !tab) return;
+        const currentMuted = tab.mutedInfo ? tab.mutedInfo.muted : false;
+        window.chrome.tabs.update(id, { muted: !currentMuted });
+    });
+}
+
+function togglePinTab(tabId) {
+    if (!tabId) return;
+    const id = Number(tabId);
+    window.chrome.tabs.get(id, (tab) => {
+        if (window.chrome.runtime.lastError || !tab) return;
+        window.chrome.tabs.update(id, { pinned: !tab.pinned });
+    });
+}
+
+exports.unfocusAllTabs = unfocusAllTabs;
+exports.focusTab = focusTab;
 exports.closeTab = closeTab;
 exports.openTab = openTab;
 exports.closeOtherTabs = closeOtherTabs;
+exports.toggleMuteTab = toggleMuteTab;
+exports.togglePinTab = togglePinTab;

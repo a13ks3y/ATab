@@ -1,3 +1,5 @@
+const { unfocusBookmarks } = require('./bookmarks.js');
+
 /**
  * Handles expanding and collapsing bookmark folders
  */
@@ -124,6 +126,18 @@ function initFolderHandlers(containerEl, bookmarks, renderFunction) {
         const folderEl = e.target.closest('a.bookmark-folder');
         if (folderEl) {
             handleFolderKeyDown(e, folderEl, bookmarks, renderFunction);
+        }
+    });
+
+    // Handle mouse events for selection highlight
+    containerEl.addEventListener('mouseover', (e) => {
+        const target = e.target.closest('a');
+        if (target) {
+            unfocusBookmarks(containerEl);
+            target.classList.add('focused');
+            if (document.activeElement && containerEl.contains(document.activeElement)) {
+                document.activeElement.blur();
+            }
         }
     });
 }

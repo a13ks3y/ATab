@@ -6,11 +6,208 @@
     <title>ATab</title>
 </head>
 <body>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">🌙</button>
+    <button id="settings-toggle" class="settings-toggle" aria-label="Settings" aria-expanded="false" aria-controls="settings-modal">⚙️</button>
+    <button id="notes-toggle" class="notes-toggle" aria-label="Quick Notes" aria-expanded="false" aria-controls="quick-notes-widget">📝</button>
+    <button id="pomodoro-toggle" class="pomodoro-toggle" aria-label="Pomodoro Timer" aria-expanded="false" aria-controls="pomodoro-widget" aria-haspopup="true">🍅</button>
+    <button id="zen-mode-toggle" class="zen-mode-toggle" aria-label="Zen Mode" aria-pressed="false">🧘</button>
+    <button id="sessions-toggle" class="sessions-toggle" aria-label="Saved Sessions" aria-expanded="false" aria-controls="sessions-modal">💾</button>
+    <button id="reading-list-toggle" class="reading-list-toggle" aria-label="Reading List" aria-expanded="false" aria-controls="reading-list-sidebar">📖</button>
+    <button id="analytics-toggle" class="analytics-toggle" aria-label="Analytics" aria-expanded="false" aria-controls="analytics-modal">📊</button>
+    
+    <div id="weather-widget" class="weather-widget hidden">
+        <div class="weather-icon"></div>
+        <div class="weather-info">
+            <div class="weather-temp"></div>
+            <div class="weather-desc"></div>
+            <div class="weather-location"></div>
+        </div>
+    </div>
+
     <h1 id="clock"></h1>
-    <main id="tabs"></main>
-    <aside id="bookmarks" class="hidden"><div></div></aside>
-    <form id="search-form">
-        <input tabindex="1" aria-autocomplete="none" autocomplete="off" id="q" type="text" name="q" placeholder="🤔" />
+    <main id="tabs" aria-label="Open Tabs"></main>
+    <aside id="bookmarks" class="hidden" role="region" aria-label="Bookmarks" tabindex="-1"><div></div></aside>
+    <aside id="reading-list-sidebar" class="hidden" role="region" aria-label="Reading List" tabindex="-1">
+        <div class="reading-list-header">
+            <h3>Reading List</h3>
+            <button id="close-reading-list" aria-label="Close Reading List">&times;</button>
+        </div>
+        <div class="reading-list-content"></div>
+    </aside>
+    
+    <div id="quick-notes-widget" class="hidden">
+        <div class="notes-header">
+            <h3>Quick Notes</h3>
+            <button id="close-notes" aria-label="Close Notes">&times;</button>
+        </div>
+        <textarea id="quick-notes-area" placeholder="Jot down your thoughts..."></textarea>
+    </div>
+
+    <div id="pomodoro-widget" class="hidden">
+        <div class="pomodoro-header">
+            <h3>Pomodoro</h3>
+            <button id="close-pomodoro" aria-label="Close Pomodoro">&times;</button>
+        </div>
+        <div class="pomodoro-modes">
+            <button data-mode="work" class="active">Work</button>
+            <button data-mode="shortBreak">Short Break</button>
+            <button data-mode="longBreak">Long Break</button>
+        </div>
+        <div class="pomodoro-timer">25:00</div>
+        <div class="pomodoro-controls">
+            <button id="pomodoro-start">Start</button>
+            <button id="pomodoro-reset">Reset</button>
+        </div>
+    </div>
+
+    <div id="analytics-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="analytics-title">
+        <div class="modal-content">
+            <button id="close-analytics" class="close-modal" aria-label="Close Analytics">&times;</button>
+            <h2 id="analytics-title">Usage Analytics</h2>
+            <div id="analytics-charts-container">
+                <!-- Charts will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <form id="search-form" role="search">
+        <input aria-label="Search tabs and bookmarks" aria-autocomplete="none" autocomplete="off" id="q" type="text" name="q" placeholder="🤔" />
     </form>
+    
+    <div id="settings-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Close Settings">&times;</button>
+            <h2 id="settings-title">Settings</h2>
+            <div class="settings-form">
+                <div class="settings-group">
+                    <label for="setting-density">Grid Density</label>
+                    <select id="setting-density">
+                        <option value="compact">Compact</option>
+                        <option value="normal">Normal</option>
+                        <option value="spacious">Spacious</option>
+                    </select>
+                </div>
+                <div class="settings-group">
+                    <label for="setting-bg-image">Background Image</label>
+                    <div style="display: flex; gap: 10px; align-items: stretch;">
+                        <input type="text" id="setting-bg-image" placeholder="https://example.com/image.jpg" style="flex: 1;">
+                        <label for="setting-bg-file" class="settings-btn" style="flex: 0 0 auto; display: flex; align-items: center; justify-content: center; margin: 0;">
+                            Upload
+                        </label>
+                        <input type="file" id="setting-bg-file" accept="image/*" style="display: none;">
+                    </div>
+                    <div id="bg-file-info" style="font-size: 0.9em; margin-top: 5px; display: none; align-items: center; gap: 10px;">
+                        <span style="opacity: 0.8;">Current: Custom Upload</span>
+                        <button id="bg-file-clear" style="background: none; border: none; font-size: 1.2em; cursor: pointer; color: var(--btn-close-bg); padding: 0;">&times;</button>
+                    </div>
+                </div>
+                <!-- Weather Settings -->
+                <div class="settings-group settings-checkbox-wrapper">
+                    <label for="setting-weather-enabled">Enable Weather</label>
+                    <input type="checkbox" id="setting-weather-enabled">
+                </div>
+                <div id="weather-details" class="hidden">
+                    <div class="settings-group">
+                        <label for="setting-weather-city">City (Leave empty for Auto)</label>
+                        <input type="text" id="setting-weather-city" placeholder="London, New York...">
+                    </div>
+                    <div class="settings-group">
+                        <label for="setting-weather-unit">Temperature Unit</label>
+                        <select id="setting-weather-unit">
+                            <option value="celsius">Celsius (°C)</option>
+                            <option value="fahrenheit">Fahrenheit (°F)</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- End Weather Settings -->
+                        <option value="2592000000">1 Month</option>
+                    </select>
+                </div>
+
+                <h3>Pomodoro Settings (Minutes)</h3>
+                <div class="settings-group">
+                    <label for="setting-pomodoro-work">Work Interval</label>
+                    <input type="number" id="setting-pomodoro-work" min="1" max="60" value="25">
+                </div>
+                <div class="settings-group">
+                    <label for="setting-pomodoro-short">Short Break</label>
+                    <input type="number" id="setting-pomodoro-short" min="1" max="60" value="5">
+                </div>
+                <div class="settings-group">
+                    <label for="setting-pomodoro-long">Long Break</label>
+                    <input type="number" id="setting-pomodoro-long" min="1" max="60" value="15">
+                </div>
+                <div class="settings-group settings-checkbox-wrapper">
+                    <label for="setting-animations">Enable Animations</label>
+                    <input type="checkbox" id="setting-animations" checked>
+                </div>
+                <div class="settings-group">
+                    <label>Data Management</label>
+                    <div class="settings-buttons">
+                        <button id="export-settings-btn" class="settings-btn">Export Config</button>
+                        <button id="import-settings-btn" class="settings-btn">Import Config</button>
+                        <input type="file" id="import-settings-file" accept=".json" style="display:none">
+                    </div>
+                </div>
+                <div class="settings-group">
+                    <label for="setting-stale-threshold">Stale Tab Threshold</label>
+                    <select id="setting-stale-threshold">
+                        <option value="604800000">1 Week</option>
+                        <option value="1209600000">2 Weeks</option>
+                        <option value="2592000000">1 Month</option>
+                    </select>
+                    <button id="btn-clean-stale-tabs" class="settings-btn" style="margin-top: 10px; width: 100%;">Check for Stale Tabs</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="stale-tabs-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="stale-tabs-title">
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Close Stale Tabs Modal">&times;</button>
+            <h2 id="stale-tabs-title">Close Stale Tabs</h2>
+            <p id="stale-tabs-desc">The following tabs haven't been accessed for the selected duration. Uncheck any you want to keep.</p>
+            <ul id="stale-tabs-list" class="stale-tabs-list" aria-describedby="stale-tabs-desc"></ul>
+            <div class="modal-actions" style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+                <button id="btn-cancel-stale" class="settings-btn">Cancel</button>
+                <button id="btn-confirm-stale" class="settings-btn primary">Close Selected</button>
+            </div>
+        </div>
+    </div>
+    <div id="recent-history-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="recent-history-title">
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Close Recent History">&times;</button>
+            <h2 id="recent-history-title">Recently Closed Tabs</h2>
+            <ul id="recent-history-list" class="recent-history-list"></ul>
+        </div>
+    </div>
+    
+    <div id="sessions-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="sessions-title">
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Close Saved Sessions">&times;</button>
+            <h2 id="sessions-title">Saved Sessions</h2>
+            <div class="session-controls">
+                <input type="text" id="session-name-input" placeholder="Session Name (optional)" aria-label="Session Name" />
+                <button id="btn-save-session" class="settings-btn primary">Save Current Session</button>
+            </div>
+            <ul id="sessions-list" class="sessions-list"></ul>
+        </div>
+    </div>
+
+    <div id="shortcuts-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="shortcuts-title">
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Close Shortcuts">&times;</button>
+            <h2 id="shortcuts-title">Keyboard Shortcuts</h2>
+            <ul class="shortcuts-list">
+                <li><span class="key">?</span> / <span class="key">H</span> <span>Toggle this help</span></li>
+                <li><span class="key">Tab</span> <span>Focus search bar</span></li>
+                <li><span class="key">Arrows</span> <span>Navigate tabs</span></li>
+                <li><span class="key">Alt</span> + <span class="key">M</span> <span>Mute/Unmute Tab</span></li>
+                <li><span class="key">Alt</span> + <span class="key">P</span> <span>Pin/Unpin Tab</span></li>
+                <li><span class="key">B</span> <span>Toggle bookmarks sidebar</span></li>
+                <li><span class="key">R</span> <span>Recent History</span></li>
+                <li><span class="key">Esc</span> <span>Close modal / sidebar</span></li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>

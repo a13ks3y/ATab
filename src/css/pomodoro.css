@@ -1,0 +1,146 @@
+
+/* Pomodoro Widget */
+#pomodoro-widget {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    width: 280px;
+    height: auto;
+    background-color: var(--bg-color-rgba);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--svg-stroke);
+    transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28), opacity 0.3s ease;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+#pomodoro-widget.hidden {
+    display: flex; /* Override display:none to allow transition */
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.pomodoro-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+}
+
+.pomodoro-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+#close-pomodoro {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+}
+
+.pomodoro-modes {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.pomodoro-modes button {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: var(--text-color);
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    flex: 1;
+    transition: background 0.2s;
+}
+
+.pomodoro-modes button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.pomodoro-modes button.active {
+    background: var(--svg-fill); 
+    color: #333; /* Contrast against svg-fill (usually yellow/light) */
+    font-weight: bold;
+}
+
+/* Adjust text color for dark mode specific svg-fill if needed, 
+   but var(--svg-fill) is usually light in dark theme based on index.css.
+   Let's check light theme overrides in index.css if needed. 
+   For now, assume good contrast or user adjusts. */
+
+.pomodoro-timer {
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    color: var(--text-color);
+    font-variant-numeric: tabular-nums;
+    margin: 0.5rem 0;
+}
+
+.pomodoro-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.pomodoro-controls button {
+    padding: 8px 20px;
+    font-size: 1rem;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.1s, opacity 0.2s;
+}
+
+.pomodoro-controls button:active {
+    transform: scale(0.95);
+}
+
+#pomodoro-start {
+    background-color: var(--bookmark-color);
+    color: #000;
+}
+
+#pomodoro-reset {
+    background-color: var(--btn-others-bg);
+    color: var(--btn-others-color);
+}
+
+/* Toggle Button Style (Header) */
+.pomodoro-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 8.5rem; /* 6rem + 2.5rem */
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 100;
+    transition: transform 0.2s, opacity 0.2s;
+    opacity: 0.7;
+    padding: 0;
+}
+
+.pomodoro-toggle:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}

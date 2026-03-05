@@ -1,46 +1,101 @@
-# Awesome Tab
-### Chrome Extension for Awesome people 
-Replaces your NewTab and Homepage in Chrome Browser.
+# Awesome Tab (ATab)
 
-[Home Page](https://a13ks3y.github.io/ATab/)
+Awesome Tab is a Chrome Extension that replaces the New Tab page, providing a clean interface for managing tabs and bookmarks. Designed for power users who value speed, keyboard accessibility, and a clutter-free environment.
 
-[comment]: <> ([Alternative version]&#40;https://a13ks3y.github.io/ATab/index.html&#41; - for mobile, to set up it as home page.)
+[Home Page / Demo](https://a13ks3y.github.io/ATab/)
 
 ![Screenshot](./src/assets/screenshot_2023-05-03_023856.png)
+*(Note: Screenshot above may be outdated. See project description below for current features.)*
+
+## Key Features
+
+- **Clean Interface**: Replaces the default New Tab page with a minimalist design.
+- **Tab Management**: 
+  - Quickly view and navigate open tabs.
+  - "Close others" button to tidy up your workspace.
+  - Close stale tabs automatically or manually.
+  - Save and restore tab sessions (Snapshots).
+- **Productivity Tools**:
+  - **Pomodoro Timer**: Customizable work/break intervals.
+  - **Zen Mode**: Hide distractions (bookmarks, widgets).
+  - **Quick Notes**: Persistent notepad.
+  - **Weather**: Local weather conditions.
+  - **Analytics**: Visualize your tab usage and focus time.
+- **Reading List**: Integrated sidebar for your reading list.
+- **Bookmarks & Folders**:
+  - Full access to your bookmarks hierarchy.
+  - Easy navigation through bookmark folders.
+- **Keyboard Navigation**:
+  - Full keyboard support for tabs, menus, and widgets.
+  - Accessible ARIA labels and focus management.
+- **Customization**:
+  - Dark/Light mode.
+  - Custom background image uploads.
+  - Grid density settings.
+  - Cloud sync for settings.
+  - Full support for Arrow keys (Up/Down/Left/Right) to navigate tabs and bookmarks.
+  - `Tab`/`Shift+Tab` support.
+  - `Enter` to open selected tab or bookmark.
+- **Performance**: Lightweight Vanilla JS implementation (no heavy frameworks).
 
 ## Installation
 
-Download from [Google Web Store](https://chrome.google.com/webstore/detail/atab/hffgbimhegfljiohccdgeneejdcpdgid?gclid=CjwKCAjwx_eiBhBGEiwA15gLN9Yk4Oji8hJeRIV01iU1Z4o9TCMUVAbO2TG5z-XBJs3r607Y-ajn_RoCeoMQAvD_BwE)
+### From Chrome Web Store
+[Download from Chrome Web Store](https://chrome.google.com/webstore/detail/atab/hffgbimhegfljiohccdgeneejdcpdgid)
 
-Or install the latest version manually (see notes below).
+### Manual Installation (Development)
 
-## ToDo:
-- ~~Preserve focus when rerender tabs~~
-- ~~Showing tab title feature (not only when hovered, when focused too!)~~
-- Update screenshot(s) and video
-- Actually it's not "select", more like "focus" for both tabs and bookmarks. rename?
-- (In progress...) Refactor and unit-test keyboard handling (now it's a mess)
-- Mouse events handler for bookmarks and folders
-- ~~Add folder icon, or something, to show it's a folder, not a bookmark~~
-- Anchor href attribute should not be undefined for the folder (think about what it should be?)
-- Add close-tab animation (when close tab button clicked)
-- ~~Tab/Shift+Tab and arrows navigation between opened tabs~~
-- List of bookmarks (create specific folder for this purpose?)
-- ~~"Close others" button, to close all tabs, except current/selected~~
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/a13ks3y/ATab.git
+   cd ATab
+   ```
 
+2. **Install dependencies**:
+   ```bash
+   npm install --legacy-peer-deps
+   ```
 
-## 🛣 Road-Map
-- ~~Implement the bookmarks panel!~~
-- Arrow Up and Arrow Down to navigate tabs if more than one row (how???)
-- ~~Get rid of useless css/js libs and legacy code.~~
-- ~~Refactor html markup of override page~~
-- ~~Get rid of settings, or re-develop it.~~
+3. **Build the project**:
+   ```bash
+   npm run build
+   ```
+   This will generate a `dist` folder.
 
+4. **Load in Chrome**:
+   - Open Chrome and navigate to `chrome://extensions/`.
+   - Enable **Developer mode** (top right).
+   - Click **Load unpacked**.
+   - Select the `dist` folder from the project directory.
 
-### Some Useful Notes:
+## Development
 
-````shell
-npm i --legacy-peer-deps && npm run build
-````
+- **Start (Dev Server)**: `npm start`
+- **Watch Mode**: `npm run watch` (Rebuilds on file changes)
+- **Test**: `npm test` (Runs Jest tests)
 
-Then in browser "add unpacked extension", choose the "dist" folder.
+## Project Description (For Store Update)
+
+*Use the following description when updating screenshots and video on the Web Store:*
+
+**Awesome Tab - The Fast, Keyboard-Friendly New Tab Page**
+
+Transform your New Tab page into a productivity powerhouse. Awesome Tab (ATab) gives you instant access to your open tabs and bookmarks in a clean, organized layout.
+
+**What's New in Version 2.4:**
+- **Enhanced Keyboard Navigation**: Navigate effortlessly through multi-row tab layouts using Arrow keys.
+- **Improved Bookmarks**: Smoother folder navigation and mouse interactions.
+- **Visual Polish**: New UI animations for closing tabs and refined focus states.
+
+**Visual Highlights (for Screenshots):**
+1. **Clean Start**: Show the minimalist opening screen with the list of current open tabs.
+2. **Keyboard Focus**: Highlight the visual feedback when using keyboard navigation (focused tabs/bookmarks).
+3. **Bookmarks**: Display the open bookmarks folder view to demonstrate hierarchy support.
+
+## Roadmap & Progress
+
+See [PRD.md](./PRD.md) for the detailed project roadmap and progress log.
+
+## License
+
+MIT

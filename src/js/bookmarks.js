@@ -1,16 +1,17 @@
-function unselectBookmarks(bmsEl) {
+function unfocusBookmarks(bmsEl) {
     const bmEls = bmsEl.querySelectorAll('a');
     for (let bmEl of bmEls) {
-        bmEl.classList.remove('selected');
+        bmEl.classList.remove('focused');
     }
 }
 
-function selectBookmark(bmsEl, index) {
-    unselectBookmarks(bmsEl);
+function focusBookmark(bmsEl, index) {
+    unfocusBookmarks(bmsEl);
     const bmEls = bmsEl.querySelectorAll('a');
     const bmEl = bmEls[index] || bmEls[0];
-    bmEl && bmEl.classList.add('selected');
+    bmEl && bmEl.classList.add('focused');
     bmEl && bmEl.focus();
+
     bmEl && bmEl.scrollIntoView && bmEl.scrollIntoView({
         behavior: 'smooth',
         block: 'center',
@@ -23,10 +24,10 @@ function selectBookmark(bmsEl, index) {
  * @param {HTMLElement} bmsEl - The bookmarks container
  * @param {number} currentIndex - The current bookmark index
  */
-function selectNextBookmark(bmsEl, currentIndex) {
+function focusNextBookmark(bmsEl, currentIndex) {
     const bmEls = bmsEl.querySelectorAll('a');
     const nextIndex = currentIndex + 1 >= bmEls.length ? 0 : currentIndex + 1;
-    selectBookmark(bmsEl, nextIndex);
+    focusBookmark(bmsEl, nextIndex);
 }
 
 /**
@@ -34,29 +35,29 @@ function selectNextBookmark(bmsEl, currentIndex) {
  * @param {HTMLElement} bmsEl - The bookmarks container
  * @param {number} currentIndex - The current bookmark index
  */
-function selectPrevBookmark(bmsEl, currentIndex) {
+function focusPrevBookmark(bmsEl, currentIndex) {
     const bmEls = bmsEl.querySelectorAll('a');
     const prevIndex = currentIndex - 1 < 0 ? bmEls.length - 1 : currentIndex - 1;
-    selectBookmark(bmsEl, prevIndex);
+    focusBookmark(bmsEl, prevIndex);
 }
 
 /**
- * Get the index of the currently selected bookmark
+ * Get the index of the currently focused bookmark
  * @param {HTMLElement} bmsEl - The bookmarks container
- * @returns {number} - The index of the selected bookmark, or -1 if none
+ * @returns {number} - The index of the focused bookmark, or -1 if none
  */
-function getSelectedBookmarkIndex(bmsEl) {
+function getFocusedBookmarkIndex(bmsEl) {
     const bmEls = bmsEl.querySelectorAll('a');
     for (let i = 0; i < bmEls.length; i++) {
-        if (bmEls[i].classList.contains('selected') || document.activeElement === bmEls[i]) {
+        if (bmEls[i].classList.contains('focused') || document.activeElement === bmEls[i]) {
             return i;
         }
     }
     return -1;
 }
 
-exports.selectBookmark = selectBookmark;
-exports.unselectBookmarks = unselectBookmarks;
-exports.selectNextBookmark = selectNextBookmark;
-exports.selectPrevBookmark = selectPrevBookmark;
-exports.getSelectedBookmarkIndex = getSelectedBookmarkIndex;
+exports.focusBookmark = focusBookmark;
+exports.unfocusBookmarks = unfocusBookmarks;
+exports.focusNextBookmark = focusNextBookmark;
+exports.focusPrevBookmark = focusPrevBookmark;
+exports.getFocusedBookmarkIndex = getFocusedBookmarkIndex;

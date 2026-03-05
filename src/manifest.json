@@ -3,7 +3,7 @@
   "chrome_url_overrides" : {
     "newtab": "index.html"
   },
-  "permissions": ["tabs", "bookmarks", "search"],
+  "permissions": ["tabs", "bookmarks", "readingList", "search", "storage", "tabGroups", "sessions"],
 
   "name": "ATab",
   "version": "2.3.1",

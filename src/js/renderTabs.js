@@ -2,7 +2,7 @@ import {createTabEl} from "./createTabEl";
 
 export function renderTabs(tabsEl, tabs, openTab, closeTab) {
     // Store the currently focused tab ID before clearing the container
-    const focusedTabEl = tabsEl.querySelector('a:focus, a.selected');
+    const focusedTabEl = tabsEl.querySelector('a:focus, a.focused');
     const focusedTabId = focusedTabEl ? focusedTabEl.getAttribute('data-tab-id') : null;
     
     tabsEl.innerHTML = '';
@@ -21,7 +21,7 @@ export function renderTabs(tabsEl, tabs, openTab, closeTab) {
     if (focusedTabId) {
         const tabToFocus = tabsEl.querySelector(`a[data-tab-id="${focusedTabId}"]`);
         if (tabToFocus) {
-            tabToFocus.classList.add('selected');
+            tabToFocus.classList.add('focused');
             setTimeout(() => tabToFocus.focus(), 10);
         }
     }

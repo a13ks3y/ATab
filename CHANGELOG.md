@@ -2,6 +2,18 @@
 
 ### Any notable changes and version notes will be kept in this file.
 
+## v2.4.0
+- **Accessibility Audit**: Improved ARIA support, focus management, and keyboard navigation across all widgets.
+- **Analytics**: Added visual charts for tab usage and Pomodoro history.
+- **Reading List**: Integrated Chrome Reading List sidebar.
+- **Session Snapshots**: Save and restore named sets of tabs.
+- **Zen Mode**: Toggle distraction-free mode.
+- **Pomodoro Timer**: Added customizable focus timer.
+- **Weather Widget**: Display local weather conditions.
+- **Quick Notes**: Persistent notepad.
+- **History Panel**: View and restore recently closed tabs.
+- **Settings**: Custom background uploads, sync across devices, stale tab cleanup.
+
 ## v2.3.0
 - Added keyboard navigation and mouse click handling for bookmark folders
 - Implemented expand/collapse functionality for bookmark folders 

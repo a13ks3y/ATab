@@ -44,4 +44,22 @@ describe('Create Tab Element Function', () => {
         const tabEl = createTabEl(tabMock, ()=>{}, ()=>{}, 0, tabIndex);
         expect(tabEl.tabIndex).toEqual(tabIndex);
     });
+
+    it('should render group indicator if tab has group', () => {
+        const tabMock = {
+            id: '123',
+            title: 'Tab Title',
+            groupColor: 'blue',
+            groupTitle: 'My Group'
+        };
+        const tabEl = createTabEl(tabMock);
+        expect(tabEl.classList.contains('has-group')).toBe(true);
+        // Note: checking style property might be tricky if not parsed by JSDOM correctly, but setProperty works
+        expect(tabEl.style.getPropertyValue('--group-color')).toBe('var(--group-color-blue)');
+        
+        const indicator = tabEl.querySelector('.group-indicator');
+        expect(indicator).toBeTruthy();
+        expect(indicator.title).toBe('My Group');
+    });
 });
+

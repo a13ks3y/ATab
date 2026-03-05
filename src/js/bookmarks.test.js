@@ -3,42 +3,42 @@ window['chrome'] = {bookmarks: {
         update: () => {},
         remove: () => {}
     }};
-const {unselectBookmarks, selectBookmark} = require("./bookmarks");
+const {unfocusBookmarks, focusBookmark} = require("./bookmarks");
 describe('bookmarks feature', () => {
     let bookmarks, bookmarksContainer;
 
-    it('unselect should unselect all bookmarks', () => {
+    it('unfocus should unfocus all bookmarks', () => {
         bookmarksContainer = document.createElement('div');
         bookmarks = [
             bookmarksContainer.appendChild(document.createElement('a')),
             bookmarksContainer.appendChild(document.createElement('a')),
             bookmarksContainer.appendChild(document.createElement('a')),
         ];
-        bookmarks[0].classList.add('selected');
-        bookmarks[2].classList.add('selected');
+        bookmarks[0].classList.add('focused');
+        bookmarks[2].classList.add('focused');
 
-        unselectBookmarks(bookmarksContainer);
-        expect(bookmarks[0].classList.contains('selected')).toBeFalsy();
-        expect(bookmarks[1].classList.contains('selected')).toBeFalsy();
-        expect(bookmarks[2].classList.contains('selected')).toBeFalsy();
+        unfocusBookmarks(bookmarksContainer);
+        expect(bookmarks[0].classList.contains('focused')).toBeFalsy();
+        expect(bookmarks[1].classList.contains('focused')).toBeFalsy();
+        expect(bookmarks[2].classList.contains('focused')).toBeFalsy();
 
     });
 
-    it('selectBookmark should unselect all bookmarks, then select one', () => {
+    it('focusBookmark should unfocus all bookmarks, then focus one', () => {
         bookmarksContainer = document.createElement('div');
         bookmarks = [
             bookmarksContainer.appendChild(document.createElement('a')),
             bookmarksContainer.appendChild(document.createElement('a')),
             bookmarksContainer.appendChild(document.createElement('a')),
         ];
-        bookmarks[0].classList.add('selected');
-        bookmarks[2].classList.add('selected');
+        bookmarks[0].classList.add('focused');
+        bookmarks[2].classList.add('focused');
 
-        selectBookmark(bookmarksContainer, 1);
-        // todo: expect unselectBookmarks function was called with bookmarksContainer parameter
-        expect(bookmarks[0].classList.contains('selected')).toBeFalsy();
-        expect(bookmarks[1].classList.contains('selected')).toBeTruthy();
-        expect(bookmarks[2].classList.contains('selected')).toBeFalsy();
+        focusBookmark(bookmarksContainer, 1);
+        // todo: expect unfocusBookmarks function was called with bookmarksContainer parameter
+        expect(bookmarks[0].classList.contains('focused')).toBeFalsy();
+        expect(bookmarks[1].classList.contains('focused')).toBeTruthy();
+        expect(bookmarks[2].classList.contains('focused')).toBeFalsy();
 
     });
 

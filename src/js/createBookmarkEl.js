@@ -4,8 +4,8 @@ function createBookmarkEl(bookmark) {
     const el = document.createElement('a');
     if (bookmark.title === ' ') bookmark.title = '🤷';
     
-    // Check if it's a folder (has children)
-    const isFolder = bookmark.children && bookmark.children.length > 0;
+    // Check if it's a folder (has no URL)
+    const isFolder = !bookmark.url;
     
     // For folders, we'll set a special class and prepend a folder icon
     if (isFolder) {
