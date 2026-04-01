@@ -34,7 +34,9 @@ Awesome Tab is a Chrome Extension that replaces the New Tab page, providing a cl
 - [x] **Reading List Integration**: Display and manage items from the Chrome Reading List in a dedicated sidebar or widget area.
 - [x] **Usage Analytics**: Visual charts showing tab usage statistics or Pomodoro session history over time (e.g., last 7 days).
 - [x] **Accessibility Audit**: Conduct an accessibility audit and improve ARIA labels, focus management, and screen reader support across all UI elements.
-- [ ] **Multi-Window Management**: Allow viewing and managing tabs from other open browser windows within the main dashboard grid.
+- [ ] Remove bookmarks feature compleatly. No one use it.
+- [ ] Make sure to follow latest Google Chrome Extention development guides/bestpractices.
+- [ ] Update changelog, version, commit and push.
 
 ## Previous Iteration
 - [x] **Refactor Keyboard Navigation**: Refactor existing keyboard handling to specific handlers. Implement Arrow Up and Arrow Down navigation for multi-row tab layouts. Add comprehensive unit tests for navigation logic.
