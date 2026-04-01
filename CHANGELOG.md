@@ -2,6 +2,11 @@
 
 ### Any notable changes and version notes will be kept in this file.
 
+## v2.4.1
+- Removed bookmarks feature completely.
+- Updated project to align with the latest Google Chrome Extension development guidelines, including Manifest V3 compliance.
+- General code cleanup and adherence to best practices.
+
 ## v2.4.0
 - **Accessibility Audit**: Improved ARIA support, focus management, and keyboard navigation across all widgets.
 - **Analytics**: Added visual charts for tab usage and Pomodoro history.
